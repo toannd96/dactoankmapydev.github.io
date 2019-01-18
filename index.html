@@ -2,78 +2,60 @@
 <html lang="en">
 <head>
         <meta charset="utf-8" />
-        <title>DTech Blog</title>
+        <title>Save and Share</title>
         <link rel="stylesheet" href="/theme/css/main.css" />
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="/">DTech Blog </a></h1>
+                <h1><a href="/">Save and Share <strong>Tech blog</strong></a></h1>
                 <nav><ul>
-                    <li><a href="/category/data-analysis.html">data analysis</a></li>
-                    <li><a href="/category/scrapy.html">scrapy</a></li>
+                    <li><a href="/category/crawl.html">Crawl</a></li>
+                    <li><a href="/category/data-analysis.html">Data analysis</a></li>
+                    <li><a href="/category/web-application.html">Web application</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/scrapy.html">Cạo dữ liệu từ websosanh</a></h1>
+                    <h1 class="entry-title"><a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2019-01-17T02:01:16.933758+07:00">
-                Published: T5 17 Tháng một 2019
+        <abbr class="published" title="2019-01-18T11:44:39.188355+07:00">
+                Published: T6 18 Tháng một 2019
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/dactoankma.html">dactoankma</a>
         </address>
-<p>In <a href="/category/scrapy.html">scrapy</a>.</p>
+<p>In <a href="/category/data-analysis.html">Data analysis</a>.</p>
 
-</footer><!-- /.post-info --><p><a href="https://github.com/dactoankmapydev/Crawler_Web_Js">Source</a> Dùng Splash với Scrapy để crawl các trang web sử dụng Javascript (websosanh).</p>
-<h1>Mở đầu</h1>
+</footer><!-- /.post-info --><p><a href="https://sosanhviec.herokuapp.com/">Demo</a> là một ứng dụng web phân tích việc làm trong lĩnh vực CNTT.</p>
+<h1>Mô tả vấn đề</h1>
 <ul>
-<li>Trang động: một phần của tài liệu HTML được tạo bởi máy khách đang chạy tập lệnh JS, nghĩa là máy chủ tạo một phần nội dung tài liệu HTML và phần còn lại được tạo bởi máy khách.</li>
-<li>Trang tĩnh: toàn bộ tài liệu HTML được tạo ở phía máy chủ, nghĩa là máy chủ được tạo và gửi đến máy khách.</li>
+<li>Từ nhu cầu của bản thân sinh viên để tìm việc, nhưng mỗi trang web việc làm có cách sử dụng hơi khác nhau, khiến tôi rất mệt mỏi khi đi qua họ để tìm việc làm mới.</li>
+<li>Tìm việc là một công việc tốn thời gian, bạn sẽ cần rất nhiều thông tin để tham khảo. Bạn mất quá nhiều thời gian để tìm được công việc bạn muốn, bạn sẽ bỏ lỡ cơ hội việc làm phù hợp nhất với mình.</li>
 </ul>
-<h1>Phân tích vấn đề</h1>
+<h1>Giải quyết vấn đề</h1>
 <ul>
-<li><strong>Scrapy</strong> không cung cấp dịch vụ bóc tách trang có chứa JS, vì vậy bạn không thể lấy thông tin, bạn cần một công cụ xử lí <strong>Splash</strong> (anh hùng xuất hiện).</li>
+<li>Trong dự án này sẽ sử dụng trình thu thập dữ liệu web để xây dựng một hệ thống dữ liệu đơn giản, sau đó phân tích dữ liệu được thu thập và xuất dưới dạng biểu đồ cho những người tìm kiếm việc làm mới và giải quyết thị trường việc làm trong lĩnh vực CNTT.</li>
+<li>Một ứng dụng web được phát triển bằng ngôn ngữ lập trình Python, cho phép người dùng tìm kiếm các từ khóa là kỹ năng và nhận các biểu đồ phân tích trực quan như phân bổ khu vực tuyển dụng, phạm vi lương, loại công ty, số năm kinh nghiệm, vị trí, bằng cấp, danh sách các công việc được đề xuất, ...</li>
 </ul>
-<h1>Giới thiệu Splash</h1>
+<h1>Kiến trúc ứng dụng được sử dụng trong dự án</h1>
 <ul>
-<li>Splash cung cấp một công cụ để hiển thị mã JavaScript cho khung trình thu thập thông tin Scrapy. Nó có các chức năng sau: </li>
+<li>Đối với dự án này, back-end sử dụng <strong>Flask</strong>. Flask là một khung web vi mô được viết bằng Python, front-end sử dụng <strong>Dash</strong>. Dash là lý tưởng để xây dựng các ứng dụng trực quan hóa dữ liệu với giao diện người dùng tùy chỉnh cao trong Python thuần túy.</li>
+<li>Hệ thống thu thập dữ liệu website sử dụng <strong>Scrapy</strong>. Scrapy là một khung thu thập dữ liệu web miễn phí và mã nguồn mở được viết bằng <strong>Python</strong>.</li>
+<li>Các dữ liệu thu thập được phân tích bởi các thư viện <strong>pandas</strong>, <strong>numpy</strong>, <strong>matplotlib</strong>.</li>
 </ul>
-<div class="highlight"><pre><span></span>    Trả lại trang HTML tốt cho người dùng
-
-    Rendering bóc tách đồng thời nhiều trang
-
-    Tắt tải hình ảnh, tăng tốc độ kết xuất
-
-    Thực thi mã JS do người dùng định nghĩa
-
-    Dùng Lua do người dùng xác định tương tự như Phantomjs.
-</pre></div>
-
-
-<h1>Cài đặt Splash</h1>
+<h1>Kết quả nghiên cứu</h1>
 <ul>
-<li>Cài đặt docker</li>
+<li>Nhiều thông tin việc làm mới mỗi ngày được tổng hợp từ  hai trang web công nghệ thông tin lớn <strong>topdev.vn</strong> và <strong>itviec.com</strong>.</li>
+<li>Nhiều gợi ý về kỹ năng, vị trí, trình độ, kinh nghiệm và mức lương sẽ giúp bạn dễ dàng nghiên cứu hơn trước khi tìm việc, tất cả công việc đã tập trung trên <strong>So Sánh Việc</strong> với cách sử dụng đơn giản và nhất quán.</li>
 </ul>
-<div class="highlight"><pre><span></span>    sudo apt-get install docker
-</pre></div>
-
-
+<h1>Định hướng phát triển</h1>
 <ul>
-<li>Cài đặt Splash với docker</li>
-</ul>
-<div class="highlight"><pre><span></span>    sudo docker pull scrapyhub/splash
-</pre></div>
-
-
-<ul>
-<li>Bắt đầu sử dụng Splash (Ở đây tôi đã mở dịch vụ Splash trên cổng 8050 của máy cục bộ):</li>
-</ul>
-<div class="highlight"><pre><span></span>    sudo docker run -p 8050:8050 scrapinghub/splash
-</pre></div>                </article>
+<li>Thay vì duyệt thủ công thông qua các bài đăng công việc. Nhóm phát triển muốn hồ sơ của ứng viên được kết hợp với các vị trí tốt nhất hiện có. Có nhiều trang web cung cấp dịch vụ tương tự? Chắc chắn, nhưng bạn phải đăng nhập vào nhiều trang web, chia sẻ thông tin cá nhân của bạn, kiểm tra danh tiếng của công ty ... điều đó khá phức tạp.</li>
+<li>Mặc dù có thể khó khăn và tốn thời gian để khớp một sơ yếu lý lịch với nhiều nguồn, có thể đảo ngược cách tiếp cận và tạo một cơ sở dữ liệu đăng công việc duy nhất kết hợp nhiều kết quả của nhiều truy vấn cho một vị trí cụ thể. Cơ sở dữ liệu sau đó được khớp với sơ yếu lý lịch và các khuyến nghị tốt nhất được cung cấp trên cơ sở một bộ kỹ năng nhất định.</li>
+</ul>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -82,31 +64,69 @@
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="/sosanhviec.html" rel="bookmark"
-                           title="Permalink to Ứng dụng web SO SÁNH VIỆC">Ứng dụng web SO SÁNH VIỆC</a></h1>
+                    <h1><a href="/pytudi.html" rel="bookmark"
+                           title="Permalink to Từ điển trực tuyến Anh-Việt, Việt-Anh">Từ điển trực tuyến Anh-Việt, Việt-Anh</a></h1>
                 </header>
 
                 <div class="entry-content">
 <footer class="post-info">
-        <abbr class="published" title="2019-01-17T02:00:44.441514+07:00">
-                Published: T5 17 Tháng một 2019
+        <abbr class="published" title="2019-01-18T11:44:31.312653+07:00">
+                Published: T6 18 Tháng một 2019
         </abbr>
 
         <address class="vcard author">
                 By                         <a class="url fn" href="/author/dactoankma.html">dactoankma</a>
         </address>
-<p>In <a href="/category/data-analysis.html">data analysis</a>.</p>
+<p>In <a href="/category/web-application.html">Web application</a>.</p>
 
-</footer><!-- /.post-info -->                <p><a href="https://sosanhviec.herokuapp.com/">Demo</a> là một ứng dụng web phân tích việc làm trong lĩnh vực CNTT.</p>
-<h1>Mô tả vấn đề</h1>
+</footer><!-- /.post-info -->                <p><a href="https://pytudi.herokuapp.com/">Demo</a> là một ứng dụng web từ điển có khả năng tra từ và câu Anh-Việt, Việt-Anh.</p>
+                <a class="readmore" href="/pytudi.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/scrapy.html" rel="bookmark"
+                           title="Permalink to Cạo dữ liệu từ websosanh">Cạo dữ liệu từ websosanh</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-01-18T11:37:35.914295+07:00">
+                Published: T6 18 Tháng một 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/dactoankma.html">dactoankma</a>
+        </address>
+<p>In <a href="/category/crawl.html">Crawl</a>.</p>
+
+</footer><!-- /.post-info -->                <p><a href="https://github.com/dactoankmapydev/Crawler_Web_Js">Source</a> Dùng Splash với Scrapy để crawl các trang web sử dụng Javascript (websosanh).</p>
+<h1>Mở đầu</h1>
 <ul>
-<li>Từ nhu cầu của bản thân sinh viên để tìm việc, nhưng mỗi trang web việc làm có cách sử dụng hơi khác nhau, khiến tôi rất mệt mỏi khi đi qua …</li></ul>
-                <a class="readmore" href="/sosanhviec.html">read more</a>
+<li>Trang động: một phần của tài liệu HTML được tạo bởi máy khách đang chạy tập lệnh JS, nghĩa là máy chủ tạo một phần nội dung tài liệu HTML và phần còn lại …</li></ul>
+                <a class="readmore" href="/scrapy.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
                 </section><!-- /#content -->
         <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="https://pytudi.herokuapp.com/">PYTUDI</a></li>
+                            <li><a href="https://sosanhviec.herokuapp.com/">SOSANHVIEC</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://github.com/dactoankmapydev">Github</a></li>
+                            <li><a href="https://www.facebook.com/toan.nguyen.31392410">Facebook</a></li>
+                            <li><a href="https://www.linkedin.com/in/dac-toan-nguyen-a94b2a146/">Linkedin</a></li>
+                        </ul>
+                </div><!-- /.social -->
         </section><!-- /#extras -->
 
         <footer id="contentinfo" class="body">
@@ -114,7 +134,7 @@
                 Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
                 </address><!-- /#about -->
 
-                <p>Copyright &copy; <a href="https://www.facebook.com/toan.nguyen.31392410">Nguyen Dac Toan KMA</a> 2019</p>
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
         </footer><!-- /#contentinfo -->
 
 </body>
