@@ -55,55 +55,54 @@
 <header>
       <h1 class="entry-title">Thu thập dữ liệu với Scrapy - Nội dung được tạo bởi Javascript</h1>
     <p class="meta">
-<time datetime="2019-01-24T16:51:35.357348+07:00" pubdate>T5 24 Tháng một 2019</time>    </p>
+<time datetime="2019-01-24T21:39:35.042030+07:00" pubdate>T5 24 Tháng một 2019</time>    </p>
 </header>
 
   <div class="entry-content"><p><a href="https://github.com/dactoankmapydev/Crawler_Web_Js">Source</a> </p>
-<h1>Giới thiệu</h1>
 <ul>
 <li>
-<p>Khi tôi mới bắt đầu tìm hiểu về  lĩnh vực <strong>scraping web</strong>, tôi thực sự không biết nhiều về cách AJAX hoặc DOM hoạt động, tôi nghĩ mọi thứ tôi cần biết là giao thức HTTP và tôi sẽ thu thập dữ liệu bất kỳ trang nào tôi muốn. Thật không may, tôi đã sai.</p>
+<p>Khi mới bắt đầu tìm hiểu về  lĩnh vực <strong>scraping web</strong>, mình thực sự không biết nhiều về cách AJAX hoặc DOM hoạt động, mình nghĩ đơn giản là cần biết về  giao thức HTTP và mình sẽ thu thập dữ liệu bất kỳ trang nào mình muốn. Thật không may, mình đã nhầm.</p>
 </li>
 <li>
-<p>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn cạo nội dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy hoặc các thư viện <strong>scraping web</strong> khác không thể chạy mã javascript trong khi quét.</p>
+<p>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn cạo nội dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy hoặc các thư viện <strong>scraping web</strong> khác không thể chạy mã javascript trong khi cạo.</p>
 </li>
 <li>
-<p>Trong bài đăng này, tôi sẽ chỉ cho bạn một quy trình làm việc để thu thập thông tin trang web của <a href="https://websosanh.vn/">Websosanh</a> và nhận thông tin sản phẩm thích hợp như tên sản phẩm, giá thành, ảnh sản phẩm.</p>
+<p>Trong bài đăng này, mình sẽ  demo về việc thu thập dữ liệu từ trang web <a href="https://websosanh.vn/">Websosanh</a> và <a href="https://www.flipkart.com/">Flipkart</a>, tất nhiên nội dung mình cần lấy ở  hai trang web này đều được tạo bằng javascript.</p>
 </li>
 <li>
-<p>Lưu ý rằng tôi đang viết bài này vào tháng 1 năm 2019. Nếu bạn đang đọc bài viết này trong tương lai, bố cục của trang web này có thể  đã thay đổi và việc thu thập thông tin có thể không hoạt động nữa.</p>
+<p>Lưu ý rằng mình viết bài này vào tháng 1 năm 2019. Nếu bạn đang đọc bài viết này trong tương lai, bố cục của trang web này có thể  đã thay đổi và việc thu thập thông tin có thể không hoạt động nữa.</p>
 </li>
 </ul>
-<h1>Cách AJAX Hoạt Động Trên Web</h1>
-<h2>Giao Thức HTTP Hoạt Động Như Thế Nào ?</h2>
+<h1>Cách AJAX hoạt động trên web</h1>
+<h2>Giao thức HTTP hoạt động như thế nào ?</h2>
 <ul>
-<li>Khi bạn truy cập bất kỳ trang web nào bằng trình duyệt của mình, bạn thường nhập một cái gì đó như <a href="http://google.com">google</a>. Trình duyệt mà bạn đang truy cập hiểu điều này như là Hãy tạo một yêu cầu HTTP cho google.com. Yêu cầu này sẽ chứa một số dữ liệu, địa chỉ IP của bạn và các nội dung khác. Google sẽ chấp nhận yêu cầu đó và gửi phản hồi HTTP đến trình duyệt của bạn. Bên trong phản hồi đó sẽ có chứa html trang của google. Sau đó, bạn sẽ viết một cái gì đó vào thanh tìm kiếm và nhấn enter. Điều này sẽ thực hiện một yêu cầu HTTP khác với các tham số khác nhau (một trong các tham số sẽ chứa các cụm từ bạn đã tìm kiếm) và phản hồi sẽ chứa trang có kết quả cho các thuật ngữ  bạn đã tìm kiếm. Và nó tiếp tục và tiếp tục.</li>
+<li>Khi bạn truy cập bất kỳ trang web nào bằng trình duyệt của mình, bạn thường nhập một cái gì đó như <strong>http://google.com</strong>. Trình duyệt mà bạn đang truy cập hiểu điều này như là hãy tạo một yêu cầu HTTP cho google. Yêu cầu này sẽ chứa một số dữ liệu, địa chỉ IP của bạn và các nội dung khác, google sẽ chấp nhận yêu cầu đó và gửi phản hồi HTTP đến trình duyệt của bạn. Bên trong phản hồi đó sẽ có chứa mã html của google. Sau đó, bạn sẽ nhập một từ khóa nào đó vào thanh tìm kiếm và nhấn enter. Điều này sẽ thực hiện một yêu cầu HTTP khác với các tham số khác nhau (một trong các tham số sẽ chứa các cụm từ bạn đã tìm kiếm) và phản hồi sẽ chứa trang có kết quả cho các từ khóa bạn đã tìm kiếm. Và nó tiếp tục như vậy.</li>
 </ul>
-<h2>Yêu Cầu AJAX Hoạt Động Như Thế Nào ?</h2>
+<h2>Yêu cầu AJAX hoạt động như thế nào ?</h2>
 <ul>
 <li>
-<p>AJAX là viết tắt của JavaScript và XML không đồng bộ, Ví dụ khi bạn sử dụng trang web của <a href="https://www.flipkart.com/">Flipkart</a>. Flipkart có một tính năng được gọi là cuộn vô hạn nên không có phân trang (như? Page = 2 ,? Page = 3) trong URL. Khi bạn tìm kiếm các sản phẩm trong trang, nó sẽ tải 15 kết quả đầu tiên. Khi bạn cuộn xuống để xem thêm kết quả, hành động giao thức HTTP bình thường sẽ là hiển thị trang web mới với kết quả 15 + 15 và gửi cho bạn. Nhưng theo cách đó, bạn sẽ chuyển rất nhiều dữ liệu bạn đã có (bố cục của trang và 15 kết quả đầu tiên). Hãy tưởng tượng cuộn xuống 100 lần và hàng loạt lượt tải xuống lặp đi lặp lại như vậy.</p>
+<p>AJAX là viết tắt của javaScript và XML không đồng bộ, ví dụ khi bạn sử dụng trang web của <a href="https://www.flipkart.com/">Flipkart</a>. Flipkart có một tính năng được gọi là cuộn vô hạn nên không có phân trang (như? Page = 2 ,? Page = 3) trong URL. Khi bạn tìm kiếm các sản phẩm trong trang, nó sẽ tải 15 sản phẩm đầu tiên. Khi bạn cuộn xuống để xem thêm kết quả, hành động giao thức HTTP bình thường sẽ hiển thị trang web mới với 15 sản phẩm ban đầu và thêm 15 sản phẩm tiếp theo gửi cho bạn. Theo cách đó, bạn sẽ chuyển rất nhiều dữ liệu bạn đã có (bố cục của trang và 15 kết quả đầu tiên). Hãy tưởng tượng cuộn xuống 100 lần và hàng loạt lượt tải xuống lặp đi lặp lại như vậy.</p>
 </li>
 <li>
-<p>Các nhà phát triển của <a href="https://www.flipkart.com/">Flipkart</a> buộc hành động của cuộn xuống xuống với chức năng JavaScript sẽ gửi yêu cầu HTTP đến máy chủ của Flipkart yêu cầu 15 sản phẩm tiếp theo. Máy chủ sẽ trả lời bằng phản hồi HTTP có chứa 15 sản phẩm. Một chức năng khác sẽ  nối thêm 15 khóa học mới vào trang đã được tải thay vì tải lại trang mới. Nói cách khác, 15 sản phẩm mới sẽ được thêm vào DOM, đây là cấu trúc mà trình duyệt diễn giải cho chúng ta thấy.</p>
+<p>Các nhà phát triển của <a href="https://www.flipkart.com/">Flipkart</a> sử dụng hành động cuộn xuống với chức năng javaScript sẽ gửi yêu cầu HTTP đến máy chủ của Flipkart yêu cầu 15 sản phẩm tiếp theo. Máy chủ sẽ trả lời bằng phản hồi HTTP có chứa 15 sản phẩm. Một chức năng khác sẽ  nối thêm 15 sản phẩm mới vào trang đã được tải thay vì tải lại trang mới. Nói cách khác, 15 sản phẩm mới sẽ được thêm vào DOM, đây là cấu trúc mà trình duyệt diễn giải cho chúng ta thấy.</p>
 </li>
 </ul>
-<h1>Quét nội dung được tạo bằng Javascript</h1>
+<h1>Quét nội dung được tạo bằng javascript</h1>
 <h2>Kiểm tra nội dung nào trên trang web sử dụng javascript</h2>
 <ul>
-<li>Khi bạn đi qua một trang web sử dụng javascript để tải dữ liệu. Bạn sẽ làm gì? Trước tiên, bạn nên kiểm tra trang web trong trình duyệt của bạn với tính năng JavaScript bị vô hiệu hóa bởi <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a> là một tiện ích mở rộng của Chrome cho phép hoặc vô hiệu hóa JavaScript một cách nhanh chóng theo tên máy chủ và tên miền phụ. Nếu bạn cần kích hoạt JavaScript để tiếp cận dữ liệu bạn muốn, bạn có thể tham khảo 3 giải pháp dưới đây</li>
+<li>Khi bạn ghé thăm một trang web để thu thập dữ liệu. Bạn sẽ làm gì? Trước tiên, bạn nên kiểm tra trang web đó trong trình duyệt của bạn với <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a> là một tiện ích mở rộng của Chrome cho phép bạn kích hoạt hoặc vô hiệu hóa javaScript của trang web một cách nhanh chóng, nhờ đó bạn có thể dễ dàng kiểm tra xem các nội dung nào của trang web sử dụng javascript. Nếu bạn muốn vượt qua javaScript để tiếp cận dữ liệu bạn muốn, bạn có thể tham khảo 3 giải pháp dưới đây</li>
 </ul>
 <h2>Requests-HTML</h2>
 <ul>
-<li>Nếu bạn đã từng sử dụng <a href="http://docs.python-requests.org/en/master/">Requests</a> mô-đun cho python trước đây, gần đây nhà phát triển đã tạo ra một mô-đun mới có tên gọi <a href="https://html.python-requests.org/">Requests-HTML</a> mà giờ đây cũng có khả năng hiển thị JavaScript, giải pháp này chỉ dành cho phiên bản 3.6 của Python (tại thời điểm này). Bạn cũng có thể truy cập <a href="http://docs.python-requests.org/en/master/">Requests</a> để tìm hiểu thêm về mô-đun này hoặc nếu bạn chỉ quan tâm đến việc hiển thị JavaScript thì bạn có thể truy cập <a href="https://html.python-requests.org/">Requests-HTML</a> để trực tiếp tìm hiểu cách sử dụng mô-đun để  hiển thị JavaScript bằng Python.</li>
+<li>Nếu bạn đã từng sử dụng <a href="http://docs.python-requests.org/en/master/">Requests</a> mô-đun cho python trước đây, gần đây nhà phát triển đã tạo ra một mô-đun mới có tên gọi <a href="https://html.python-requests.org/">Requests-HTML</a> mà giờ đây cũng có khả năng hiển thị javaScript, giải pháp này chỉ dành cho phiên bản 3.6 của Python (tại thời điểm này). Bạn cũng có thể truy cập <a href="http://docs.python-requests.org/en/master/">Requests</a> để tìm hiểu thêm về mô-đun này hoặc nếu bạn chỉ quan tâm đến việc hiển thị javaScript thì bạn có thể truy cập <a href="https://html.python-requests.org/">Requests-HTML</a> để trực tiếp tìm hiểu cách sử dụng mô-đun để  hiển thị javaScript bằng Python.</li>
 </ul>
 <h2>Selenium</h2>
 <ul>
-<li><a href="https://selenium-python.readthedocs.io/">Selenium</a> là trình duyệt web không có GUI. Vì vậy, bạn có thể điều khiển trình duyệt thông qua giao diện API hoặc dòng lệnh. Các trình duyệt phổ biến như mozilla và chrome có trình điều khiển web chính thức của riêng họ . Các trình duyệt này có thể tải JavaScript để bạn có thể sử dụng chúng trong trình quét web của mình.</li>
+<li><a href="https://selenium-python.readthedocs.io/">Selenium</a> là trình duyệt web không có GUI. Vì vậy, bạn có thể điều khiển trình duyệt thông qua giao diện API hoặc dòng lệnh. Các trình duyệt phổ biến như mozilla và chrome có trình điều khiển web chính thức của riêng họ . Các trình duyệt này có thể tải javaScript để bạn có thể sử dụng chúng trong trình cạo web của mình.</li>
 </ul>
 <h2>Splash</h2>
 <ul>
-<li><a href="https://splash.readthedocs.io/en/stable/api.html">Splash</a> cung cấp một công cụ để hiển thị mã JavaScript cho khung trình thu thập thông tin Scrapy. Nó có các chức năng sau:</li>
+<li><a href="https://splash.readthedocs.io/en/stable/api.html">Splash</a> cung cấp một công cụ để hiển thị mã javaScript cho khung trình thu thập thông tin Scrapy. Nó có các chức năng sau:</li>
 </ul>
 <div class="highlight"><pre><span></span>    Return a good HTML page for the user
 
@@ -123,9 +122,12 @@
 <p><a href="https://html.python-requests.org/">Requests-HTML</a> khá tốt và mới mẻ , tuy nhiên giải pháp này chỉ dành cho phiên bản 3.6 của Python (tại thời điểm này), tài liệu tham khảo tương đối ít.</p>
 </li>
 <li>
-<p>Khi bạn chọn giữa hai tùy chọn <a href="https://selenium-python.readthedocs.io/">Selenium</a> và <a href="https://splash.readthedocs.io/en/stable/api.html">Splash</a> cho dự án cạo web của mình, bạn nên xem xét một yếu tố chính: yêu cầu tài nguyên phần cứng. <strong>Selenium</strong> tiêu thụ tài nguyên hệ thống nhiều hơn khi tạo ra hàng ngàn yêu cầu trong khi chạy. Tôi đặc biệt không khuyến khích bạn sử dụng <strong>Selenium</strong> cho các dự án cạo web. Thay vào đó bạn nên thử  <strong>Splash</strong>. Nó được tạo để chỉ hiển thị nội dung JavaScript. Đây chính xác là những gì bạn cần cho việc cạo web. </p>
+<p>Khi bạn chọn giữa hai lựa chọn <a href="https://selenium-python.readthedocs.io/">Selenium</a> và <a href="https://splash.readthedocs.io/en/stable/api.html">Splash</a> cho dự án cạo web của mình, bạn nên xem xét một yếu tố: yêu cầu tài nguyên phần cứng. <strong>Selenium</strong> tiêu thụ tài nguyên hệ thống nhiều hơn khi tạo ra hàng ngàn requests trong khi chạy. Mình không khuyến khích bạn sử dụng <strong>Selenium</strong> cho các dự án cạo web. Thay vào đó bạn nên thử  <strong>Splash</strong>. Nó được tạo để chỉ hiển thị nội dung javaScript. Đây chính xác là những gì bạn cần cho việc cạo web. </p>
 </li>
-</ul></div>
+</ul>
+<h2>Còn tiếp...</h2>
+<h2>Tài liệu tham khảo</h2>
+<p><a href="https://medium.com/@harshvb7/scraping-from-a-website-with-infinite-scrolling-7e080ea8768e">https://medium.com/@harshvb7/scraping-from-a-website-with-infinite-scrolling-7e080ea8768e</a></p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -133,7 +135,7 @@
         Nguyen Dac Toan KMA
     </span>
   </span>
-<time datetime="2019-01-24T16:51:35.357348+07:00" pubdate>T5 24 Tháng một 2019</time>  <span class="categories">
+<time datetime="2019-01-24T21:39:35.042030+07:00" pubdate>T5 24 Tháng một 2019</time>  <span class="categories">
     <a class='category' href='/category/crawl.html'>Crawl</a>
   </span>
 </p><div class="sharing">
@@ -149,10 +151,10 @@
           <a href="/scrapy.html">Thu thập dữ liệu với Scrapy - Nội dung được tạo bởi Javascript</a>
       </li>
       <li class="post">
-          <a href="/pytudi.html">Từ điển trực tuyến Anh-Việt, Việt-Anh</a>
+          <a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a>
       </li>
       <li class="post">
-          <a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a>
+          <a href="/pytudi.html">Từ điển trực tuyến Anh-Việt, Việt-Anh</a>
       </li>
     </ul>
   </section>

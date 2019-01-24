@@ -55,36 +55,58 @@
 <header>
       <h1 class="entry-title">Ứng dụng web SO SÁNH VIỆC</h1>
     <p class="meta">
-<time datetime="2019-01-20T15:39:13.216715+07:00" pubdate>CN 20 Tháng một 2019</time>    </p>
+<time datetime="2019-01-24T21:37:34.001466+07:00" pubdate>T5 24 Tháng một 2019</time>    </p>
 </header>
 
   <div class="entry-content"><p><a href="https://sosanhviec.herokuapp.com/">Demo</a> là một ứng dụng web phân tích việc làm trong lĩnh vực CNTT.</p>
 <p><img alt="Image" src="images/ssv.png"></p>
 <h1>Mô tả vấn đề</h1>
 <ul>
-<li>Từ nhu cầu của bản thân sinh viên để tìm việc, nhưng mỗi trang web việc làm có cách sử dụng hơi khác nhau, khiến tôi rất mệt mỏi khi đi qua họ để tìm việc làm mới.</li>
-<li>Tìm việc là một công việc tốn thời gian, bạn sẽ cần rất nhiều thông tin để tham khảo. Bạn mất quá nhiều thời gian để tìm được công việc bạn muốn, bạn sẽ bỏ lỡ cơ hội việc làm phù hợp nhất với mình.</li>
+<li>
+<p>Từ nhu cầu của bản thân sinh viên để tìm việc, nhưng mỗi trang web việc làm có cách sử dụng hơi khác nhau, khiến mình rất mệt mỏi khi đi qua họ để tìm việc làm mới.</p>
+</li>
+<li>
+<p>Tìm việc là một công việc tốn thời gian, bạn sẽ cần rất nhiều thông tin để tham khảo. Bạn mất quá nhiều thời gian để tìm được công việc bạn muốn, bạn sẽ bỏ lỡ cơ hội việc làm phù hợp nhất với mình.</p>
+</li>
 </ul>
 <h1>Giải quyết vấn đề</h1>
 <ul>
-<li>Trong dự án này sẽ sử dụng trình thu thập dữ liệu web để xây dựng một hệ thống dữ liệu đơn giản, sau đó phân tích dữ liệu được thu thập và xuất dưới dạng biểu đồ cho những người tìm kiếm việc làm mới và giải quyết thị trường việc làm trong lĩnh vực CNTT.</li>
-<li>Một ứng dụng web được phát triển bằng ngôn ngữ lập trình Python, cho phép người dùng tìm kiếm các từ khóa là kỹ năng và nhận các biểu đồ phân tích trực quan như phân bổ khu vực tuyển dụng, phạm vi lương, loại công ty, số năm kinh nghiệm, vị trí, bằng cấp, danh sách các công việc được đề xuất, ...</li>
+<li>
+<p>Trong dự án này sẽ sử dụng trình thu thập dữ liệu web để xây dựng một hệ thống dữ liệu đơn giản, sau đó phân tích dữ liệu được thu thập và xuất dưới dạng biểu đồ cho những người tìm kiếm việc làm mới và giải quyết thị trường việc làm trong lĩnh vực CNTT.</p>
+</li>
+<li>
+<p>Một ứng dụng web được phát triển bằng ngôn ngữ lập trình Python, cho phép người dùng tìm kiếm các từ khóa là kỹ năng và nhận các biểu đồ phân tích trực quan như phân bổ khu vực tuyển dụng, phạm vi lương, loại công ty, số năm kinh nghiệm, vị trí, bằng cấp, danh sách các công việc được đề xuất, ...</p>
+</li>
 </ul>
 <h1>Kiến trúc ứng dụng được sử dụng trong dự án</h1>
 <ul>
-<li>Đối với dự án này, back-end sử dụng <strong>Flask</strong>. Flask là một khung web vi mô được viết bằng Python, front-end sử dụng <strong>Dash</strong>. Dash là lý tưởng để xây dựng các ứng dụng trực quan hóa dữ liệu với giao diện người dùng tùy chỉnh cao trong Python thuần túy.</li>
-<li>Hệ thống thu thập dữ liệu website sử dụng <strong>Scrapy</strong>. Scrapy là một khung thu thập dữ liệu web miễn phí và mã nguồn mở được viết bằng <strong>Python</strong>.</li>
-<li>Các dữ liệu thu thập được phân tích bởi các thư viện <strong>pandas</strong>, <strong>numpy</strong>, <strong>matplotlib</strong>.</li>
+<li>
+<p>Đối với dự án này, back-end sử dụng <strong>Flask</strong>. Flask là một khung web vi mô được viết bằng Python, front-end sử dụng <strong>Dash</strong>. Dash là lý tưởng để xây dựng các ứng dụng trực quan hóa dữ liệu với giao diện người dùng tùy chỉnh cao trong Python thuần túy.</p>
+</li>
+<li>
+<p>Hệ thống thu thập dữ liệu website sử dụng <strong>Scrapy</strong>. Scrapy là một khung thu thập dữ liệu web miễn phí và mã nguồn mở được viết bằng <strong>Python</strong>.</p>
+</li>
+<li>
+<p>Các dữ liệu thu thập được phân tích bởi các thư viện <strong>pandas</strong>, <strong>numpy</strong>, <strong>matplotlib</strong>.</p>
+</li>
 </ul>
 <h1>Kết quả nghiên cứu</h1>
 <ul>
-<li>Nhiều thông tin việc làm mới mỗi ngày được tổng hợp từ  hai trang web công nghệ thông tin lớn <strong>topdev.vn</strong> và <strong>itviec.com</strong>.</li>
-<li>Nhiều gợi ý về kỹ năng, vị trí, trình độ, kinh nghiệm và mức lương sẽ giúp bạn dễ dàng nghiên cứu hơn trước khi tìm việc, tất cả công việc đã tập trung trên <strong>So Sánh Việc</strong> với cách sử dụng đơn giản và nhất quán.</li>
+<li>
+<p>Nhiều thông tin việc làm mới mỗi ngày được tổng hợp từ  hai trang web công nghệ thông tin lớn <strong>topdev.vn</strong> và <strong>itviec.com</strong>.</p>
+</li>
+<li>
+<p>Nhiều gợi ý về kỹ năng, vị trí, trình độ, kinh nghiệm và mức lương sẽ giúp bạn dễ dàng nghiên cứu hơn trước khi tìm việc, tất cả công việc đã tập trung trên <strong>So Sánh Việc</strong> với cách sử dụng đơn giản và nhất quán.</p>
+</li>
 </ul>
 <h1>Định hướng phát triển</h1>
 <ul>
-<li>Thay vì duyệt thủ công thông qua các bài đăng công việc. Nhóm phát triển muốn hồ sơ của ứng viên được kết hợp với các vị trí tốt nhất hiện có. Có nhiều trang web cung cấp dịch vụ tương tự? Chắc chắn, nhưng bạn phải đăng nhập vào nhiều trang web, chia sẻ thông tin cá nhân của bạn, kiểm tra danh tiếng của công ty ... điều đó khá phức tạp.</li>
-<li>Mặc dù có thể khó khăn và tốn thời gian để khớp một sơ yếu lý lịch với nhiều nguồn, có thể đảo ngược cách tiếp cận và tạo một cơ sở dữ liệu đăng công việc duy nhất kết hợp nhiều kết quả của nhiều truy vấn cho một vị trí cụ thể. Cơ sở dữ liệu sau đó được khớp với sơ yếu lý lịch và các khuyến nghị tốt nhất được cung cấp trên cơ sở một bộ kỹ năng nhất định.</li>
+<li>
+<p>Thay vì duyệt thủ công thông qua các bài đăng công việc. Nhóm phát triển muốn hồ sơ của ứng viên được kết hợp với các vị trí tốt nhất hiện có. Có nhiều trang web cung cấp dịch vụ tương tự? Chắc chắn, nhưng bạn phải đăng nhập vào nhiều trang web, chia sẻ thông tin cá nhân của bạn, kiểm tra danh tiếng của công ty ... điều đó khá phức tạp.</p>
+</li>
+<li>
+<p>Mặc dù có thể khó khăn và tốn thời gian để khớp một sơ yếu lý lịch với nhiều nguồn, có thể đảo ngược cách tiếp cận và tạo một cơ sở dữ liệu đăng công việc duy nhất kết hợp nhiều kết quả của nhiều truy vấn cho một vị trí cụ thể. Cơ sở dữ liệu sau đó được khớp với sơ yếu lý lịch và các khuyến nghị tốt nhất được cung cấp trên cơ sở một bộ kỹ năng nhất định.</p>
+</li>
 </ul></div>
     <footer>
 <p class="meta">
@@ -93,7 +115,7 @@
         Nguyen Dac Toan KMA
     </span>
   </span>
-<time datetime="2019-01-20T15:39:13.216715+07:00" pubdate>CN 20 Tháng một 2019</time>  <span class="categories">
+<time datetime="2019-01-24T21:37:34.001466+07:00" pubdate>T5 24 Tháng một 2019</time>  <span class="categories">
     <a class='category' href='/category/data-analysis.html'>Data analysis</a>
   </span>
 </p><div class="sharing">
@@ -109,10 +131,10 @@
           <a href="/scrapy.html">Thu thập dữ liệu với Scrapy - Nội dung được tạo bởi Javascript</a>
       </li>
       <li class="post">
-          <a href="/pytudi.html">Từ điển trực tuyến Anh-Việt, Việt-Anh</a>
+          <a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a>
       </li>
       <li class="post">
-          <a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a>
+          <a href="/pytudi.html">Từ điển trực tuyến Anh-Việt, Việt-Anh</a>
       </li>
     </ul>
   </section>
