@@ -55,22 +55,16 @@
 <header>
       <h1 class="entry-title">Thu thập dữ liệu với Scrapy - Nội dung được tạo bởi Javascript</h1>
     <p class="meta">
-<time datetime="2019-01-24T21:39:35.042030+07:00" pubdate>T5 24 Tháng một 2019</time>    </p>
+<time datetime="2019-01-24T22:44:00.341704+07:00" pubdate>T5 24 Tháng một 2019</time>    </p>
 </header>
 
   <div class="entry-content"><p><a href="https://github.com/dactoankmapydev/Crawler_Web_Js">Source</a> </p>
 <ul>
 <li>
-<p>Khi mới bắt đầu tìm hiểu về  lĩnh vực <strong>scraping web</strong>, mình thực sự không biết nhiều về cách AJAX hoặc DOM hoạt động, mình nghĩ đơn giản là cần biết về  giao thức HTTP và mình sẽ thu thập dữ liệu bất kỳ trang nào mình muốn. Thật không may, mình đã nhầm.</p>
-</li>
-<li>
-<p>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn cạo nội dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy hoặc các thư viện <strong>scraping web</strong> khác không thể chạy mã javascript trong khi cạo.</p>
+<p>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn lấy nội dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy hoặc các thư viện khác không thể chạy mã javascript trong khi cạo dữ liệu.</p>
 </li>
 <li>
 <p>Trong bài đăng này, mình sẽ  demo về việc thu thập dữ liệu từ trang web <a href="https://websosanh.vn/">Websosanh</a> và <a href="https://www.flipkart.com/">Flipkart</a>, tất nhiên nội dung mình cần lấy ở  hai trang web này đều được tạo bằng javascript.</p>
-</li>
-<li>
-<p>Lưu ý rằng mình viết bài này vào tháng 1 năm 2019. Nếu bạn đang đọc bài viết này trong tương lai, bố cục của trang web này có thể  đã thay đổi và việc thu thập thông tin có thể không hoạt động nữa.</p>
 </li>
 </ul>
 <h1>Cách AJAX hoạt động trên web</h1>
@@ -81,7 +75,7 @@
 <h2>Yêu cầu AJAX hoạt động như thế nào ?</h2>
 <ul>
 <li>
-<p>AJAX là viết tắt của javaScript và XML không đồng bộ, ví dụ khi bạn sử dụng trang web của <a href="https://www.flipkart.com/">Flipkart</a>. Flipkart có một tính năng được gọi là cuộn vô hạn nên không có phân trang (như? Page = 2 ,? Page = 3) trong URL. Khi bạn tìm kiếm các sản phẩm trong trang, nó sẽ tải 15 sản phẩm đầu tiên. Khi bạn cuộn xuống để xem thêm kết quả, hành động giao thức HTTP bình thường sẽ hiển thị trang web mới với 15 sản phẩm ban đầu và thêm 15 sản phẩm tiếp theo gửi cho bạn. Theo cách đó, bạn sẽ chuyển rất nhiều dữ liệu bạn đã có (bố cục của trang và 15 kết quả đầu tiên). Hãy tưởng tượng cuộn xuống 100 lần và hàng loạt lượt tải xuống lặp đi lặp lại như vậy.</p>
+<p>AJAX là viết tắt của <strong>Asynchronous JavaScript and XML</strong>, ví dụ khi bạn sử dụng trang web của <a href="https://www.flipkart.com/">Flipkart</a>. Flipkart có một tính năng được gọi là cuộn vô hạn nên không có phân trang (như ?Page=2 ,?Page=3) trong URL. Khi bạn tìm kiếm các sản phẩm trong trang, nó sẽ tải 15 sản phẩm đầu tiên. Khi bạn cuộn xuống để xem thêm kết quả, hành động giao thức HTTP bình thường sẽ hiển thị trang web mới với 15 sản phẩm ban đầu và thêm 15 sản phẩm tiếp theo gửi cho bạn. Theo cách đó, bạn sẽ chuyển rất nhiều dữ liệu bạn đã có (bố cục của trang và 15 kết quả đầu tiên). Hãy tưởng tượng cuộn xuống 100 lần và hàng loạt lượt tải xuống lặp đi lặp lại như vậy.</p>
 </li>
 <li>
 <p>Các nhà phát triển của <a href="https://www.flipkart.com/">Flipkart</a> sử dụng hành động cuộn xuống với chức năng javaScript sẽ gửi yêu cầu HTTP đến máy chủ của Flipkart yêu cầu 15 sản phẩm tiếp theo. Máy chủ sẽ trả lời bằng phản hồi HTTP có chứa 15 sản phẩm. Một chức năng khác sẽ  nối thêm 15 sản phẩm mới vào trang đã được tải thay vì tải lại trang mới. Nói cách khác, 15 sản phẩm mới sẽ được thêm vào DOM, đây là cấu trúc mà trình duyệt diễn giải cho chúng ta thấy.</p>
@@ -127,7 +121,8 @@
 </ul>
 <h2>Còn tiếp...</h2>
 <h2>Tài liệu tham khảo</h2>
-<p><a href="https://medium.com/@harshvb7/scraping-from-a-website-with-infinite-scrolling-7e080ea8768e">https://medium.com/@harshvb7/scraping-from-a-website-with-infinite-scrolling-7e080ea8768e</a></p></div>
+<p><a href="https://medium.com/@harshvb7/scraping-from-a-website-with-infinite-scrolling-7e080ea8768e">https://medium.com/@harshvb7/scraping-from-a-website-with-infinite-scrolling-7e080ea8768e</a></p>
+<p><a href="https://egrinstein.github.io/2016/10/25/scrapy-js.html">https://egrinstein.github.io/2016/10/25/scrapy-js.html</a></p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -135,7 +130,7 @@
         Nguyen Dac Toan KMA
     </span>
   </span>
-<time datetime="2019-01-24T21:39:35.042030+07:00" pubdate>T5 24 Tháng một 2019</time>  <span class="categories">
+<time datetime="2019-01-24T22:44:00.341704+07:00" pubdate>T5 24 Tháng một 2019</time>  <span class="categories">
     <a class='category' href='/category/crawl.html'>Crawl</a>
   </span>
 </p><div class="sharing">
