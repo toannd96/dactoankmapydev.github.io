@@ -55,14 +55,13 @@
 <header>
       <h1 class="entry-title">Thu thập dữ liệu với Scrapy, Splash, Lua - Nội dung được tạo bởi Javascript</h1>
     <p class="meta">
-<time datetime="2019-01-29T17:14:42.463168+07:00" pubdate>T3 29 Tháng một 2019</time>    </p>
+<time datetime="2019-01-30T00:42:43.744028+07:00" pubdate>T4 30 Tháng một 2019</time>    </p>
 </header>
 
-  <div class="entry-content"><p><a href="https://github.com/dactoankmapydev/Crawler_Web_Js">Source</a> </p>
-<ul>
+  <div class="entry-content"><ul>
 <li>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn lấy nội dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy đơn thuần không thể chạy mã javascript trong khi thu thập dữ liệu. Trong bài viết này, mình sẽ  hướng dẫn các bạn cách thu thập dữ liệu từ trang <a href="https://websosanh.vn/">websosanh</a>, websosanh là công cụ tìm kiếm, so sánh giúp người tiêu dùng mua được sản phẩm tốt với giá rẻ nhất tại nơi bán gần nhất.</li>
 </ul>
-<h1>Quét nội dung được tạo bằng javascript</h1>
+<h1>Quét nội dung được tạo bởi javascript</h1>
 <h2>Kiểm tra nội dung nào trên trang web sử dụng javascript</h2>
 <ul>
 <li>Khi bạn ghé thăm một trang web để thu thập dữ liệu. Bạn sẽ làm gì? Trước tiên, bạn nên kiểm tra trang web đó trong trình duyệt của bạn với <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a> là một tiện ích mở rộng của Chrome cho phép bạn kích hoạt hoặc vô hiệu hóa javaScript của trang web một cách nhanh chóng, nhờ đó bạn có thể dễ dàng kiểm tra xem các nội dung nào của trang web sử dụng javascript. Nếu bạn muốn vượt qua javaScript để tiếp cận dữ liệu bạn muốn, bạn có thể tham khảo 3 giải pháp dưới đây</li>
@@ -105,17 +104,313 @@
 <ul>
 <li>Thu thập thông tin về <strong>tên</strong>, <strong>giá thành</strong>, <strong>ảnh</strong> của sản phẩm bất kỳ nằm trong <strong>danh mục sản phẩm</strong>. Trong bài viết này, mình sẽ demo việc lấy dữ liệu từ danh mục <a href="https://websosanh.vn/dan-organ/cat-2022.htm">đàn organ</a></li>
 </ul>
-<p><img alt="Image" src="images/categori.png"></p>
+<p><img alt="Image" src="images/crawl/categori.png"></p>
 <h2>Phân tích</h2>
 <ul>
 <li>Trước tiên, mình sử dụng <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a> để kiểm tra xem các thành phần nào của trang web có sử dụng javascript bằng cách tắt <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a>, ngay sau hành động đó các hình ảnh về sản phẩm đồng loạt biến mất như trong hình ảnh bên dưới </li>
 </ul>
-<p><img alt="Image" src="images/no-js.png"></p>
+<p><img alt="Image" src="images/crawl/no-js.png"></p>
 <ul>
-<li>Như vậy <strong>ảnh sản phẩm</strong> được tạo bởi javascript</li>
-<li>Một điều cần chú ý tiếp theo là trang web sử dụng phân trang. Phân trang là kỹ thuật phổ biến được các nhà phát triển web sử dụng để hiển thị lượng dữ liệu lớn trong kết quả tìm kiếm hoặc danh sách thay vì đặt tất cả các sản phẩm được liệt kê trên cùng một trang, vì vậy nếu bạn muốn thu thập dữ liệu sản phẩm từ trang web, bạn cần cấu hình tác vụ thu thập dữ liệu của mình với phân trang để có thể lấy được tất cả các sản phẩm được liệt kê trên các trang khác nhau.</li>
+<li>
+<p>Như vậy <strong>ảnh sản phẩm</strong> được tạo bởi javascript.</p>
+</li>
+<li>
+<p>Một điều cần chú ý tiếp theo là trang web sử dụng phân trang. Phân trang là kỹ thuật phổ biến được các nhà phát triển web sử dụng để hiển thị lượng dữ liệu lớn trong kết quả tìm kiếm hoặc danh sách thay vì đặt tất cả các sản phẩm được liệt kê trên cùng một trang, vì vậy nếu bạn muốn thu thập dữ liệu sản phẩm từ trang web, bạn cần cấu hình tác vụ thu thập dữ liệu của mình với phân trang để có thể lấy được tất cả các sản phẩm được liệt kê trên các trang khác nhau.</p>
+</li>
+<li>
+<p>Để ý chút nữa, khi tắt <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a> và nhấp vào ô chuyển trang thì trang web không thực thi hành động đó, khi bạn bật lại <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a> và lặp lại hành động chuyển trang đồng thời kiểm tra trong tab network/xhr của trình duyệt chrome (Ctrl+Shift+i) thì thấy mã javaScript được thực thi và gửi một loạt yêu cầu <strong>ajax</strong> đến nền trình duyệt chrome </p>
+</li>
 </ul>
-<h2>Còn tiếp...</h2></div>
+<p><img alt="Image" src="images/crawl/next-page.png"> </p>
+<ul>
+<li>Theo phân tích này mình đưa ra giải pháp sử dụng scrapy-splash cho việc bóc tách dữ liệu. Khi sử dụng splash, để tương tác với các phần tử javascript(mô phỏng hành vi chuyển trang của người dùng) bạn cần viết tập lệnh <a href="https://splash.readthedocs.io/en/stable/scripting-overview.html">lua</a>.</li>
+</ul>
+<h2>Cài đặt splash</h2>
+<ul>
+<li><a href="https://splash.readthedocs.io/en/stable/">Splash</a> chạy trên <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04">Docker</a> vậy nên đầu tiên bạn phải cài đặt <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04">Docker</a> (hiện mình đang sử dụng Ubuntu 16.04)</li>
+<li>Sau khi có Docker rồi thì bạn chạy lệnh sau:</li>
+</ul>
+<div class="highlight"><pre><span></span>$ sudo docker pull scrapinghub/splash
+</pre></div>
+
+
+<ul>
+<li>Bắt đầu với Splash(mở dịch vụ Splash trên cổng 8050 của máy tính cục bộ)</li>
+</ul>
+<div class="highlight"><pre><span></span>$ sudo docker run -p <span class="m">8050</span>:8050 scrapinghub/splash
+</pre></div>
+
+
+<p><img alt="Image" src="images/crawl/open-splash.png"></p>
+<ul>
+<li>Các bạn có thể sử dụng lệnh để thấy cổng 8050 đã mở dịch vụ:</li>
+</ul>
+<p><img alt="Image" src="images/crawl/netcat.png"></p>
+<h2>Cài đặt scrapy-splash</h2>
+<ul>
+<li>Bạn nên khởi tạo môi trường ảo <a href="https://docs.python.org/3/library/venv.html">virtualenv</a>, cài scrapy và scrapy-splash bằng lệnh:</li>
+</ul>
+<div class="highlight"><pre><span></span>$ pip install scrapy scrapy-splash
+</pre></div>
+
+
+<h2>Khởi tạo project với scrapy</h2>
+<ul>
+<li>Khởi tạo một project với Scrapy bằng lệnh sau:</li>
+</ul>
+<div class="highlight"><pre><span></span>$ scrapy startproject crawl
+</pre></div>
+
+
+<p><img alt="Image" src="images/crawl/start.png"></p>
+<ul>
+<li>Sau đó sẽ có một project trông khá đầy đủ như thế này:</li>
+</ul>
+<p><img alt="Image" src="images/crawl/tree.png"></p>
+<ul>
+<li>Thêm config trong file settings.py như sau:</li>
+</ul>
+<div class="highlight"><pre><span></span>SPLASH_URL = &#39;http://127.0.0.1:8050&#39;
+DUPEFILTER_CLASS = &#39;scrapy_splash.SplashAwareDupeFilter&#39;
+HTTPCACHE_STORAGE = &#39;scrapy_splash.SplashAwareFSCacheStorage&#39;
+COOKIES_ENABLED = True 
+SPLASH_COOKIES_DEBUG = False
+SPIDER_MIDDLEWARES = {
+    &#39;scrapy_splash.SplashDeduplicateArgsMiddleware&#39;: 100,
+}
+DOWNLOADER_MIDDLEWARES = {
+    &#39;scrapy_splash.SplashCookiesMiddleware&#39;: 723,
+    &#39;scrapy_splash.SplashMiddleware&#39;: 725,
+&#39;scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware&#39;: 810,
+&#39;scrapy.downloadermiddlewares.useragent.UserAgentMiddleware&#39;: 400,
+}
+</pre></div>
+
+
+<h2>Đặc tả dữ liệu</h2>
+<ul>
+<li>File items.py được sử dụng để khai báo những dữ liệu mà mình muốn thu thập. Trong file này có class CrawlItem là class được kế thừa từ class Item của Scrapy. Trong class này đã định nghĩa trước một số đối tượng mà Scrapy cần dùng để  thu thập dữ liệu.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="k">class</span> <span class="nc">CrawlItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+    <span class="c1"># define the fields for your item here like:</span>
+    <span class="c1"># name = scrapy.Field()</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<ul>
+<li>Bây giờ, mình sẽ thêm vào những dữ liệu cần thu thập gồm tên sản phẩm, giá thành và ảnh sản phẩm.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="k">class</span> <span class="nc">CrawlItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</pre></div>
+
+
+<h2>Tạo spider</h2>
+<ul>
+<li>
+<p>Tạo một file tên là <strong>websosanh.py</strong> trong thư mục spiders đã được tạo ở trên. Thư mục này là nơi đưa ra các chỉ định cho Scrapy biết chính xác dữ liệu thu thập là gì. Trong thư mục này, bạn có thể định nghĩa các Spider khác nhau cho các trang Web khác nhau.</p>
+</li>
+<li>
+<p>Bắt đầu bằng một class kế thừa từ class Spider của Scrapy, mình sẽ thêm vào các thuộc tính cần thiết sau:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">crawl.items</span> <span class="kn">import</span> <span class="n">CrawlItem</span>
+<span class="kn">from</span> <span class="nn">scrapy_splash</span> <span class="kn">import</span> <span class="n">SplashRequest</span>
+
+
+<span class="k">class</span> <span class="nc">WebsosanhSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;wss&quot;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;websosanh.vn&#39;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://websosanh.vn/dan-organ/cat-2022.htm&quot;</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>Trong đó:</li>
+<li><strong>name</strong> định nghĩa tên của Spider.</li>
+<li><strong>allowed_domains</strong> chứa URL gốc của trang Web bạn muốn crawl.</li>
+<li><strong>start_urls</strong> là danh sách các URL để Spider bắt đầu quá trình thu thập dữ liệu. Tất cả mọi dữ liệu sẽ được Spider download từ các URL ở trong start_urls này.</li>
+</ul>
+<h2>Sử dụng xpath selector</h2>
+<div class="highlight"><pre><span></span>XPath is a language for selecting nodes in XML documents, which can also be used with HTML.
+- Scrapy’s documentation -
+</pre></div>
+
+
+<ul>
+<li>Mình sử dụng <strong>xpath</strong> để chọn lọc ra thành phần chính xác cần thu thập dữ liệu dưới sự hỗ trợ của trình duyệt Chrome với Developer Tools, ngoài ra bạn có thể sử dụng <strong>css selector</strong>. Đơn giản thì chỉ cần inspect một đối tượng trên trang web sau đó copy xpath của nó và chỉnh sửa nếu bạn muốn.</li>
+</ul>
+<p><img alt="Image" src="images/crawl/xpath.png"></p>
+<ul>
+<li>Mình sẽ lấy XPath của phần tử chứa tên sản phẩm <code>&lt;h3 class="title"&gt;</code>, kết quả là <code>//*[@id="productListByType"]/ul[1]/li[3]/h3/a/text()</code>. Developer Tools của Chrome cũng cho phép test thử xpath trên console của Javascript, bằng cách sử dụng cú pháp $x(), mình sẽ test trong Javascript console:</li>
+</ul>
+<p><img alt="Image" src="images/crawl/test-xpath.png"></p>
+<ul>
+<li>Tiếp tục làm như vậy, bạn có thể lấy được xpath của các dữ liệu còn lại, hoặc bạn có thể tự mình chỉnh sửa lại xpath đã có để được kết quả tối ưu hơn.</li>
+</ul>
+<h2>Trích xuất dữ liệu</h2>
+<ul>
+<li>Bây giờ, mình sẽ chỉnh sửa <strong>websosanh.py</strong> để thêm vào XPath mong muốn.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">crawl.items</span> <span class="kn">import</span> <span class="n">CrawlItem</span>
+<span class="kn">from</span> <span class="nn">scrapy_splash</span> <span class="kn">import</span> <span class="n">SplashRequest</span>
+
+
+<span class="k">class</span> <span class="nc">WebsosanhSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;wss&quot;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;websosanh.vn&#39;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://websosanh.vn/dan-organ/cat-2022.htm&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">SplashRequest</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;render.html&quot;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">CrawlItem</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//li[@class=&#39;item &#39;]&quot;</span><span class="p">):</span>
+            <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;./h3/a/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;./h2/a/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="n">item</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;./div[2]/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="n">item</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;./div[1]/a/img[1]/@data-src&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="k">yield</span> <span class="n">item</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Với đoạn code trên, mình sẽ duyệt qua lần lượt các sản phẩm, và gán các giá trị  <strong>name</strong>, <strong>price</strong>, <strong>image</strong> cho các item từ dữ liệu thu thập được. Như vậy mình mới chỉ lấy được thông tin sản phẩm ở trang đầu tiên, còn các trang còn lại thì làm như thế nào, có không dưới một cách để có thể duyệt qua từng trang để thu thập thông tin sản phẩm như đặt giá trị tăng dần trong vòng lặp URL,...Ở đây mình sẽ sử dụng ngôn ngữ  <a href="https://splash.readthedocs.io/en/stable/scripting-overview.html">lua</a> để viết một đoạn script nhỏ mô phỏng hành động nhấp chuột chuyển trang của người dùng. Bạn có thể nhấp vào liên kết dẫn tới trang tổng quan về API Splash Lua để tìm hiểu kỹ hơn ngôn ngữ này.</p>
+</li>
+<li>
+<p>Để mô phỏng hành động nhấp chuột chuyển trang từ người dùng, đầu tiên mình sẽ tìm đến thành phần chuyển trang </p>
+</li>
+</ul>
+<p><img alt="Image" src="images/crawl/next.png"></p>
+<ul>
+<li>Thật dễ dàng để tìm thấy phần tử  <code>a.next</code> là phần tử chọn duy nhất cho nút tiếp theo của trang này. Khoan đã, nếu không để ý kĩ thì bạn sẽ rất dễ dàng bỏ qua trường hợp này, nút về cuối trang cũng chứa phần tử  <code>a.next</code></li>
+</ul>
+<p><img alt="Image" src="images/crawl/next-2.png"></p>
+<ul>
+<li>
+<p>Dựa theo phân tích đó mình xác định được đoạn mã thực hiện hành động chuyển trang là <code>$('.next')[0].click();</code> (vì mình muốn chuyển trang lần lượt chứ không phải đi một phát về cuối trang nên mới có <code>[0]</code> ở đó).</p>
+</li>
+<li>
+<p>Để chắc chắc hơn mình sẽ kiểm tra hành động này trong Javascript console </p>
+</li>
+</ul>
+<p><img alt="Image" src="images/crawl/next-3.png"></p>
+<ul>
+<li>Vậy là đoạn mã trên đã đúng, giờ thì tiến hành hoàn thiện code thôi nào, mình muốn đoạn mã trên được lặp lại cho tới khi đi hết trang thì dừng lại, mở  <strong>websosanh.py</strong> và chỉnh sửa nào</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">from</span> <span class="nn">crawl.items</span> <span class="kn">import</span> <span class="n">CrawlItem</span>
+<span class="kn">from</span> <span class="nn">scrapy_splash</span> <span class="kn">import</span> <span class="n">SplashRequest</span>
+
+
+<span class="k">class</span> <span class="nc">WebsosanhSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;wss&quot;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;websosanh.vn&#39;</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://websosanh.vn/dan-organ/cat-2022.htm&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">SplashRequest</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;render.html&quot;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+
+
+    <span class="n">script</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        function main(splash)</span>
+<span class="s2">            local url = splash.args.url</span>
+<span class="s2">            assert(splash:go(url))</span>
+<span class="s2">            assert(splash:wait(0.5))</span>
+<span class="s2">            assert(splash:runjs(&quot;$(&#39;.next&#39;)[0].click();&quot;))</span>
+<span class="s2">            return {</span>
+<span class="s2">                html = splash:html(),</span>
+<span class="s2">                url = splash:url(),</span>
+<span class="s2">            }</span>
+<span class="s2">        end</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_urls</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">SplashRequest</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;render.html&quot;</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">CrawlItem</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//li[@class=&#39;item &#39;]&quot;</span><span class="p">):</span>
+            <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;./h3/a/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">item</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;./h2/a/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="n">item</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;./div[2]/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="n">item</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;./div[1]/a/img[1]/@data-src&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">extract_first</span><span class="p">()</span>
+            <span class="k">yield</span> <span class="n">item</span>
+
+        <span class="k">yield</span> <span class="n">SplashRequest</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">,</span>
+            <span class="n">meta</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;splash&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;endpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;lua_source&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">script</span><span class="p">}}</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>Sau khi xây dựng được công cụ thu thập dữ liệu trên, mình sẽ test khả năng cạo dữ liệu của nó, việc test rất đơn giản, bạn chỉ cần chạy đoạn mã sau ở trong thư mục crawl</li>
+</ul>
+<div class="highlight"><pre><span></span>$ scrapy crawl wss
+</pre></div>
+
+
+<ul>
+<li>Hình ảnh bên dưới cho thấy trình thu thập dữ liệu đang chạy cùng với dịch vụ Splash trên cổng 8050 của máy tính mình</li>
+</ul>
+<p><img alt="Image" src="images/crawl/run.png"></p>
+<ul>
+<li>Dữ liệu thu được hoàn toàn trùng khớp với dữ liệu của <strong>websosanh</strong> ở thời điểm mình chạy crawl bao gồm tên sản phẩm, giá thành, link ảnh sản phẩm</li>
+</ul>
+<div class="highlight"><pre><span></span>2019-01-30 00:01:58 [scrapy.core.scraper] DEBUG: Scraped from &lt;200 https://websosanh.vn/dan-organ/cat-2022?pi=54.htm&gt;
+{&#39;image&#39;: &#39;https://img.websosanh.vn/v2/users/wss/images/dan-organ-yamaha-psr-e353-hang/o64en7oje9yk5.jpg?compress=85&amp;width=200&#39;,
+ &#39;name&#39;: &#39;Đàn Organ Yamaha PSR-E353 HÃNG YAMAHA&#39;,
+ &#39;price&#39;: &#39;\n                    4.950.000 đ\n                &#39;}
+</pre></div>
+
+
+<ul>
+<li>Nhận thấy trình thu thập đã đi tới trang thứ <strong>54</strong> là trang cuối của danh mục <strong>đàn organ</strong> với sản phẩm cuối cùng có tên <strong>Đàn Organ Yamaha PSR-E353 HÃNG YAMAHA</strong> trùng khớp với thông tin trên <strong>websosanh</strong> </li>
+</ul>
+<p><img alt="Image" src="images/crawl/end.png"></p>
+<ul>
+<li>Số lượng sản phẩm thu thập được là <strong>2139</strong> sản phẩm</li>
+</ul>
+<p><img alt="Image" src="images/crawl/count.png"></p>
+<h2>Kết luận</h2>
+<ul>
+<li>
+<p>Như vậy mình đã giới thiệu cho các bạn cách để thu thập dữ liệu web được tạo bởi Javascript, hi vọng với bài viết này sẽ giúp ích cho các bạn trong việc crawl dữ liệu và không cảm thấy ngại khi đụng phải những trang web có sử dụng tới Javascript.</p>
+</li>
+<li>
+<p>Trong bài viết tiếp theo mình sẽ hướng dẫn các bạn xây dựng một hệ thống thu thập dữ liệu với multiple spiders và khởi chạy tất cả trong một tập lệnh duy nhất. </p>
+</li>
+<li>
+<p>Bạn có thể tham khảo <a href="https://github.com/dactoankmapydev/Crawler_Web_Js">source của mình trên github</a> nếu thấy cần thiết.</p>
+</li>
+</ul></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -123,7 +418,7 @@
         Nguyen Dac Toan KMA
     </span>
   </span>
-<time datetime="2019-01-29T17:14:42.463168+07:00" pubdate>T3 29 Tháng một 2019</time>  <span class="categories">
+<time datetime="2019-01-30T00:42:43.744028+07:00" pubdate>T4 30 Tháng một 2019</time>  <span class="categories">
     <a class='category' href='/category/crawl.html'>Crawl</a>
   </span>
 </p><div class="sharing">
