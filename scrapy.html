@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Thu thập dữ liệu với Scrapy - Nội dung được tạo bởi Javascript &mdash; Save and Share</title>
+  <title>Thu thập dữ liệu với Scrapy, Splash, Lua - Nội dung được tạo bởi Javascript &mdash; Save and Share</title>
   <meta name="author" content="Nguyen Dac Toan KMA">
 
 
@@ -53,33 +53,14 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Thu thập dữ liệu với Scrapy - Nội dung được tạo bởi Javascript</h1>
+      <h1 class="entry-title">Thu thập dữ liệu với Scrapy, Splash, Lua - Nội dung được tạo bởi Javascript</h1>
     <p class="meta">
-<time datetime="2019-01-24T22:51:30.165341+07:00" pubdate>T5 24 Tháng một 2019</time>    </p>
+<time datetime="2019-01-29T17:14:42.463168+07:00" pubdate>T3 29 Tháng một 2019</time>    </p>
 </header>
 
   <div class="entry-content"><p><a href="https://github.com/dactoankmapydev/Crawler_Web_Js">Source</a> </p>
 <ul>
-<li>
-<p>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn lấy nội dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy hoặc các thư viện khác không thể chạy mã javascript trong khi cạo dữ liệu.</p>
-</li>
-<li>
-<p>Trong bài đăng này, mình sẽ  demo về việc thu thập dữ liệu từ trang web <a href="https://websosanh.vn/">Websosanh</a> và <a href="https://www.flipkart.com/">Flipkart</a>, tất nhiên nội dung mình cần lấy ở  hai trang web này đều được tạo bằng javascript.</p>
-</li>
-</ul>
-<h1>Cách AJAX hoạt động trên web</h1>
-<h2>Giao thức HTTP hoạt động như thế nào ?</h2>
-<ul>
-<li>Khi bạn truy cập bất kỳ trang web nào bằng trình duyệt của mình, bạn thường nhập một cái gì đó như <strong>http://google.com</strong>. Trình duyệt mà bạn đang truy cập hiểu điều này như là hãy tạo một yêu cầu HTTP cho google. Yêu cầu này sẽ chứa một số dữ liệu, địa chỉ IP của bạn và các nội dung khác, google sẽ chấp nhận yêu cầu đó và gửi phản hồi HTTP đến trình duyệt của bạn. Bên trong phản hồi đó sẽ có chứa mã html của google. Sau đó, bạn sẽ nhập một từ khóa nào đó vào thanh tìm kiếm và nhấn enter. Điều này sẽ thực hiện một yêu cầu HTTP khác với các tham số khác nhau (một trong các tham số sẽ chứa các cụm từ bạn đã tìm kiếm) và phản hồi sẽ chứa trang có kết quả cho các từ khóa bạn đã tìm kiếm. Và nó tiếp tục như vậy.</li>
-</ul>
-<h2>Yêu cầu AJAX hoạt động như thế nào ?</h2>
-<ul>
-<li>
-<p>AJAX là viết tắt của <strong>Asynchronous JavaScript and XML</strong>, ví dụ khi bạn sử dụng trang web của <a href="https://www.flipkart.com/">Flipkart</a>. Flipkart có một tính năng được gọi là cuộn vô hạn nên không có phân trang (như ?Page=2 ,?Page=3) trong URL. Khi bạn tìm kiếm các sản phẩm trong trang, nó sẽ tải 15 sản phẩm đầu tiên. Khi bạn cuộn xuống để xem thêm kết quả, hành động giao thức HTTP bình thường sẽ hiển thị trang web mới với 15 sản phẩm ban đầu và thêm 15 sản phẩm tiếp theo gửi cho bạn. Theo cách đó, bạn sẽ chuyển rất nhiều dữ liệu bạn đã có (bố cục của trang và 15 kết quả đầu tiên). Hãy tưởng tượng cuộn xuống 100 lần và hàng loạt lượt tải xuống lặp đi lặp lại như vậy.</p>
-</li>
-<li>
-<p>Các nhà phát triển của <a href="https://www.flipkart.com/">Flipkart</a> sử dụng hành động cuộn xuống với chức năng javaScript sẽ gửi yêu cầu HTTP đến máy chủ của Flipkart yêu cầu 15 sản phẩm tiếp theo. Máy chủ sẽ trả lời bằng phản hồi HTTP có chứa 15 sản phẩm. Một chức năng khác sẽ  nối thêm 15 sản phẩm mới vào trang đã được tải thay vì tải lại trang mới. Nói cách khác, 15 sản phẩm mới sẽ được thêm vào DOM, đây là cấu trúc mà trình duyệt diễn giải cho chúng ta thấy.</p>
-</li>
+<li>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn lấy nội dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy đơn thuần không thể chạy mã javascript trong khi thu thập dữ liệu. Trong bài viết này, mình sẽ  hướng dẫn các bạn cách thu thập dữ liệu từ trang <a href="https://websosanh.vn/">websosanh</a>, websosanh là công cụ tìm kiếm, so sánh giúp người tiêu dùng mua được sản phẩm tốt với giá rẻ nhất tại nơi bán gần nhất.</li>
 </ul>
 <h1>Quét nội dung được tạo bằng javascript</h1>
 <h2>Kiểm tra nội dung nào trên trang web sử dụng javascript</h2>
@@ -119,10 +100,22 @@
 <p>Khi bạn chọn giữa hai lựa chọn <a href="https://selenium-python.readthedocs.io/">Selenium</a> và <a href="https://splash.readthedocs.io/en/stable/api.html">Splash</a> cho dự án cạo web của mình, bạn nên xem xét một yếu tố: yêu cầu tài nguyên phần cứng. <strong>Selenium</strong> tiêu thụ tài nguyên hệ thống nhiều hơn khi tạo ra hàng ngàn requests trong khi chạy. Mình không khuyến khích bạn sử dụng <strong>Selenium</strong> cho các dự án cạo web. Thay vào đó bạn nên thử  <strong>Splash</strong>. Nó được tạo để chỉ hiển thị nội dung javaScript. Đây chính xác là những gì bạn cần cho việc cạo web. </p>
 </li>
 </ul>
-<h2>Còn tiếp...</h2>
-<h2>Tài liệu tham khảo</h2>
-<p><a href="https://medium.com/@harshvb7/scraping-from-a-website-with-infinite-scrolling-7e080ea8768e">https://medium.com/@harshvb7/scraping-from-a-website-with-infinite-scrolling-7e080ea8768e</a></p>
-<p><a href="https://egrinstein.github.io/2016/10/25/scrapy-js.html">https://egrinstein.github.io/2016/10/25/scrapy-js.html</a></p></div>
+<h1>Thực hành</h1>
+<h2>Mục tiêu</h2>
+<ul>
+<li>Thu thập thông tin về <strong>tên</strong>, <strong>giá thành</strong>, <strong>ảnh</strong> của sản phẩm bất kỳ nằm trong <strong>danh mục sản phẩm</strong>. Trong bài viết này, mình sẽ demo việc lấy dữ liệu từ danh mục <a href="https://websosanh.vn/dan-organ/cat-2022.htm">đàn organ</a></li>
+</ul>
+<p><img alt="Image" src="images/categori.png"></p>
+<h2>Phân tích</h2>
+<ul>
+<li>Trước tiên, mình sử dụng <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a> để kiểm tra xem các thành phần nào của trang web có sử dụng javascript bằng cách tắt <a href="https://chrome.google.com/webstore/detail/quick-javascript-switcher/geddoclleiomckbhadiaipdggiiccfje">Quick Javascript Switcher</a>, ngay sau hành động đó các hình ảnh về sản phẩm đồng loạt biến mất như trong hình ảnh bên dưới </li>
+</ul>
+<p><img alt="Image" src="images/no-js.png"></p>
+<ul>
+<li>Như vậy <strong>ảnh sản phẩm</strong> được tạo bởi javascript</li>
+<li>Một điều cần chú ý tiếp theo là trang web sử dụng phân trang. Phân trang là kỹ thuật phổ biến được các nhà phát triển web sử dụng để hiển thị lượng dữ liệu lớn trong kết quả tìm kiếm hoặc danh sách thay vì đặt tất cả các sản phẩm được liệt kê trên cùng một trang, vì vậy nếu bạn muốn thu thập dữ liệu sản phẩm từ trang web, bạn cần cấu hình tác vụ thu thập dữ liệu của mình với phân trang để có thể lấy được tất cả các sản phẩm được liệt kê trên các trang khác nhau.</li>
+</ul>
+<h2>Còn tiếp...</h2></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -130,7 +123,7 @@
         Nguyen Dac Toan KMA
     </span>
   </span>
-<time datetime="2019-01-24T22:51:30.165341+07:00" pubdate>T5 24 Tháng một 2019</time>  <span class="categories">
+<time datetime="2019-01-29T17:14:42.463168+07:00" pubdate>T3 29 Tháng một 2019</time>  <span class="categories">
     <a class='category' href='/category/crawl.html'>Crawl</a>
   </span>
 </p><div class="sharing">
@@ -143,7 +136,7 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="/scrapy.html">Thu thập dữ liệu với Scrapy - Nội dung được tạo bởi Javascript</a>
+          <a href="/scrapy.html">Thu thập dữ liệu với Scrapy, Splash, Lua - Nội dung được tạo bởi Javascript</a>
       </li>
       <li class="post">
           <a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a>
