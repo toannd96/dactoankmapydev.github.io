@@ -55,7 +55,7 @@
 <header>
       <h1 class="entry-title">Thu thập dữ liệu với Scrapy, Splash, Lua - Nội dung được tạo bởi Javascript</h1>
     <p class="meta">
-<time datetime="2019-01-30T00:42:43.744028+07:00" pubdate>T4 30 Tháng một 2019</time>    </p>
+<time datetime="2019-01-30T09:38:16.246462+07:00" pubdate>T4 30 Tháng một 2019</time>    </p>
 </header>
 
   <div class="entry-content"><ul>
@@ -143,7 +143,7 @@
 
 <p><img alt="Image" src="images/crawl/open-splash.png"></p>
 <ul>
-<li>Các bạn có thể sử dụng lệnh để thấy cổng 8050 đã mở dịch vụ:</li>
+<li>Các bạn có thể sử dụng lệnh để thấy cổng 8050 đã mở dịch vụ</li>
 </ul>
 <p><img alt="Image" src="images/crawl/netcat.png"></p>
 <h2>Cài đặt scrapy-splash</h2>
@@ -238,10 +238,13 @@ DOWNLOADER_MIDDLEWARES = {
 
 <ul>
 <li>Trong đó:</li>
-<li><strong>name</strong> định nghĩa tên của Spider.</li>
-<li><strong>allowed_domains</strong> chứa URL gốc của trang Web bạn muốn crawl.</li>
-<li><strong>start_urls</strong> là danh sách các URL để Spider bắt đầu quá trình thu thập dữ liệu. Tất cả mọi dữ liệu sẽ được Spider download từ các URL ở trong start_urls này.</li>
 </ul>
+<div class="highlight"><pre><span></span>- name: định nghĩa tên của Spider.
+- allowed_domains: chứa URL gốc của trang Web bạn muốn crawl.
+- start_urls: là danh sách các URL để Spider bắt đầu quá trình thu thập dữ liệu. Tất cả mọi dữ liệu sẽ được Spider download từ các URL ở trong start_urls này.
+</pre></div>
+
+
 <h2>Sử dụng xpath selector</h2>
 <div class="highlight"><pre><span></span>XPath is a language for selecting nodes in XML documents, which can also be used with HTML.
 - Scrapy’s documentation -
@@ -253,8 +256,13 @@ DOWNLOADER_MIDDLEWARES = {
 </ul>
 <p><img alt="Image" src="images/crawl/xpath.png"></p>
 <ul>
-<li>Mình sẽ lấy XPath của phần tử chứa tên sản phẩm <code>&lt;h3 class="title"&gt;</code>, kết quả là <code>//*[@id="productListByType"]/ul[1]/li[3]/h3/a/text()</code>. Developer Tools của Chrome cũng cho phép test thử xpath trên console của Javascript, bằng cách sử dụng cú pháp $x(), mình sẽ test trong Javascript console:</li>
+<li>Mình sẽ lấy XPath của phần tử chứa tên sản phẩm <code>&lt;h3 class="title"&gt;</code>, kết quả là</li>
 </ul>
+<div class="highlight"><pre><span></span>//*[@id=&quot;productListByType&quot;]/ul[1]/li[3]/h3/a/text()
+</pre></div>
+
+
+<p>Developer Tools của Chrome cũng cho phép test thử xpath trên console của Javascript, bằng cách sử dụng cú pháp $x(), mình sẽ test trong Javascript console:</p>
 <p><img alt="Image" src="images/crawl/test-xpath.png"></p>
 <ul>
 <li>Tiếp tục làm như vậy, bạn có thể lấy được xpath của các dữ liệu còn lại, hoặc bạn có thể tự mình chỉnh sửa lại xpath đã có để được kết quả tối ưu hơn.</li>
@@ -263,7 +271,7 @@ DOWNLOADER_MIDDLEWARES = {
 <ul>
 <li>Bây giờ, mình sẽ chỉnh sửa <strong>websosanh.py</strong> để thêm vào XPath mong muốn.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding utf-8 -*-</span>
 <span class="kn">import</span> <span class="nn">scrapy</span>
 <span class="kn">from</span> <span class="nn">crawl.items</span> <span class="kn">import</span> <span class="n">CrawlItem</span>
 <span class="kn">from</span> <span class="nn">scrapy_splash</span> <span class="kn">import</span> <span class="n">SplashRequest</span>
@@ -306,7 +314,7 @@ DOWNLOADER_MIDDLEWARES = {
 <p><img alt="Image" src="images/crawl/next-2.png"></p>
 <ul>
 <li>
-<p>Dựa theo phân tích đó mình xác định được đoạn mã thực hiện hành động chuyển trang là <code>$('.next')[0].click();</code> (vì mình muốn chuyển trang lần lượt chứ không phải đi một phát về cuối trang nên mới có <code>[0]</code> ở đó).</p>
+<p>Dựa theo phân tích đó mình xác định được đoạn mã thực hiện hành động chuyển trang là <code>$('.next')[0].click();</code> (vì mình muốn chuyển trang lần lượt chứ không phải đi về cuối trang luôn nên mới có <code>[0]</code> ở đó).</p>
 </li>
 <li>
 <p>Để chắc chắc hơn mình sẽ kiểm tra hành động này trong Javascript console </p>
@@ -418,7 +426,7 @@ DOWNLOADER_MIDDLEWARES = {
         Nguyen Dac Toan KMA
     </span>
   </span>
-<time datetime="2019-01-30T00:42:43.744028+07:00" pubdate>T4 30 Tháng một 2019</time>  <span class="categories">
+<time datetime="2019-01-30T09:38:16.246462+07:00" pubdate>T4 30 Tháng một 2019</time>  <span class="categories">
     <a class='category' href='/category/crawl.html'>Crawl</a>
   </span>
 </p><div class="sharing">
