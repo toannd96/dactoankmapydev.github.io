@@ -45,7 +45,7 @@
         <a href="/category/data-analysis.html">Data analysis</a>
       </li>
       <li class="active">
-        <a href="/category/language.html">Language</a>
+        <a href="/category/programing.html">Programing</a>
       </li>
       <li >
         <a href="/category/web-application.html">Web application</a>
@@ -64,25 +64,25 @@
   <div class="entry-content"><p><img alt="Image" src="images/golang/golang.png"></p>
 <h1>Tổng quan</h1>
 <ul>
-<li>Golang, còn được gọi là Go, là một ngôn ngữ lập trình biên dịch hướng hệ thống (systems-oriented) mã nguồn mở (open source) sử dụng cú pháp cấp cao tương tự như ngôn ngữ kịch bản được thiết kế và phát triển bởi Google vào năm 2007 để giúp các nhà phát triển của Google xây dựng các hệ thống cho lượng người dùng cực lớn. Nó được kỳ vọng sẽ giúp ngành công nghiệp phần mềm khai thác nền tảng đa lõi của bộ vi xử lý và hoạt động đa nhiệm tốt hơn. </li>
-</ul>
-<h2>Ý nghĩa tên gọi</h2>
-<ul>
 <li>
-<p>Go được xuất phát từ tên công ty Google. Hơn nữa, Go trong tiếng Anh có nghĩa là đi, tiến lên, mang một ý nghĩa tiến đến tầm cao mới.</p>
+<p>Golang, còn được gọi là Go, là một ngôn ngữ lập trình biên dịch hướng hệ thống (systems-oriented) mã nguồn mở (open source) sử dụng cú pháp cấp cao tương tự như ngôn ngữ kịch bản được thiết kế và phát triển bởi Google vào năm 2007 để giúp các nhà phát triển của Google xây dựng các hệ thống cho lượng người dùng cực lớn. Nó được kỳ vọng sẽ giúp ngành công nghiệp phần mềm khai thác nền tảng đa lõi của bộ vi xử lý và hoạt động đa nhiệm tốt hơn. </p>
 </li>
 <li>
 <p>Go có trang chủ tại địa chỉ <a href="https://golang.org/">golang</a> </p>
 </li>
 </ul>
+<h2>Ý nghĩa tên gọi</h2>
+<ul>
+<li>Go được xuất phát từ tên công ty Google. Hơn nữa, Go trong tiếng Anh có nghĩa là đi, tiến lên, mang một ý nghĩa tiến đến tầm cao mới.</li>
+</ul>
 <h1>Cài đặt</h1>
 <h2>Cài đặt Go</h2>
 <ul>
 <li>
-<p>Golang hỗ trợ cả ba nền tảng Mac, Windows, Linux. Trong bài viết này mình sẽ hướng dẫn các bạn cài đặt Golang trên nền tảng linux (Ubuntu 18.04).</p>
+<p>Golang hỗ trợ cả ba nền tảng Mac, Windows, Linux. Trong bài viết này mình sẽ hướng dẫn các bạn cài đặt Golang trên nền tảng linux (Ubuntu 18.04)</p>
 </li>
 <li>
-<p>Thông thường, trước khi cài đặt một phần mềm trên Ubuntu thì bước đầu tiên cần làm đó là cập nhật các gói package đang được cài đặt trên hệ thống. Mở chương trình cửa sổ dòng lệnh termial trên Ubuntu và chạy câu lệnh dưới đây:</p>
+<p>Thông thường, trước khi cài đặt một phần mềm trên Ubuntu thì bước đầu tiên cần làm đó là cập nhật các gói package đang được cài đặt trên hệ thống. Mở chương trình cửa sổ dòng lệnh terminal trên Ubuntu và chạy câu lệnh dưới đây:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span>$ sudo apt-get update
@@ -107,8 +107,12 @@ $ sudo tar -xzvf go1.12.linux-amd64.tar.gz
 
 <h2>Thiết lập đường dẫn</h2>
 <ul>
-<li>Trong bước này, mình sẽ thiết lập một số đường dẫn mà Go cần. Các đường dẫn trong bước này đều liên quan đến vị trí cài đặt Go của mình trong <strong>/usr/local</strong>, nếu bạn để tệp ở vị trí khác, hãy sửa đổi các lệnh để khớp với vị trí mới của bạn.</li>
-<li>Go có các biến môi trường như sau:</li>
+<li>
+<p>Trong bước này, mình sẽ thiết lập một số đường dẫn mà Go cần. Các đường dẫn trong bước này đều liên quan đến vị trí cài đặt Go của mình trong <strong>/usr/local</strong>, nếu bạn để tệp ở vị trí khác, hãy sửa đổi các lệnh để khớp với vị trí mới của bạn.</p>
+</li>
+<li>
+<p>Go có các biến môi trường như sau:</p>
+</li>
 </ul>
 <div class="highlight"><pre><span></span>- GOROOT: Nơi mà các packages Go sẽ được cài đặt (trỏ về thư mục /usr/local/go lúc nãy mình vừa move, hoặc 1 thư mục bất kì mà bạn vừa move đến).
 - GOPATH: Nơi mà các thư viện được kéo về, nó là workspace (không gian làm việc) của bạn.
@@ -143,8 +147,12 @@ go version go1.12 linux/amd64
 
 
 <ul>
-<li>Bạn có thể gõ một số lệnh khác, <strong>go env</strong> để check các biến môi trường của Go</li>
-<li>Tạo một thư mục mới cho workspace Go của bạn:</li>
+<li>
+<p>Bạn có thể gõ một số lệnh khác, <strong>go env</strong> để check các biến môi trường của Go.</p>
+</li>
+<li>
+<p>Tạo một thư mục mới cho workspace Go của bạn:</p>
+</li>
 </ul>
 <div class="highlight"><pre><span></span>$ mkdir go
 $ <span class="nb">cd</span> go
@@ -208,6 +216,11 @@ hello, world
 <h1>Kết luận</h1>
 <ul>
 <li>Vậy là mình đã giới thiệu cho các bạn một ngôn ngữ mới thú vị, mong rằng bài viết này sẽ giúp ích cho những bạn mới bắt đầu làm quen với ngôn ngữ lập trình Go bớt đi những bỡ ngỡ từ đó viết được những chương trình lớn hơn cho riêng mình sau này. Cảm ơn các bạn đã quan tâm.</li>
+</ul>
+<h1>Tài liệu tham khảo</h1>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=R-cA6J3IniI">Go Setup on Linux</a></li>
+<li><a href="https://vi.wikipedia.org/wiki/Go_(ng%C3%B4n_ng%E1%BB%AF_l%E1%BA%ADp_tr%C3%ACnh)">wikipedia</a></li>
 </ul></div>
     <footer>
 <p class="meta">
@@ -217,7 +230,7 @@ hello, world
     </span>
   </span>
 <time datetime="2019-03-15T00:00:00+07:00" pubdate>T6 15 Tháng 3 2019</time>  <span class="categories">
-    <a class='category' href='/category/language.html'>language</a>
+    <a class='category' href='/category/programing.html'>programing</a>
   </span>
 </p><div class="sharing">
 </div>    </footer>
@@ -248,7 +261,7 @@ hello, world
     <ul id="recent_posts">
         <li><a href="/category/crawl.html">Crawl</a></li>
         <li><a href="/category/data-analysis.html">Data analysis</a></li>
-        <li><a href="/category/language.html">language</a></li>
+        <li><a href="/category/programing.html">programing</a></li>
         <li><a href="/category/web-application.html">Web application</a></li>
     </ul>
   </section>
