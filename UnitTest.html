@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Unit Test cơ bản &mdash; Save and Share</title>
+  <meta name="author" content="Nguyen Dac Toan KMA">
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="/favicon.png" rel="icon">
+
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <h1><a href="/">Save and Share</a></h1>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+      <li >
+        <a href="/category/crawl.html">Crawl</a>
+      </li>
+      <li >
+        <a href="/category/data-analysis.html">Data analysis</a>
+      </li>
+      <li class="active">
+        <a href="/category/programing.html">Programing</a>
+      </li>
+      <li >
+        <a href="/category/web-application.html">Web application</a>
+      </li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Unit Test cơ bản</h1>
+    <p class="meta">
+<time datetime="2019-03-28T00:00:00+07:00" pubdate>T5 28 Tháng 3 2019</time>    </p>
+</header>
+
+  <div class="entry-content"><p><img alt="Image" src="images/unit.png"></p>
+<h2>Unit test là gì ?</h2>
+<ul>
+<li>
+<p><strong>Unit test - Kiểm thử mức đơn vị</strong> là một mức kiểm thử phần mềm với mục đích dùng để kiểm tra kiến trúc nội tại của chương trình. Đây là mức kiểm tra nhỏ nhất trong quy trình kiểm thử phần mềm.</p>
+</li>
+<li>
+<p><strong>Unit - Đơn vị phần mềm</strong> là một thành phần nhỏ nhất mà ta có thể kiểm tra được, các hàm (function), thủ tục (procedure), lớp (class), hoặc các phương thức (method) đều có thể được xem là Unit.</p>
+</li>
+<li>
+<p>Unit test thường do lập trình viên thực hiện. Được chạy để  kiểm tra mã nguồn của các chương trình, các chức năng riêng rẽ hoạt động đúng hay không. Unit test thường được chạy mỗi khi xây dựng và chạy thử nghiệm để đảm bảo các hàm đều chạy đúng sau khi ta sửa code.</p>
+</li>
+<li>
+<p>Unit test đòi hỏi phải chuẩn bị trước các tình huống (test case) hoặc kịch bản (script), trong đó chỉ định rõ dữ liệu vào, các bước thực hiện và dữ liệu mong chờ sẽ xuất ra.</p>
+</li>
+</ul>
+<h2>Một số đặc điểm của unit test</h2>
+<ul>
+<li>
+<p>Code unit test phải ngắn gọn, dễ hiểu, dễ đọc.</p>
+</li>
+<li>
+<p>Mỗi unit test là một đơn vi riêng biệt, độc lập, không phụ thuộc vào unit khác.</p>
+</li>
+<li>
+<p>Mỗi unit test là một phương thức (method) trong test class, tên phương thức (method) cũng là tên UnitTest. Do đó ta nên đặt tên hàm rõ ràng, nói rõ unit test này test cái gì.</p>
+</li>
+<li>
+<p>Unit test phải nhanh, vì nó sẽ được chạy để kiểm định lỗi mỗi lần xây dựng và chạy thử nghiệm.</p>
+</li>
+<li>
+<p>Unit test nên test từng đối tượng riêng biệt. </p>
+</li>
+</ul>
+<h2>Lợi ích khi viết unit test</h2>
+<ul>
+<li>
+<p>Viết unit test cẩn thận giúp tăng sự tin tưởng vào mã nguồn được thay đổi hoặc bảo trì, vì đã có unit test phát hiện lỗi.</p>
+</li>
+<li>
+<p>Vì unit được chọn để kiểm tra thường có kích thước nhỏ và chức năng hoạt động đơn giản, nếu phát hiện lỗi thì việc xác định nguyên nhân và khắc phục cũng tương đối dễ dàng.</p>
+</li>
+<li>
+<p>Phát hiện những hàm chạy chậm và không hiệu quả thông qua thời gian chạy của unit test.</p>
+</li>
+<li>
+<p>Chi phí và thời gian cho việc sửa chữa lỗi trong giai đoạn unit test sẽ ít hơn so với các giai đoạn sau này.</p>
+</li>
+<li>
+<p>Có thể tái sử dụng mã nguồn.</p>
+</li>
+</ul>
+<h2>Thư viện unit test trong Python</h2>
+<ul>
+<li>
+<p>Việc viết unit test trong Python khá đơn giản, cách thông dụng nhất là sử dụng <a href="https://docs.python.org/2/library/unittest.html">package unittest</a> có sẵn trong standard library.</p>
+</li>
+<li>
+<p>Module <strong>unittest</strong> cung cấp tập hợp các công cụ phong phú cho việc xây dựng và chạy thử nghiệm.</p>
+</li>
+</ul>
+<h2>Thiết kế unit test</h2>
+<ul>
+<li>Mỗi unit test đều được tiết kế theo trình tự sau:</li>
+</ul>
+<div class="highlight"><pre><span></span>- Thiết lập các điều kiện cần thiết bao gồm khởi tạo các đối tượng, xác định tài nguyên cần thiết, xây dựng các dữ liệu giả.
+- Gọi các phương thức cần kiểm tra.
+- Kiểm tra sự hoạt động đúng đắn của các phương thức.
+- Dọn dẹp tài nguyên sau khi kết thúc kiểm tra.
+</pre></div>
+
+
+<h2>Ví dụ cơ bản</h2>
+<ul>
+<li>Tạo một tệp <strong>example.py</strong>, đây là một đoạn chương trình ngắn để kiểm tra ba phương thức chuỗi:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1"># Python code to demonstrate working of unittest </span>
+<span class="kn">import</span> <span class="nn">unittest</span> 
+
+<span class="k">class</span> <span class="nc">TestStringMethods</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sample test case&quot;&quot;&quot;</span>
+
+    <span class="c1"># Setting up for the test</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># Cleaning up after the test</span>
+    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># Returns True if the string contains 6 a. </span>
+    <span class="k">def</span> <span class="nf">test_strings_a</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span> <span class="s1">&#39;a&#39;</span><span class="o">*</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;aaaaaa&#39;</span><span class="p">)</span> 
+
+    <span class="c1"># Returns True if the string is in upper case. </span>
+    <span class="k">def</span> <span class="nf">test_upper</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s1">&#39;love&#39;</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="s1">&#39;LOVE&#39;</span><span class="p">)</span> 
+
+    <span class="c1"># Returns True if the string is in uppercase </span>
+    <span class="c1"># else returns False. </span>
+    <span class="k">def</span> <span class="nf">test_isupper</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="s1">&#39;LOVE&#39;</span><span class="o">.</span><span class="n">isupper</span><span class="p">())</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="s1">&#39;Love&#39;</span><span class="o">.</span><span class="n">isupper</span><span class="p">())</span>  
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span> 
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span> 
+</pre></div>
+
+
+<ul>
+<li>
+<p>Đoạn mã trên là một đoạn script ngắn để kiểm tra 3 phương thức chuỗi.</p>
+</li>
+<li>
+<p><strong>unittest.TestCase</strong> được sử dụng để tạo các trường hợp thử nghiệm, testcase được tạo ra bằng cách kế thừa <strong>unittest.TestCase</strong>.</p>
+</li>
+<li>
+<p>Phương thức bắt đầu bằng tiền tố <strong>test_</strong></p>
+</li>
+<li>
+<p>Phương thức <strong>setUp()</strong> và <strong>tearDown()</strong> cho phép định nghĩa hướng dẫn sẽ được thực hiện trước và sau mỗi phương thức test.</p>
+</li>
+<li>
+<p><strong>test_strings_a</strong> : thử nghiệm này được sử dụng để kiểm tra thuộc tính của chuỗi trong đó một ký tự <strong>a</strong> nhân với một số <strong>x</strong> cho đầu ra là  ra là <strong>x lần a</strong>. Câu lệnh <strong>assertEqual()</strong> được sử dụng để kiểm tra xem kết quả thu được có bằng kết quả mong đợi hay không. </p>
+</li>
+<li>
+<p><strong>test_upper</strong> : thử nghiệm này được sử dụng để kiểm tra xem chuỗi đã cho có được chuyển đổi thành chữ hoa hay không. Câu lệnh <strong>assertEqual()</strong> được sử dụng để xác minh xem một câu lệnh đã cho là đúng hay sai. Câu lệnh trả về <strong>True</strong> nếu chuỗi trả về là chữ hoa.</p>
+</li>
+<li>
+<p><strong>test_isupper</strong> : thử nghiệm này được sử dụng để kiểm tra thuộc tính của chuỗi trả về <strong>True</strong> nếu chuỗi nằm ở chữ hoa khác trả về <strong>False</strong>. Câu lệnh <strong>assertTrue() / assertFalse()</strong> được sử dụng để xác minh điều này.</p>
+</li>
+<li>
+<p>khối mã ở phía dưới cùng <strong>unittest.main()</strong> cung cấp giao diện dòng lệnh cho tập lệnh thử nghiệm. Khi chạy tập lệnh trên từ dòng lệnh :</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>python -m unittest example
+</pre></div>
+
+
+<ul>
+<li>Cho ra kết quả sau :</li>
+</ul>
+<div class="highlight"><pre><span></span>...
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+</pre></div>
+
+
+<ul>
+<li>Thay vì sử dụng <strong>unittest.main()</strong>, có nhiều cách khác để chạy thử nghiệm với mức độ kiểm soát tốt hơn, đầu ra ít hơn và không yêu cầu phải chạy từ dòng lệnh. Ví dụ: <strong>unittest.main()</strong> có thể được thay thế bằng :</li>
+</ul>
+<div class="highlight"><pre><span></span>suite = unittest.TestLoader().loadTestsFromTestCase(TestStringMethods)
+unittest.TextTestRunner(verbosity=2).run(suite)
+</pre></div>
+
+
+<ul>
+<li>Chạy tập lệnh :</li>
+</ul>
+<div class="highlight"><pre><span></span>python example.py
+</pre></div>
+
+
+<ul>
+<li>Cho ra kết quả :</li>
+</ul>
+<div class="highlight"><pre><span></span>test_isupper (__main__.TestStringMethods) ... ok
+test_strings_a (__main__.TestStringMethods) ... ok
+test_upper (__main__.TestStringMethods) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+</pre></div>
+
+
+<ul>
+<li>Kết quả thử nghiệm nếu tất cả các trường hợp kiểm tra được thông qua, đầu ra cho thấy <strong>OK</strong>.</li>
+</ul>
+<h2>Kết luận</h2>
+<ul>
+<li>
+<p>Bằng việc có một bộ test để đảm bảo hệ thống đang hoạt động đúng, giúp các thành viên khác trong team của bạn, hay chính bản thân bạn tự tin khi thêm/thay đổi/sửa/xóa code, mà không sợ ảnh hướng tới những chức năng khác thì việc tìm hiểu và thực hành viết unit test là không thừa đúng không nào.</p>
+</li>
+<li>
+<p>Đối với các bạn mới tiếp cận về <strong>unit test</strong> mình hi vọng bài viết này của mình sẽ giúp các bạn hiểu hơn và không ngần ngại mỗi khi động tới vấn đề này. Cảm ơn các bạn đã quan tâm. </p>
+</li>
+</ul>
+<h2>Tài liệu tham khảo</h2>
+<ul>
+<li><a href="https://docs.python.org/2/library/unittest.html">Unit Testing in Python – docs</a></li>
+<li><a href="https://gist.github.com/ntk148v/55154ea867555001c4aa47b970cac64b#unittest_python">Unittest Python - gist</a></li>
+</ul></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Nguyen Dac Toan KMA
+    </span>
+  </span>
+<time datetime="2019-03-28T00:00:00+07:00" pubdate>T5 28 Tháng 3 2019</time>  <span class="categories">
+    <a class='category' href='/category/programing.html'>Programing</a>
+  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="/UnitTest.html">Unit Test cơ bản</a>
+      </li>
+      <li class="post">
+          <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
+      </li>
+      <li class="post">
+          <a href="/scrapy.html">Thu thập dữ liệu với Scrapy, Splash, Lua - Nội dung được tạo bởi Javascript</a>
+      </li>
+      <li class="post">
+          <a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a>
+      </li>
+      <li class="post">
+          <a href="/pytudi.html">Từ điển trực tuyến Anh-Việt, Việt-Anh</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="/category/crawl.html">Crawl</a></li>
+        <li><a href="/category/data-analysis.html">Data analysis</a></li>
+        <li><a href="/category/programing.html">Programing</a></li>
+        <li><a href="/category/web-application.html">Web application</a></li>
+    </ul>
+  </section>
+ 
+
+  <section>
+  <h1>Tags</h1>
+  </section>
+
+
+    <section>
+        <h1>Social</h1>
+        <ul>
+            <li><a href="https://github.com/dactoankmapydev" target="_blank">Github</a></li>
+            <li><a href="https://www.facebook.com/toan.nguyen.31392410" target="_blank">Facebook</a></li>
+            <li><a href="https://www.linkedin.com/in/dac-toan-nguyen-a94b2a146/" target="_blank">Linkedin</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2019  Nguyen Dac Toan KMA &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+</p></footer>
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+</body>
+</html>
