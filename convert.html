@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Xây dựng ứng dụng web chuyển đổi định dạng văn bản sang PDF &mdash; Save and Share</title>
+  <title>Xây dựng web API chuyển đổi định dạng văn bản sang PDF &mdash; Save and Share</title>
   <meta name="author" content="Nguyen Dac Toan KMA">
 
 
@@ -56,7 +56,7 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Xây dựng ứng dụng web chuyển đổi định dạng văn bản sang PDF</h1>
+      <h1 class="entry-title">Xây dựng web API chuyển đổi định dạng văn bản sang PDF</h1>
     <p class="meta">
 <time datetime="2019-04-22T00:00:00+07:00" pubdate>T2 22 Tháng 4 2019</time>    </p>
 </header>
@@ -65,14 +65,18 @@
 <h2>Giới thiệu</h2>
 <ul>
 <li>
-<p>Trong công việc hàng ngày, nhiều lúc chúng ta cần chuyển đổi văn bản từ các file dạng word, excel, powerpoint,.. sang định dạng pdf. Văn bản pdf là viết tắc của  <strong>P</strong>ortable <strong>D</strong>ocunment <strong>F</strong>ormat là một định dạng tập tin văn bản tài liệu khá phổ biến của hãng <strong>Adobe System</strong>, pdf hỗ trợ văn bản thô (text) với rất nhiều kiểu chữ khác nhau, hình ảnh đồ họa đa dạng, âm thanh cùng với rất nhiều các hiệu ứng văn bản khác.</p>
+<p>Trong công việc hàng ngày, nhiều lúc chúng ta cần chuyển đổi văn bản từ các file dạng word, excel, powerpoint,.. sang định dạng pdf. Văn bản pdf là viết tắt của  <strong>P</strong>ortable <strong>D</strong>ocunment <strong>F</strong>ormat là một định dạng tập tin văn bản tài liệu khá phổ biến của hãng <strong>Adobe System</strong>, pdf hỗ trợ văn bản thô (text) với rất nhiều kiểu chữ khác nhau, hình ảnh đồ họa đa dạng, âm thanh cùng với rất nhiều các hiệu ứng văn bản khác.</p>
 </li>
 <li>
 <p>Hiện nay, đã có rất nhiều hình thức, công cụ để chuyển đổi các định dạng word, excel, powerpoint,.. sang định dạng pdf, bạn có thể chuyển đổi trực tuyến hoặc sử dụng phần mềm hỗ trợ. Tuy nhiên, để hiểu hơn về cách các ứng dụng đó hoạt động, mình sẽ xây dựng một ứng dụng đơn giản, thực hiện việc chuyển đổi các định dạng văn bản như word, excel, powerpoint,.. sang định dạng pdf.</p>
 </li>
 <li>
-<p>Ứng dụng này được xây dựng và phát triển dựa trên một dự án mà mình từng tham gia khi còn đang là thực tập sinh tại khối <a href="https://cloud.bizfly.vn/]">VCCloud</a> thuộc công ty cổ phần <a href="https://vccorp.vn/">VCCorp</a>, đó là xây dựng API xem trước file văn bản cho webmail của công ty, ngày ấy được sự giúp đỡ chỉ bảo tận tình của các anh trong team dev, mình mới hoàn thành một API tạm gọi là hoàn chỉnh các chức năng trong thời gian hai tháng, khoảng thời gian phát triển ứng dụng giúp mình học được nhiều kiến thức từ những khái niệm về <strong>API</strong>, <strong>Docker</strong>, <a href="https://dactoankmapydev.github.io/UnitTest.html">Unittest</a>, sử dụng các công cụ như <strong>Postman</strong>, <strong>Git</strong>,.. giúp mình vững tin hơn trên con đường code sau này.</p>
+<p>Ứng dụng này được xây dựng và phát triển dựa trên một dự án mà mình từng tham gia khi còn đang là thực tập sinh tại khối <a href="https://cloud.bizfly.vn/]">VCCloud</a> thuộc <a href="https://vccorp.vn/">Công Ty Cổ Phần VCCorp</a>, đó là xây dựng hệ thống xem trước (preview) file văn bản cho webmail , ngày ấy được sự giúp đỡ chỉ bảo tận tình của các anh trong team dev, mình mới hoàn thành một API tạm gọi là hoàn chỉnh các chức năng trong thời gian hai tháng, khoảng thời gian phát triển ứng dụng giúp mình học được nhiều kiến thức từ những khái niệm về <strong>API</strong>, <strong>Docker</strong>, <a href="https://dactoankmapydev.github.io/UnitTest.html">Unittest</a>, sử dụng các công cụ như <strong>Postman</strong>, <strong>Git</strong>,.. giúp mình vững tin hơn trên con đường code sau này.</p>
 </li>
+</ul>
+<h2>Tổng quan ứng dụng</h2>
+<ul>
+<li>Cụ thể, về mặt ngôn ngữ mình dùng <strong>Python</strong> để phát triển phần ứng dụng phía backend, framework dùng cho web service là <a href="http://flask.pocoo.org/">FLask</a>, một python web micro-framework. Flask rất đơn giản, giúp cho người mới học dễ tiếp cận và có thể xây dựng website một cách nhanh chóng. Flask đưa ra cho người phát triển những thứ thực sự cần thiết để xây dựng một web api và khả năng mở rộng để có thể kết hợp với các thư viện bên ngoài vì vậy người phát triển cũng hiểu rõ ứng dụng của mình hơn do họ phải tự quản lý những thư viện, gói phần mềm nào cần thiết phải đưa vào ứng dụng.</li>
 </ul></div>
     <footer>
 <p class="meta">
@@ -96,7 +100,7 @@
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="/convert.html">Xây dựng ứng dụng web chuyển đổi định dạng văn bản sang PDF</a>
+          <a href="/convert.html">Xây dựng web API chuyển đổi định dạng văn bản sang PDF</a>
       </li>
       <li class="post">
           <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
