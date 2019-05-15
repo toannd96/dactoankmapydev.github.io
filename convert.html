@@ -517,7 +517,7 @@ return response
 <p>Với các trường hợp truyền file không đúng tham số, tải lên file không đúng định dạng quy định đều nhận được phản hồi từ phía hệ thống để phía người dùng điều chỉnh cho đúng yêu cầu.</p>
 </li>
 </ul>
-<h1>Viết Unit test</h1>
+<h1>Viết unit test</h1>
 <ul>
 <li>
 <p>Unit test là một phần không thể thiếu của một ứng dụng, trong bài viết trước đây mình đã viết một bài <a href="https://dactoankmapydev.github.io/UnitTest.html">unit test cơ bản</a> trong đó trình bày về khái niệm, đặc điểm, lợi ích của unit test và ví dụ minh họa về thư viện unit test trong python. Ở bài viết này mình sẽ không đi sâu về unit test mà chỉ tập trung vào việc mình sẽ test cái gì trong ứng dụng mà mình đang đề cập tới.</p>
@@ -686,7 +686,7 @@ ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
 </pre></div>
 
 
-<h2>Build docker image container mới trên image vừa tạo</h2>
+<h2>Build docker image</h2>
 <ul>
 <li>Chạy command sau để build image từ Dockerfile đã được tạo ở trên:</li>
 </ul>
@@ -714,7 +714,7 @@ ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
 <img alt="Image" src="images/convert/3.png"></p>
 </li>
 <li>
-<p>Như vậy là mình đã build thành công 1 Docker image. Bây giờ mình sẽ build một container mới dựa trên image đó, chạy lệnh sau:</p>
+<p>Như vậy là mình đã build thành công 1 Docker image. Bây giờ mình chạy image đó, dùng lệnh sau:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span>docker run toannd/conv
