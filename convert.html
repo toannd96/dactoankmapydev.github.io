@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Xây dựng web API chuyển đổi định dạng văn bản sang PDF &mdash; Save and Share</title>
+  <title>Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF &mdash; Save and Share</title>
   <meta name="author" content="Nguyen Dac Toan KMA">
 
 
@@ -56,7 +56,7 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Xây dựng web API chuyển đổi định dạng văn bản sang PDF</h1>
+      <h1 class="entry-title">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</h1>
     <p class="meta">
 <time datetime="2019-05-15T00:00:00+07:00" pubdate>T4 15 Tháng 5 2019</time>    </p>
 </header>
@@ -613,13 +613,13 @@ return response
 <p>Trước tiên bạn phải <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">cài đặt docker</a>, hiện tại mình sử dụng ubuntu 18.04, phiên bản docker hiện tại của mình là <strong>Docker version 18.09.6, build 481bc77</strong></p>
 </li>
 </ul>
-<h2>Viết Dockerfile</h2>
+<h2>Tạo Dockerfile</h2>
 <ul>
 <li>
-<p><strong>Dockerfile</strong> là một tập tin dạng text chứa một tập các câu lệnh để tạo mới một <strong>Image</strong> trong Docker.</p>
+<p><strong>Docker</strong> sẽ xây dựng (build) <strong>docker image</strong> một cách tự động bằng cách đọc các chỉ thị (instruction) đã được khai báo trong một file có tên là <strong>Dockerfile</strong>. <strong>Dockerfile</strong> là một tập tin dạng text chứa một tập các câu lệnh để tạo mới một <strong>Image</strong> trong Docker.</p>
 </li>
 <li>
-<p>Tạo một tệp <strong>Dockerfile</strong> trong thư mục gốc của ứng dụng và thêm dòng FROM ngay dòng đầu tiên:</p>
+<p>Tạo một tệp <strong>Dockerfile</strong> trong thư mục gốc của ứng dụng và thêm dòng <strong>FROM</strong> ngay dòng đầu tiên:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span>FROM python:2
@@ -628,10 +628,10 @@ return response
 
 <ul>
 <li>
-<p>Điều này cho Docker biết rằng chúng ta muốn bắt đầu từ image python chính thức được với phiên bản 2.</p>
+<p>Điều này cho Docker biết rằng chúng ta muốn bắt đầu từ image python chính thức với phiên bản 2.</p>
 </li>
 <li>
-<p>Dùng RUN để chạy một hoặc nhiều lệnh khi build image:</p>
+<p>Dùng <strong>RUN</strong> để update ubuntu software bên trong Dockerfile và tiến hành cài đặt các phụ thuộc cho ứng dụng:</p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span>RUN apt-get update -y &amp;&amp; \
@@ -645,7 +645,7 @@ RUN pip install -r requirements.txt
 
 
 <ul>
-<li>Mình sẽ remote file tới file hệ thống của image:</li>
+<li>Chỉ thị <strong>ADD</strong> sẽ copy thư mục từ vị trí thư mục đang build trên local client hoặc remote files url và thêm chúng vào file hệ thống của image:</li>
 </ul>
 <div class="highlight"><pre><span></span>ADD . /conv
 </pre></div>
@@ -659,7 +659,7 @@ RUN pip install -r requirements.txt
 
 
 <ul>
-<li>Định nghĩa những command mặc định, cái mà sẽ được chạy khi container running:</li>
+<li>Định nghĩa những command mặc định, chuẩn bị các điều kiện setup càn thiết để chạy service trong container:</li>
 </ul>
 <div class="highlight"><pre><span></span>ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
 </pre></div>
@@ -686,7 +686,130 @@ ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
 </pre></div>
 
 
-<h2>Còn tiếp ...</h2></div>
+<h2>Build docker image container mới trên image vừa tạo</h2>
+<ul>
+<li>Chạy command sau để build image từ Dockerfile đã được tạo ở trên:</li>
+</ul>
+<div class="highlight"><pre><span></span>docker build -t conv .
+</pre></div>
+
+
+<ul>
+<li>
+<p>Câu lệnh trên sẽ tạo ra 1 image mới có tên là <strong>conv</strong>. Sau khi câu lệnh hoàn tất, trên màn hình sẽ hiển thị
+<img alt="Image" src="images/convert/docker1.png">
+<img alt="Image" src="images/convert/docker2.png"></p>
+</li>
+<li>
+<p>Tiến hành kiểm tra image bằng lệnh:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>docker images
+</pre></div>
+
+
+<ul>
+<li>
+<p>Kết quả thu được:
+<img alt="Image" src="images/convert/docker3.png"></p>
+</li>
+<li>
+<p>Như vậy là mình đã build thành công 1 Docker image. Bây giờ mình sẽ build một container mới dựa trên image đó, chạy lệnh sau:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>docker run conv
+</pre></div>
+
+
+<ul>
+<li>Kết quả thu được:
+<img alt="Image" src="images/convert/docker4.png"></li>
+</ul>
+<h2>Build docker-compose</h2>
+<ul>
+<li>
+<p>Như đã biết, mình đã cấu hình và tạo image, các vùng chứa và liên kết chúng với nhau. Nếu bạn làm việc với 2 hoặc 3 container thì nó có thể thực hiện được. Tuy nhiên nếu bạn cần thiết lập môi trường của 1 project với nhiều container chứa hơn thì việc đó sẽ trở nên rất khó khăn bằng cách thiết lập thủ công. <strong>Docker-compose</strong> sẽ giải quyết vấn đề đó.</p>
+</li>
+<li>
+<p><strong>Docker-compose</strong> là 1 công cụ để định nghĩa và chạy nhiều container trên ứng dụng Docker.</p>
+</li>
+<li>
+<p><strong>Docker-compose</strong> cho phép bạn tạo một file cấu hình <strong>YML</strong>, nơi mà bạn sẽ định nghĩa các services trên ứng dụng của bạn và định nghĩa tất cả các bước, cấu hình cần thiết để xây dựng các image, up các container và liên kết chúng với nhau. Cuối cùng, một khi tất cả điều này được thực hiện thì bạn sẽ chỉ cần thiết lập tất cả với một câu lệnh duy nhất.</p>
+</li>
+<li>
+<p>Ứng dụng hiện tại của mình chỉ có duy nhất một services mình đặt tên là <strong>conv</strong>, sau đây mình sẽ bắt tay vào build docker-compose</p>
+</li>
+<li>
+<p>Trước tiên bạn cần <a href="https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04">cài đặt docker-compose</a></p>
+</li>
+<li>
+<p>Phiên bản <strong>docker-compose</strong> hiện tại của mình là <strong>docker-compose version 1.23.2, build 1110ad01</strong></p>
+</li>
+<li>
+<p>Tạo một tệp <strong>docker-compose.yml</strong> trong thư mục gốc của dự án.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>version: &#39;3&#39;
+
+services:
+    conv:
+        build: .
+        volumes:
+            - ./conv/upload:/conv/upload
+            - ./conv/convert:/conv/convert
+        ports:
+            - &#39;5000:5000&#39;
+</pre></div>
+
+
+<ul>
+<li>File <strong>docker-compose.yml</strong> được tổ chức gồm 4 phần:</li>
+</ul>
+<div class="highlight"><pre><span></span>- version là phiên bản của file docker-compose
+- services chứa các container với mỗi service là tên của một container
+- volumes gắn đường dẫn trên host machine được sử dụng trên container
+- networks sử dụng để cấu hình network cho ứng dụng
+</pre></div>
+
+
+<ul>
+<li>Với <strong>services</strong> có một số thành phần sau:</li>
+</ul>
+<div class="highlight"><pre><span></span>- build chỉ ra vị trị đường dẫn đặt Dockerfile
+- volumes gắn đường dẫn trên host machine được sử dụng trên container
+- port kết nối port của máy host đến port của container
+</pre></div>
+
+
+<ul>
+<li>Lưu file <strong>docker-compose.yml</strong> sau đó chạy lệnh:</li>
+</ul>
+<div class="highlight"><pre><span></span>docker-compose up
+</pre></div>
+
+
+<ul>
+<li>
+<p>Kết quả thu được:
+<img alt="Image" src="images/convert/docker5.png"></p>
+</li>
+<li>
+<p>Tiến hành kiểm tra upload file bằng phương thức <strong>GET</strong>, truy cập vào địa chỉ</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>http://0.0.0.0:5000/uploads?file=http://home.actvn.edu.vn/Upload/document/don-hoan-thi.docx
+</pre></div>
+
+
+<ul>
+<li>
+<p>Kết quả hiện ra sẽ là:
+<img alt="Image" src="images/convert/end.png"></p>
+</li>
+<li>
+<p>Như vậy việc <strong>build docker-compose</strong> đã thành công, phía server trả về bản xem trước của file đã convert trên trình duyệt.</p>
+</li>
+</ul></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -709,7 +832,7 @@ ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="/convert.html">Xây dựng web API chuyển đổi định dạng văn bản sang PDF</a>
+          <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</a>
       </li>
       <li class="post">
           <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
