@@ -659,7 +659,7 @@ RUN pip install -r requirements.txt
 
 
 <ul>
-<li>Định nghĩa những command mặc định, chuẩn bị các điều kiện setup càn thiết để chạy service trong container:</li>
+<li>Định nghĩa những command mặc định, chuẩn bị các điều kiện setup cần thiết để chạy service trong container:</li>
 </ul>
 <div class="highlight"><pre><span></span>ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
 </pre></div>
@@ -690,7 +690,7 @@ ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
 <ul>
 <li>Chạy command sau để build image từ Dockerfile đã được tạo ở trên:</li>
 </ul>
-<div class="highlight"><pre><span></span>docker build -t conv .
+<div class="highlight"><pre><span></span>docker build -t toannd/conv .
 </pre></div>
 
 
@@ -711,13 +711,13 @@ ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
 <ul>
 <li>
 <p>Kết quả thu được:
-<img alt="Image" src="images/convert/docker3.png"></p>
+<img alt="Image" src="images/convert/3.png"></p>
 </li>
 <li>
 <p>Như vậy là mình đã build thành công 1 Docker image. Bây giờ mình sẽ build một container mới dựa trên image đó, chạy lệnh sau:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>docker run conv
+<div class="highlight"><pre><span></span>docker run toannd/conv
 </pre></div>
 
 
@@ -809,6 +809,58 @@ services:
 <li>
 <p>Như vậy việc <strong>build docker-compose</strong> đã thành công, phía server trả về bản xem trước của file đã convert trên trình duyệt.</p>
 </li>
+</ul>
+<h2>Push image lên docker hub</h2>
+<ul>
+<li>
+<p><strong>Docker hub</strong> cũng giống như <strong>github</strong>, cho phép bạn download các docker images khác đã được build từ cộng đồng (public) hoặc nhà phát hành ứng dụng. Bạn cũng có thể đăng ký tài khoản docker hub cá nhân và upload file docker image đã build của bạn lên docker hub để lưu trữ cũng như quản lý image như upload code lên github repository.</p>
+</li>
+<li>
+<p>Đăng nhập vào tài khoản <strong>docker hub</strong>
+<img alt="Image" src="images/convert/login.png"></p>
+</li>
+<li>
+<p>Để đăng nhập vào hệ thống docker hub trên command thì bạn sử dụng cú pháp sau:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>docker login
+</pre></div>
+
+
+<ul>
+<li>
+<p>Sau khi chạy lệnh thì command sẽ hiển thị:
+<img alt="Image" src="images/convert/2.png"></p>
+</li>
+<li>
+<p>Giao diện cơ bản giống github với việc docker hub cho phép tạo repository để upload image lên lưu trữ public/private.
+<img alt="Image" src="images/convert/1.png"></p>
+</li>
+<li>
+<p>Mình sẽ đẩy image lên docker hub bằng cách sử dụng lệnh:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>docker push toannd/conv
+</pre></div>
+
+
+<ul>
+<li>
+<p>Quá trình đẩy lên docker hub còn phụ thuộc vào tốc độ mạng của bạn:
+<img alt="Image" src="images/convert/5.png"></p>
+</li>
+<li>
+<p>Sau khi đẩy lên docker hub thành công, bạn có thể chia sẻ cho mọi người khác sử dụng một cách dễ dàng.</p>
+</li>
+<li>
+<p>Mọi người có thể tham khảo <a href="https://github.com/dactoankmapydev/web_convert_office">mã nguồn ứng dụng</a> trên github của mình. </p>
+</li>
+</ul>
+<h1>Tài liệu tham khảo</h1>
+<ul>
+<li><a href="http://containertutorials.com/docker-compose.html">MicroServices with Docker</a></li>
+<li><a href="https://vimentor.com/vi/lesson/phat-trien-phan-mem-theo-kien-truc-microservice">Vimentor</a></li>
+<li><a href="https://viblo.asia/p/postman-goi-api-chua-bao-gio-de-dang-nhu-vay-AoDGYNDQRvg">Postman</a></li>
 </ul></div>
     <footer>
 <p class="meta">
