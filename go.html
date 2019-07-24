@@ -58,20 +58,46 @@
 <header>
       <h1 class="entry-title">Go cơ bản</h1>
     <p class="meta">
-<time datetime="2019-07-23T00:00:00+07:00" pubdate>T3 23 Tháng 7 2019</time>    </p>
+<time datetime="2019-07-24T00:00:00+07:00" pubdate>T4 24 Tháng 7 2019</time>    </p>
 </header>
 
   <div class="entry-content"><p><img alt="Image" src="images/golang/gogo.jpg"></p>
-<h2>Các kiểu dữ liệu trong go</h2>
+<h1>Các kiểu dữ liệu trong go</h1>
 <ul>
-<li>Số nguyên: uint8, uint16, uint32, uint64, int8, int16, int32, int64. uint8 còn có tên khác là byte, kiểu int32 có tên khác là rune</li>
-<li>Số thực: float32 và float64, hai kiểu số phức là complex64 và complex128</li>
-<li>Chuỗi (string): các kí tự được bọc trong cặp dấu nháy kép hoặc nháy đơn được dùng để biểu diễn văn bản</li>
-<li>Boolean: true và false</li>
-<li>Array (mảng) là một tập hợp các phần tử có cùng kiểu dữ liệu nằm liên tiếp nhau, để truy xuất một phần tử của mảng sử dụng toán tử [], khai báo:</li>
+<li><strong>Cơ bản</strong>: số (int, float, complex), chuỗi (string) và boolean</li>
+<li><strong>Tập hợp</strong>: mảng (array) và cấu trúc (struct)</li>
+<li><strong>Tham chiếu</strong>: pointer, slice, map, function và channel</li>
+<li><strong>Giao diện</strong> (interface)</li>
 </ul>
-<div class="highlight"><pre><span></span>var x [5]int
-x := [5]float64{ 98, 93, 77, 82, 83 }
+<h2>Số nguyên, số thực và luận lý (boolean)</h2>
+<ul>
+<li>Số nguyên có dấu: int8, int16, int32, int64</li>
+<li>Số nguyên không dấu: uint8, uint16, uint32, uint64</li>
+<li>Kiểu <strong>uint8</strong> có tên khác là <strong>byte</strong> dùng để mô tả mảng dữ liệu thô, chủ yếu liên quan đọc ghi dữ liệu</li>
+<li>Kiểu <strong>int32</strong> có tên khác là <strong>rune</strong> dùng để thể hiện giá trị 1 ký tự unicode</li>
+<li>5 nhóm toán tử gồm:</li>
+</ul>
+<div class="highlight"><pre><span></span>- Phép số học (+, -, /, %)
+- Phép toán bit (&amp;, |, ^, &amp;, &lt;&lt;, &gt;&gt;)
+- Phép so sánh (==, !=, &lt;, &lt;=, &gt;, &gt;=)
+- Phép toán luận lý (&amp;&amp;, ||)
+</pre></div>
+
+
+<ul>
+<li>Số thực: float32 và float64, hai kiểu số phức là complex64 và complex128</li>
+<li>Boolean: true và false</li>
+</ul>
+<h2>Chuỗi (string)</h2>
+<ul>
+<li>Chứa một chuỗi byte dữ liệu không thay đổi sau khi đã tạo</li>
+<li>Các kí tự được bọc trong cặp dấu nháy kép hoặc nháy đơn được dùng để biểu diễn văn bản</li>
+<li>Dùng <strong>fmt.Sprintf</strong> hoặc <strong>strconv.Itoa</strong> để chuyển số thành chuỗi. </li>
+</ul>
+<div class="highlight"><pre><span></span>var a int = 1234
+s1  :=  fmt.Sprintf(&quot;%d&quot;,a)
+fmt.Println(s1) #1234
+fmt.Printf(&quot;type s1 is %T &quot;, s1) #type s1 is string
 </pre></div>
 
 
@@ -94,6 +120,15 @@ x := &quot;Hello World&quot;
 <li>Là các biến không thể thay đổi dược giá trị, dùng từ khóa <strong>const</strong></li>
 </ul>
 <div class="highlight"><pre><span></span>const x string = &quot;Hello World&quot;
+</pre></div>
+
+
+<h2>Mảng (Array)</h2>
+<ul>
+<li>Là một tập hợp các phần tử có cùng kiểu dữ liệu nằm liên tiếp nhau, mảng không thay đổi chiều dài được, để truy xuất một phần tử của mảng sử dụng toán tử [], khai báo:</li>
+</ul>
+<div class="highlight"><pre><span></span>var x [5]int
+x := [5]float64{ 98, 93, 77, 82, 83 }
 </pre></div>
 
 
@@ -143,15 +178,39 @@ x := arr[0:5] #[low:high] lấy các phần tử từ vị trí low đến vị 
 <ul>
 <li>Khi truy xuất một phần tử của map nhận được 2 giá trị trả về gồm <strong>giá trị của khóa</strong> và <strong>giá trị kiểu boolean</strong> cho biết việc truy xuất có thành công hay không (true hoặc false)</li>
 </ul>
-<h2>Lệnh điều khiển</h2>
+<h1>Các lệnh điều khiển</h1>
 <ul>
 <li>Gồm for, if, switch</li>
+</ul>
+<h2>Phân nhánh</h2>
+<ul>
+<li>Lệnh if</li>
+</ul>
+<div class="highlight"><pre><span></span>if &lt;mô tả 1 (tùy chọn)&gt;; &lt;biểu thức luận lý 1&gt; { 
+&lt;Khối lệnh 1&gt; 
+} else if &lt;mô tả 2 (tùy chọn)&gt;; &lt;biểu thức luận lý 2&gt; { 
+&lt;Khối lệnh 2&gt; 
+} else if &lt;mô tả n-1 (tùy chọn)&gt;; &lt;biểu thức luận lý n-1&gt; { 
+&lt;Khối lệnh n-1&gt; 
+} else { 
+&lt;Khối lệnh n&gt; 
+} 
+</pre></div>
+
+
+<h2>Switch</h2>
+<ul>
+<li>Là một biến thể của câu lệnh if, dùng trong trường hợp có nhiều phân nhánh</li>
 <li>Dùng từ khóa switch, theo sau là một biểu thức điều kiện, rồi tới một danh sách các từ khóa case, ứng với mỗi từ khóa case là một giá trị nào đó, rồi tới dấu 2 chấm : và các lệnh sẽ được thực hiện.</li>
 </ul>
-<div class="highlight"><pre><span></span>switch i {
-case 0: fmt.Println(&quot;Khong&quot;)
-case 1: fmt.Println(&quot;Mot&quot;)
-default: fmt.Println(&quot;Khong biet&quot;)
+<div class="highlight"><pre><span></span>switch &lt;mô tả (tùy chọn)&gt;; &lt;biểu thức (tùy chọn)&gt; { 
+case &lt;biểu thức 1&gt;: 
+    &lt;Khối lệnh 1&gt; 
+... 
+case &lt;biểu thức n&gt;: 
+    &lt;Khối lệnh n&gt; 
+default: 
+    &lt;Khối lệnh mặc định&gt; 
 }
 </pre></div>
 
@@ -160,6 +219,25 @@ default: fmt.Println(&quot;Khong biet&quot;)
 <li>Nếu biểu thức điều kiện ở switch cho kết quả trùng với giá trị ở từ khóa case nào thì thực hiện các câu lệnh sau từ khóa case đó</li>
 <li>Từ khóa <strong>default</strong> thực hiện các câu lệnh nếu giá trị ở switch không trùng với bất kì từ khóa case nào</li>
 </ul>
+<h2>Lặp</h2>
+<ul>
+<li>Go chỉ cung cấp vòng lặp for nhưng có nhiều cú pháp khác nhau để đáp ứng yêu cầu đa dạng của các loại vòng lặp, có 4 dạng tương thích while, do while, for và for range</li>
+</ul>
+<div class="highlight"><pre><span></span>for { // Như vòng lặp do while 
+    &lt;Khối lệnh&gt; 
+} 
+for &lt;Biểu thức luận lý&gt; { // Như vòng lặp while 
+    &lt;Khối lệnh&gt; 
+} 
+for &lt;Mô tả trước&gt;; &lt;Biểu thức luận lý&gt;; &lt;Mô tả sau&gt; { 
+    &lt;Khối lệnh&gt; 
+} 
+for &lt;Chỉ số&gt;, &lt;Giá trị&gt; := range &lt;Biến kiểu dữ liệu có phần tử&gt; { 
+    &lt;Khối lệnh&gt; 
+}
+</pre></div>
+
+
 <h2>Còn tiếp ...</h2></div>
     <footer>
 <p class="meta">
@@ -168,7 +246,7 @@ default: fmt.Println(&quot;Khong biet&quot;)
         Nguyen Dac Toan KMA
     </span>
   </span>
-<time datetime="2019-07-23T00:00:00+07:00" pubdate>T3 23 Tháng 7 2019</time>  <span class="categories">
+<time datetime="2019-07-24T00:00:00+07:00" pubdate>T4 24 Tháng 7 2019</time>  <span class="categories">
     <a class='category' href='/category/programing.html'>Programing</a>
   </span>
   <span class="categories">
