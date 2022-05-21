@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
 <head>
   <meta charset="utf-8">
   <title>Save and Share</title>
   <meta name="author" content="Nguyen Dac Toan KMA">
-
-
-
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -16,239 +16,302 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link href="/favicon.png" rel="icon">
+  <link href="/favicon.png" rel="icon">
 
-  <link href="/theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
+  <link href="/theme/css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
 
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet"
+    type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet"
+    type="text/css">
+
+  <!-- tracking -->
+  <script type="application/javascript" src="http://localhost:3000/record.js"></script>
+  <script type="application/javascript">
+    window.recorder.setSession()
+  </script>
 </head>
 
 <body>
-  <header role="banner"><hgroup>
-  <h1><a href="/">Save and Share</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
+  <header role="banner">
+    <hgroup>
+      <h1><a href="/">Save and Share</a></h1>
+    </hgroup>
+  </header>
+  <nav role="navigation">
+    <ul class="subscription" data-subscription="rss">
+    </ul>
 
 
-<ul class="main-navigation">
-      <li >
+    <ul class="main-navigation">
+      <li>
         <a href="/category/crawl.html">Crawl</a>
       </li>
-      <li >
+      <li>
         <a href="/category/devops.html">Devops</a>
       </li>
-      <li >
+      <li>
         <a href="/category/programing.html">Programing</a>
       </li>
-      <li >
+      <li>
         <a href="/category/web.html">Web</a>
       </li>
-</ul></nav>
+    </ul>
+  </nav>
   <div id="main">
     <div id="content">
-<div class="blog-index">
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="/go.html">Go cơ bản</a>
-      </h1>
-    <p class="meta">
-<time datetime="2019-07-24T00:00:00+07:00" pubdate>T4 24 Tháng 7 2019</time>    </p>
-</header>
+      <div class="blog-index">
+        <article>
+          <header>
+            <h1 class="entry-title">
+              <a href="/go.html">Go cơ bản</a>
+            </h1>
+            <p class="meta">
+              <time datetime="2019-07-24T00:00:00+07:00" pubdate>T4 24 Tháng 7 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><p><img alt="Image" src="images/golang/gogo.jpg"></p>
-<h1>Các kiểu dữ liệu trong go</h1>
-<ul>
-<li><strong>Cơ bản</strong>: số (int, float, complex), chuỗi (string) và boolean</li>
-<li><strong>Tập hợp</strong>: mảng (array) và cấu trúc (struct)</li>
-<li><strong>Tham chiếu</strong>: pointer, slice, map, function và channel</li>
-<li><strong>Giao diện</strong> (interface)</li>
-</ul>
-<h2>Số nguyên, số thực và luận lý (boolean)</h2>
-<ul>
-<li>Số nguyên có dấu: int8, int16, int32 …</li></ul></div>
-  <footer>
-    <a rel="full-article" href="/go.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</a>
-      </h1>
-    <p class="meta">
-<time datetime="2019-05-15T00:00:00+07:00" pubdate>T4 15 Tháng 5 2019</time>    </p>
-</header>
+          <div class="entry-content">
+            <p><img alt="Image" src="images/golang/gogo.jpg"></p>
+            <h1>Các kiểu dữ liệu trong go</h1>
+            <ul>
+              <li><strong>Cơ bản</strong>: số (int, float, complex), chuỗi (string) và boolean</li>
+              <li><strong>Tập hợp</strong>: mảng (array) và cấu trúc (struct)</li>
+              <li><strong>Tham chiếu</strong>: pointer, slice, map, function và channel</li>
+              <li><strong>Giao diện</strong> (interface)</li>
+            </ul>
+            <h2>Số nguyên, số thực và luận lý (boolean)</h2>
+            <ul>
+              <li>Số nguyên có dấu: int8, int16, int32 …</li>
+            </ul>
+          </div>
+          <footer>
+            <a rel="full-article" href="/go.html">Read On &crarr;</a>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <h1 class="entry-title">
+              <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</a>
+            </h1>
+            <p class="meta">
+              <time datetime="2019-05-15T00:00:00+07:00" pubdate>T4 15 Tháng 5 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><p><img alt="Image" src="images/convert/Convertion.png"></p>
-<h1>Giới thiệu</h1>
-<ul>
-<li>
-<p>Trong công việc hàng ngày, nhiều lúc chúng ta cần chuyển đổi văn bản từ các file dạng word, excel, powerpoint,.. sang định dạng pdf. Văn bản pdf là viết tắt của  <strong>P</strong>ortable <strong>D</strong>ocunment <strong>F</strong>ormat là một định dạng tập tin văn bản tài liệu …</p></li></ul></div>
-  <footer>
-    <a rel="full-article" href="/convert.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
-      </h1>
-    <p class="meta">
-<time datetime="2019-04-03T00:00:00+07:00" pubdate>T4 03 Tháng 4 2019</time>    </p>
-</header>
+          <div class="entry-content">
+            <p><img alt="Image" src="images/convert/Convertion.png"></p>
+            <h1>Giới thiệu</h1>
+            <ul>
+              <li>
+                <p>Trong công việc hàng ngày, nhiều lúc chúng ta cần chuyển đổi văn bản từ các file dạng word, excel,
+                  powerpoint,.. sang định dạng pdf. Văn bản pdf là viết tắt của <strong>P</strong>ortable
+                  <strong>D</strong>ocunment <strong>F</strong>ormat là một định dạng tập tin văn bản tài liệu …</p>
+              </li>
+            </ul>
+          </div>
+          <footer>
+            <a rel="full-article" href="/convert.html">Read On &crarr;</a>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <h1 class="entry-title">
+              <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
+            </h1>
+            <p class="meta">
+              <time datetime="2019-04-03T00:00:00+07:00" pubdate>T4 03 Tháng 4 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><p><img alt="Image" src="images/heroku/heroku.jpeg"></p></div>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="/UnitTest.html">Unit Test cơ bản</a>
-      </h1>
-    <p class="meta">
-<time datetime="2019-03-28T00:00:00+07:00" pubdate>T5 28 Tháng 3 2019</time>    </p>
-</header>
+          <div class="entry-content">
+            <p><img alt="Image" src="images/heroku/heroku.jpeg"></p>
+          </div>
+        </article>
+        <article>
+          <header>
+            <h1 class="entry-title">
+              <a href="/UnitTest.html">Unit Test cơ bản</a>
+            </h1>
+            <p class="meta">
+              <time datetime="2019-03-28T00:00:00+07:00" pubdate>T5 28 Tháng 3 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><p><img alt="Image" src="images/unittest/unit.png"></p>
-<h2>Unit test là gì ?</h2>
-<ul>
-<li>
-<p><strong>Unit test - Kiểm thử mức đơn vị</strong> là một mức kiểm thử phần mềm với mục đích dùng để kiểm tra kiến trúc nội tại của chương trình. Đây là mức kiểm tra nhỏ nhất trong quy trình kiểm thử phần mềm.</p>
-</li>
-<li>
-<p><strong>Unit - Đơn vị phần …</strong></p></li></ul></div>
-  <footer>
-    <a rel="full-article" href="/UnitTest.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
-      </h1>
-    <p class="meta">
-<time datetime="2019-03-15T00:00:00+07:00" pubdate>T6 15 Tháng 3 2019</time>    </p>
-</header>
+          <div class="entry-content">
+            <p><img alt="Image" src="images/unittest/unit.png"></p>
+            <h2>Unit test là gì ?</h2>
+            <ul>
+              <li>
+                <p><strong>Unit test - Kiểm thử mức đơn vị</strong> là một mức kiểm thử phần mềm với mục đích dùng để
+                  kiểm tra kiến trúc nội tại của chương trình. Đây là mức kiểm tra nhỏ nhất trong quy trình kiểm thử
+                  phần mềm.</p>
+              </li>
+              <li>
+                <p><strong>Unit - Đơn vị phần …</strong></p>
+              </li>
+            </ul>
+          </div>
+          <footer>
+            <a rel="full-article" href="/UnitTest.html">Read On &crarr;</a>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <h1 class="entry-title">
+              <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
+            </h1>
+            <p class="meta">
+              <time datetime="2019-03-15T00:00:00+07:00" pubdate>T6 15 Tháng 3 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><p><img alt="Image" src="images/golang/golang.png"></p>
-<h1>Tổng quan</h1>
-<ul>
-<li>
-<p>Golang, còn được gọi là Go, là một ngôn ngữ lập trình biên dịch hướng hệ thống (systems-oriented) mã nguồn mở (open source) sử dụng cú pháp cấp cao tương tự như ngôn ngữ kịch bản được thiết kế và phát triển bởi Google vào năm 2007 để …</p></li></ul></div>
-  <footer>
-    <a rel="full-article" href="/golang.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="/scrapy.html">Thu thập dữ liệu với Scrapy, Splash, Lua - Nội dung được tạo bởi Javascript</a>
-      </h1>
-    <p class="meta">
-<time datetime="2019-01-30T00:00:00+07:00" pubdate>T4 30 Tháng 1 2019</time>    </p>
-</header>
+          <div class="entry-content">
+            <p><img alt="Image" src="images/golang/golang.png"></p>
+            <h1>Tổng quan</h1>
+            <ul>
+              <li>
+                <p>Golang, còn được gọi là Go, là một ngôn ngữ lập trình biên dịch hướng hệ thống (systems-oriented) mã
+                  nguồn mở (open source) sử dụng cú pháp cấp cao tương tự như ngôn ngữ kịch bản được thiết kế và phát
+                  triển bởi Google vào năm 2007 để …</p>
+              </li>
+            </ul>
+          </div>
+          <footer>
+            <a rel="full-article" href="/golang.html">Read On &crarr;</a>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <h1 class="entry-title">
+              <a href="/scrapy.html">Thu thập dữ liệu với Scrapy, Splash, Lua - Nội dung được tạo bởi Javascript</a>
+            </h1>
+            <p class="meta">
+              <time datetime="2019-01-30T00:00:00+07:00" pubdate>T4 30 Tháng 1 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><ul>
-<li>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn lấy nội dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy đơn thuần không thể chạy mã javascript trong khi thu thập dữ liệu. Trong …</li></ul></div>
-  <footer>
-    <a rel="full-article" href="/scrapy.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a>
-      </h1>
-    <p class="meta">
-<time datetime="2019-01-24T00:00:00+07:00" pubdate>T5 24 Tháng 1 2019</time>    </p>
-</header>
+          <div class="entry-content">
+            <ul>
+              <li>Thật khó để tìm thấy một trang web hiện đại không sử dụng công nghệ javascript. Khi bạn muốn lấy nội
+                dung được tạo bằng javascript từ một trang web, bạn sẽ nhận ra rằng Scrapy đơn thuần không thể chạy mã
+                javascript trong khi thu thập dữ liệu. Trong …</li>
+            </ul>
+          </div>
+          <footer>
+            <a rel="full-article" href="/scrapy.html">Read On &crarr;</a>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <h1 class="entry-title">
+              <a href="/sosanhviec.html">Ứng dụng web SO SÁNH VIỆC</a>
+            </h1>
+            <p class="meta">
+              <time datetime="2019-01-24T00:00:00+07:00" pubdate>T5 24 Tháng 1 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><p><a href="https://sosanhviec.herokuapp.com/">Demo</a> là một ứng dụng web phân tích việc làm trong lĩnh vực CNTT.</p>
-<p><img alt="Image" src="images/sosanhviec/ssv.png"></p>
-<h2>Mô tả vấn đề</h2>
-<ul>
-<li>
-<p>Từ nhu cầu của bản thân sinh viên để tìm việc, nhưng mỗi trang web việc làm có cách sử dụng hơi khác nhau, khiến mình rất mệt mỏi khi đi qua …</p></li></ul></div>
-  <footer>
-    <a rel="full-article" href="/sosanhviec.html">Read On &crarr;</a>
-  </footer>
-  		</article>
-  		<article>
-<header>
-      <h1 class="entry-title">
-        <a href="/pytudi.html">Từ điển trực tuyến Anh-Việt, Việt-Anh</a>
-      </h1>
-    <p class="meta">
-<time datetime="2019-01-20T00:00:00+07:00" pubdate>CN 20 Tháng 1 2019</time>    </p>
-</header>
+          <div class="entry-content">
+            <p><a href="https://sosanhviec.herokuapp.com/">Demo</a> là một ứng dụng web phân tích việc làm trong lĩnh
+              vực CNTT.</p>
+            <p><img alt="Image" src="images/sosanhviec/ssv.png"></p>
+            <h2>Mô tả vấn đề</h2>
+            <ul>
+              <li>
+                <p>Từ nhu cầu của bản thân sinh viên để tìm việc, nhưng mỗi trang web việc làm có cách sử dụng hơi khác
+                  nhau, khiến mình rất mệt mỏi khi đi qua …</p>
+              </li>
+            </ul>
+          </div>
+          <footer>
+            <a rel="full-article" href="/sosanhviec.html">Read On &crarr;</a>
+          </footer>
+        </article>
+        <article>
+          <header>
+            <h1 class="entry-title">
+              <a href="/pytudi.html">Từ điển trực tuyến Anh-Việt, Việt-Anh</a>
+            </h1>
+            <p class="meta">
+              <time datetime="2019-01-20T00:00:00+07:00" pubdate>CN 20 Tháng 1 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><p><a href="https://pytudi.herokuapp.com/">Link</a> là một ứng dụng web từ điển có khả năng tra từ và câu Anh-Việt, Việt-Anh.</p>
-<p><img alt="Image" src="images/pytudi/pytudi.png"></p></div>
-  		</article>
-<div class="pagination">
+          <div class="entry-content">
+            <p><a href="https://pytudi.herokuapp.com/">Link</a> là một ứng dụng web từ điển có khả năng tra từ và câu
+              Anh-Việt, Việt-Anh.</p>
+            <p><img alt="Image" src="images/pytudi/pytudi.png"></p>
+          </div>
+        </article>
+        <div class="pagination">
 
-  <br />
-</div></div>
-<aside class="sidebar">
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="/go.html">Go cơ bản</a>
-      </li>
-      <li class="post">
-          <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</a>
-      </li>
-      <li class="post">
-          <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
-      </li>
-      <li class="post">
-          <a href="/UnitTest.html">Unit Test cơ bản</a>
-      </li>
-      <li class="post">
-          <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="/category/crawl.html">Crawl</a></li>
-        <li><a href="/category/devops.html">DevOps</a></li>
-        <li><a href="/category/programing.html">Programing</a></li>
-        <li><a href="/category/web.html">Web</a></li>
-    </ul>
-  </section>
- 
+          <br />
+        </div>
+      </div>
+      <aside class="sidebar">
+        <section>
+          <h1>Recent Posts</h1>
+          <ul id="recent_posts">
+            <li class="post">
+              <a href="/go.html">Go cơ bản</a>
+            </li>
+            <li class="post">
+              <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</a>
+            </li>
+            <li class="post">
+              <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
+            </li>
+            <li class="post">
+              <a href="/UnitTest.html">Unit Test cơ bản</a>
+            </li>
+            <li class="post">
+              <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
+            </li>
+          </ul>
+        </section>
+        <section>
 
-  <section>
-  <h1>Tags</h1>
-    <a href="/tag/go.html">go</a>,    <a href="/tag/convert-to-pdf.html">convert to pdf</a>,    <a href="/tag/deploy.html">deploy</a>,    <a href="/tag/heroku.html">heroku</a>,    <a href="/tag/unittest.html">unittest</a>,    <a href="/tag/crawl.html">crawl</a>,    <a href="/tag/sosanhviec.html">sosanhviec</a>,    <a href="/tag/pytudi.html">pytudi</a>  </section>
+          <h1>Categories</h1>
+          <ul id="recent_posts">
+            <li><a href="/category/crawl.html">Crawl</a></li>
+            <li><a href="/category/devops.html">DevOps</a></li>
+            <li><a href="/category/programing.html">Programing</a></li>
+            <li><a href="/category/web.html">Web</a></li>
+          </ul>
+        </section>
 
 
-    <section>
-        <h1>Social</h1>
-        <ul>
+        <section>
+          <h1>Tags</h1>
+          <a href="/tag/go.html">go</a>, <a href="/tag/convert-to-pdf.html">convert to pdf</a>, <a
+            href="/tag/deploy.html">deploy</a>, <a href="/tag/heroku.html">heroku</a>, <a
+            href="/tag/unittest.html">unittest</a>, <a href="/tag/crawl.html">crawl</a>, <a
+            href="/tag/sosanhviec.html">sosanhviec</a>, <a href="/tag/pytudi.html">pytudi</a>
+        </section>
+
+
+        <section>
+          <h1>Social</h1>
+          <ul>
             <li><a href="https://github.com/dactoankmapydev" target="_blank">Github</a></li>
             <li><a href="https://www.facebook.com/toan.nguyen.31392410" target="_blank">Facebook</a></li>
             <li><a href="https://www.linkedin.com/in/dac-toan-nguyen-a94b2a146/" target="_blank">Linkedin</a></li>
-        </ul>
-    </section>
+          </ul>
+        </section>
 
-</aside>    </div>
+      </aside>
+    </div>
   </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2019  Nguyen Dac Toan KMA &mdash;
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
+  <footer role="contentinfo">
+    <p>
+      Copyright &copy; 2019 Nguyen Dac Toan KMA &mdash;
+      <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+    </p>
+  </footer>
   <script src="/theme/js/modernizr-2.0.js"></script>
   <script src="/theme/js/ender.js"></script>
   <script src="/theme/js/octopress.js" type="text/javascript"></script>
 </body>
+
 </html>

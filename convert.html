@@ -1,96 +1,130 @@
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
 <head>
-  <meta charset="utf-8">
-  <title>Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF &mdash; Save and Share</title>
-  <meta name="author" content="Nguyen Dac Toan KMA">
+    <meta charset="utf-8">
+    <title>Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF &mdash; Save and Share</title>
+    <meta name="author" content="Nguyen Dac Toan KMA">
 
-
-
-
-
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- http://t.co/dKP3o1e -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
     <link href="/favicon.png" rel="icon">
 
-  <link href="/theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
+    <link href="/theme/css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
 
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet"
+        type="text/css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet"
+        type="text/css">
+
+    <!-- tracking -->
+    <script type="application/javascript" src="http://localhost:3000/record.js"></script>
+    <script type="application/javascript">
+        window.recorder.setSession()
+    </script>
 </head>
 
 <body>
-  <header role="banner"><hgroup>
-  <h1><a href="/">Save and Share</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
+    <header role="banner">
+        <hgroup>
+            <h1><a href="/">Save and Share</a></h1>
+        </hgroup>
+    </header>
+    <nav role="navigation">
+        <ul class="subscription" data-subscription="rss">
+        </ul>
 
 
-<ul class="main-navigation">
-      <li >
-        <a href="/category/crawl.html">Crawl</a>
-      </li>
-      <li >
-        <a href="/category/devops.html">Devops</a>
-      </li>
-      <li >
-        <a href="/category/programing.html">Programing</a>
-      </li>
-      <li class="active">
-        <a href="/category/web.html">Web</a>
-      </li>
-</ul></nav>
-  <div id="main">
-    <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</h1>
-    <p class="meta">
-<time datetime="2019-05-15T00:00:00+07:00" pubdate>T4 15 Tháng 5 2019</time>    </p>
-</header>
+        <ul class="main-navigation">
+            <li>
+                <a href="/category/crawl.html">Crawl</a>
+            </li>
+            <li>
+                <a href="/category/devops.html">Devops</a>
+            </li>
+            <li>
+                <a href="/category/programing.html">Programing</a>
+            </li>
+            <li class="active">
+                <a href="/category/web.html">Web</a>
+            </li>
+        </ul>
+    </nav>
+    <div id="main">
+        <div id="content">
+            <div>
+                <article class="hentry" role="article">
+                    <header>
+                        <h1 class="entry-title">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF
+                        </h1>
+                        <p class="meta">
+                            <time datetime="2019-05-15T00:00:00+07:00" pubdate>T4 15 Tháng 5 2019</time>
+                        </p>
+                    </header>
 
-  <div class="entry-content"><p><img alt="Image" src="images/convert/Convertion.png"></p>
-<h1>Giới thiệu</h1>
-<ul>
-<li>
-<p>Trong công việc hàng ngày, nhiều lúc chúng ta cần chuyển đổi văn bản từ các file dạng word, excel, powerpoint,.. sang định dạng pdf. Văn bản pdf là viết tắt của  <strong>P</strong>ortable <strong>D</strong>ocunment <strong>F</strong>ormat là một định dạng tập tin văn bản tài liệu khá phổ biến của hãng <strong>Adobe System</strong>, pdf hỗ trợ văn bản thô (text) với rất nhiều kiểu chữ khác nhau, hình ảnh đồ họa đa dạng, âm thanh cùng với rất nhiều các hiệu ứng văn bản khác.</p>
-</li>
-<li>
-<p>Hiện nay đã có rất nhiều hình thức, công cụ để chuyển đổi các định dạng word, excel, powerpoint,.. sang định dạng pdf, bạn có thể chuyển đổi trực tuyến hoặc sử dụng phần mềm hỗ trợ. Tuy nhiên, để hiểu hơn về cách ứng dụng hoạt động, mình sẽ xây dựng một ứng dụng đơn giản, thực hiện việc chuyển đổi các định dạng văn bản như word, excel, powerpoint,.. sang định dạng pdf.</p>
-</li>
-<!-- <li>
+                    <div class="entry-content">
+                        <p><img alt="Image" src="images/convert/Convertion.png"></p>
+                        <h1>Giới thiệu</h1>
+                        <ul>
+                            <li>
+                                <p>Trong công việc hàng ngày, nhiều lúc chúng ta cần chuyển đổi văn bản từ các file dạng
+                                    word, excel, powerpoint,.. sang định dạng pdf. Văn bản pdf là viết tắt của
+                                    <strong>P</strong>ortable <strong>D</strong>ocunment <strong>F</strong>ormat là một
+                                    định dạng tập tin văn bản tài liệu khá phổ biến của hãng <strong>Adobe
+                                        System</strong>, pdf hỗ trợ văn bản thô (text) với rất nhiều kiểu chữ khác nhau,
+                                    hình ảnh đồ họa đa dạng, âm thanh cùng với rất nhiều các hiệu ứng văn bản khác.</p>
+                            </li>
+                            <li>
+                                <p>Hiện nay đã có rất nhiều hình thức, công cụ để chuyển đổi các định dạng word, excel,
+                                    powerpoint,.. sang định dạng pdf, bạn có thể chuyển đổi trực tuyến hoặc sử dụng phần
+                                    mềm hỗ trợ. Tuy nhiên, để hiểu hơn về cách ứng dụng hoạt động, mình sẽ xây dựng một
+                                    ứng dụng đơn giản, thực hiện việc chuyển đổi các định dạng văn bản như word, excel,
+                                    powerpoint,.. sang định dạng pdf.</p>
+                            </li>
+                            <!-- <li>
 <p>Ứng dụng này được xây dựng và phát triển dựa trên một dự án mà mình từng tham gia khi còn đang là thực tập sinh (2018) tại khối <a href="https://cloud.bizfly.vn/]">VCCloud</a> thuộc <a href="https://vccorp.vn/">Công Ty Cổ Phần VCCorp</a> với sự giúp đỡ chỉ bảo tận tình của các anh trong team dev đó là xây dựng hệ thống xem trước (preview) file văn bản cho webmail.</p>
 </li> -->
-</ul>
-<h1>Tổng quan ứng dụng</h1>
-<ul>
-<li>
-<p>Cụ thể, về mặt ngôn ngữ mình dùng <strong>Python</strong> (Python 2.7) để phát triển phần ứng dụng phía backend, framework dùng cho web service là <a href="http://flask.pocoo.org/">Flask</a>, một python web micro-framework. Flask rất đơn giản, giúp cho người mới học dễ tiếp cận và có thể xây dựng website một cách nhanh chóng. Flask đưa ra cho người phát triển những thứ thực sự cần thiết để xây dựng một web api và khả năng mở rộng để có thể kết hợp với các thư viện bên ngoài vì vậy người phát triển cũng hiểu rõ ứng dụng của mình hơn do họ phải tự quản lý những thư viện, gói phần mềm nào cần thiết phải đưa vào ứng dụng.</p>
-</li>
-<li>
-<p>Áp dụng kiến trúc <strong>microservices</strong> làm kiến trúc chung của hệ thống. Viết <a href="https://dactoankmapydev.github.io/UnitTest.html">unittest</a> để kiểm tra kiến trúc nội tại của chương trình, các chức năng riêng rẽ hoạt động đúng hay không. Dùng <strong>docker</strong> để đóng gói và cài đặt môi trường cho ứng dụng. </p>
-</li>
-<li>
-<p>Dùng thư viện <a href="https://github.com/unoconv/unoconv">unoconv</a> (Universal Office Converter) là một công cụ dòng lệnh cho phép chuyển đổi bất kỳ định dạng file nào (doc, docx. odt, ods, xls, xlsx) mà <strong>LibreOffice</strong> hỗ trợ thành bất kỳ các định dạng file như xml, pdf, doc, docx odt, ods, xls, xlsx,..</p>
-</li>
-</ul>
-<h1>Xây dựng web API</h1>
-<ul>
-<li>Cấu trúc thư mục mã nguồn của ứng dụng như sau:</li>
-</ul>
-<div class="highlight"><pre><span></span>├── app
+                        </ul>
+                        <h1>Tổng quan ứng dụng</h1>
+                        <ul>
+                            <li>
+                                <p>Cụ thể, về mặt ngôn ngữ mình dùng <strong>Python</strong> (Python 2.7) để phát triển
+                                    phần ứng dụng phía backend, framework dùng cho web service là <a
+                                        href="http://flask.pocoo.org/">Flask</a>, một python web micro-framework. Flask
+                                    rất đơn giản, giúp cho người mới học dễ tiếp cận và có thể xây dựng website một cách
+                                    nhanh chóng. Flask đưa ra cho người phát triển những thứ thực sự cần thiết để xây
+                                    dựng một web api và khả năng mở rộng để có thể kết hợp với các thư viện bên ngoài vì
+                                    vậy người phát triển cũng hiểu rõ ứng dụng của mình hơn do họ phải tự quản lý những
+                                    thư viện, gói phần mềm nào cần thiết phải đưa vào ứng dụng.</p>
+                            </li>
+                            <li>
+                                <p>Áp dụng kiến trúc <strong>microservices</strong> làm kiến trúc chung của hệ thống.
+                                    Viết <a href="https://dactoankmapydev.github.io/UnitTest.html">unittest</a> để kiểm
+                                    tra kiến trúc nội tại của chương trình, các chức năng riêng rẽ hoạt động đúng hay
+                                    không. Dùng <strong>docker</strong> để đóng gói và cài đặt môi trường cho ứng dụng.
+                                </p>
+                            </li>
+                            <li>
+                                <p>Dùng thư viện <a href="https://github.com/unoconv/unoconv">unoconv</a> (Universal
+                                    Office Converter) là một công cụ dòng lệnh cho phép chuyển đổi bất kỳ định dạng file
+                                    nào (doc, docx. odt, ods, xls, xlsx) mà <strong>LibreOffice</strong> hỗ trợ thành
+                                    bất kỳ các định dạng file như xml, pdf, doc, docx odt, ods, xls, xlsx,..</p>
+                            </li>
+                        </ul>
+                        <h1>Xây dựng web API</h1>
+                        <ul>
+                            <li>Cấu trúc thư mục mã nguồn của ứng dụng như sau:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>├── app
 │   ├── app.py
 │   ├── app.yaml
 │   ├── config.py
@@ -103,18 +137,24 @@
 │   │   └── upload.py
 │   └── test_resources.py
 └── README.md
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Thư mục <strong>app</strong> chứa các mô-đun khác nhau nhưng được liên kết với nhau của ứng dụng, <strong>requirements.txt</strong> chứa các gói phụ thuộc phần mềm cho ứng dụng. </p>
-</li>
-<li>
-<p>Trước khi client tải file lên server thì các file được tải lên phải đảm bảo đúng định dạng, kiểu file được quy định trong tệp tin cấu hình mà người phát triển quy định trong file <strong>config.py</strong></p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+                        <ul>
+                            <li>
+                                <p>Thư mục <strong>app</strong> chứa các mô-đun khác nhau nhưng được liên kết với nhau
+                                    của ứng dụng, <strong>requirements.txt</strong> chứa các gói phụ thuộc phần mềm cho
+                                    ứng dụng. </p>
+                            </li>
+                            <li>
+                                <p>Trước khi client tải file lên server thì các file được tải lên phải đảm bảo đúng định
+                                    dạng, kiểu file được quy định trong tệp tin cấu hình mà người phát triển quy định
+                                    trong file <strong>config.py</strong></p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">yaml</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
@@ -136,37 +176,48 @@
     <span class="n">ALLOWED_EXTENSIONS</span> <span class="o">=</span> <span class="n">_get_config_value</span><span class="p">(</span>
         <span class="s2">&quot;ALLOWED_EXTENSIONS&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;txt&quot;</span><span class="p">,</span> <span class="s2">&quot;docx&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">,</span> <span class="s2">&quot;xls&quot;</span><span class="p">,</span> <span class="s2">&quot;xlsx&quot;</span><span class="p">,</span> <span class="s2">&quot;pptx&quot;</span><span class="p">]</span>
     <span class="p">)</span>
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>Các kiểu định dạng đúng quy định là "txt", "docx", "doc", "xls", "xlsx", "pptx" được lấy từ file cấu hình tùy chỉnh <strong>app.yaml</strong></li>
-</ul>
-<h2>YAML là gì ?</h2>
-<ul>
-<li>
-<p>Có thể thấy đuôi của file này là <a href="https://yaml.org/">yaml</a>, đây là một ngôn ngữ tuần tự hóa dữ liệu (data serialization language), được thiết kế với mục đích giúp con người cũng như các ngôn ngữ lập trình hiện đại dễ đọc và dễ xử lý trong các tác vụ thường ngày. Tương tự với các ngôn ngữ tuần tự dữ liệu khác như XML, JSON, CSV, BSON,… <strong>YAML</strong> được sử dụng để biểu diễn dữ liệu dưới dạng text. YAML thường được sử dụng cho các file cấu hình (configuration files), nhưng cũng có thể được sử dụng cho những mục đích khác như lưu các file log,..</p>
-</li>
-<li>
-<p>Các file được viết bằng YAML có phần đuôi mở rộng là <strong>.yaml</strong> hoặc <strong>.yml</strong></p>
-</li>
-<li>
-<p>Có cú pháp giống của Python, YAML yêu cầu thụt đầu dòng trước mỗi câu, thụt đầu dòng bởi các dấu cách (không dùng tab).</p>
-</li>
-<li>
-<p>Dùng dấu <strong>#</strong> để bắt đầu comment.</p>
-</li>
-<li>
-<p>Dấu "-" để bắt đầu cho 1 list các phần tử.</p>
-</li>
-<li>
-<p>Tham khảo thêm về cú pháp khác ở <a href="https://yaml.org/refcard.html">đây</a>.</p>
-</li>
-<li>
-<p>File cấu hình <strong>app.yaml</strong></p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>UPLOAD_FOLDER: &#39;upload&#39;
+                        <ul>
+                            <li>Các kiểu định dạng đúng quy định là "txt", "docx", "doc", "xls", "xlsx", "pptx" được lấy
+                                từ file cấu hình tùy chỉnh <strong>app.yaml</strong></li>
+                        </ul>
+                        <h2>YAML là gì ?</h2>
+                        <ul>
+                            <li>
+                                <p>Có thể thấy đuôi của file này là <a href="https://yaml.org/">yaml</a>, đây là một
+                                    ngôn ngữ tuần tự hóa dữ liệu (data serialization language), được thiết kế với mục
+                                    đích giúp con người cũng như các ngôn ngữ lập trình hiện đại dễ đọc và dễ xử lý
+                                    trong các tác vụ thường ngày. Tương tự với các ngôn ngữ tuần tự dữ liệu khác như
+                                    XML, JSON, CSV, BSON,… <strong>YAML</strong> được sử dụng để biểu diễn dữ liệu dưới
+                                    dạng text. YAML thường được sử dụng cho các file cấu hình (configuration files),
+                                    nhưng cũng có thể được sử dụng cho những mục đích khác như lưu các file log,..</p>
+                            </li>
+                            <li>
+                                <p>Các file được viết bằng YAML có phần đuôi mở rộng là <strong>.yaml</strong> hoặc
+                                    <strong>.yml</strong></p>
+                            </li>
+                            <li>
+                                <p>Có cú pháp giống của Python, YAML yêu cầu thụt đầu dòng trước mỗi câu, thụt đầu dòng
+                                    bởi các dấu cách (không dùng tab).</p>
+                            </li>
+                            <li>
+                                <p>Dùng dấu <strong>#</strong> để bắt đầu comment.</p>
+                            </li>
+                            <li>
+                                <p>Dấu "-" để bắt đầu cho 1 list các phần tử.</p>
+                            </li>
+                            <li>
+                                <p>Tham khảo thêm về cú pháp khác ở <a href="https://yaml.org/refcard.html">đây</a>.</p>
+                            </li>
+                            <li>
+                                <p>File cấu hình <strong>app.yaml</strong></p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>UPLOAD_FOLDER: &#39;upload&#39;
 CONVERT_FOLDER: &#39;convert&#39;
 MAX_CONTENT_LENGTH: 52428800
 ALLOWED_EXTENSIONS:
@@ -176,41 +227,52 @@ ALLOWED_EXTENSIONS:
   - &#39;xls&#39;
   - &#39;xlsx&#39;
   - &#39;pptx&#39;
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>Quy định:</li>
-</ul>
-<div class="highlight"><pre><span></span>- UPLOAD_FOLDER là nơi lưu trữ file tải lên.
+                        <ul>
+                            <li>Quy định:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>- UPLOAD_FOLDER là nơi lưu trữ file tải lên.
 - CONVERT_FOLDER là nơi lưu các file đã được chuyển đổi.
 - MAX_CONTENT_LENGTH là kích thước tối đa file được tải lên.
 - ALLOWED_EXTENSIONS là các định dạng file được phép tải lên.
-</pre></div>
+</pre>
+                        </div>
 
 
-<h2>Luồng xử lý của hệ thống</h2>
-<div class="highlight"><pre><span></span>- B1. Client tải (upload) file lên phía server cùng theo yêu cầu chuyển đổi định dạng.
+                        <h2>Luồng xử lý của hệ thống</h2>
+                        <div class="highlight">
+                            <pre><span></span>- B1. Client tải (upload) file lên phía server cùng theo yêu cầu chuyển đổi định dạng.
 - B2. Web server nhận file và yêu cầu từ phía client, kiểm tra định dạng file tải lên, nếu file đúng định dạng quy định trong file cấu hình thì thực hiện tiếp B3, nếu không thì gửi phản hồi cho client. 
 - B3. Tạo thư mục upload và chuyển file đúng định dạng cần chuyển đổi vào đây.
 - B4. Web server thực hiện việc chuyển đổi định dạng file sang pdf và lưu file đã chuyển đổi vào folder convert.
 - B5. Gửi phản hồi cho client biết việc chuyển đổi đã thành công.
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>Luồng xử lý chính của hệ thống được code trong file <strong>resources/upload.py</strong>, mỗi bước như trên sẽ được thực hiện trong một hàm tương ứng. Từ bước 1 tới bước 5 ứng dụng sẽ có các hàm tương ứng là <strong>upload_file</strong>, <strong>allowed_file</strong>, <strong>_mkdir_upload_folder</strong>, <strong>convert_file</strong></li>
-</ul>
-<h2>Hàm allowed_file</h2>
-<ul>
-<li>
-<p>Chức năng của hàm này là kiểm tra loại file tải lên bằng cách kiểm phần đuôi mở rộng của nó, trả về thông báo định dạng file hợp lệ hoặc không hợp lệ.</p>
-</li>
-<li>
-<p>Mã nguồn hàm  <strong>allowed_file</strong></p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>def allowed_file(filename):
+                        <ul>
+                            <li>Luồng xử lý chính của hệ thống được code trong file
+                                <strong>resources/upload.py</strong>, mỗi bước như trên sẽ được thực hiện trong một hàm
+                                tương ứng. Từ bước 1 tới bước 5 ứng dụng sẽ có các hàm tương ứng là
+                                <strong>upload_file</strong>, <strong>allowed_file</strong>,
+                                <strong>_mkdir_upload_folder</strong>, <strong>convert_file</strong></li>
+                        </ul>
+                        <h2>Hàm allowed_file</h2>
+                        <ul>
+                            <li>
+                                <p>Chức năng của hàm này là kiểm tra loại file tải lên bằng cách kiểm phần đuôi mở rộng
+                                    của nó, trả về thông báo định dạng file hợp lệ hoặc không hợp lệ.</p>
+                            </li>
+                            <li>
+                                <p>Mã nguồn hàm <strong>allowed_file</strong></p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>def allowed_file(filename):
     &quot;&quot;&quot;Docs.
 
     Function check type file
@@ -231,19 +293,24 @@ ALLOWED_EXTENSIONS:
         &quot;.&quot; in filename
         and filename.split(&quot;.&quot;)[-1].lower() in BaseConfig.ALLOWED_EXTENSIONS
     )
-</pre></div>
+</pre>
+                        </div>
 
 
-<h2>Hàm _mkdir_upload_folder</h2>
-<ul>
-<li>
-<p>Đầu vào của hàm này là một biến đường dẫn thư mục được cấu hình trong file cấu hình. Hàm này có chức năng tạo ra thư mục chứa các file ban đầu được upload theo cấu trúc <strong>/upload/year/month/day/example.docx</strong> nhằm để quản lý các file dễ dàng hơn.</p>
-</li>
-<li>
-<p>Mã nguồn hàm <strong>_mkdir_upload_folder</strong> </p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>def _mkdir_upload_folder(upload_path):
+                        <h2>Hàm _mkdir_upload_folder</h2>
+                        <ul>
+                            <li>
+                                <p>Đầu vào của hàm này là một biến đường dẫn thư mục được cấu hình trong file cấu hình.
+                                    Hàm này có chức năng tạo ra thư mục chứa các file ban đầu được upload theo cấu trúc
+                                    <strong>/upload/year/month/day/example.docx</strong> nhằm để quản lý các file dễ
+                                    dàng hơn.</p>
+                            </li>
+                            <li>
+                                <p>Mã nguồn hàm <strong>_mkdir_upload_folder</strong> </p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>def _mkdir_upload_folder(upload_path):
     &quot;&quot;&quot; Create folder upload
     &quot;&quot;&quot;
 
@@ -259,26 +326,34 @@ ALLOWED_EXTENSIONS:
 
     except Exception as e:
         return False, str(e)
-</pre></div>
+</pre>
+                        </div>
 
 
-<h2>Hàm convert_file</h2>
-<ul>
-<li>Hàm này nhận biến đầu vào là đường dẫn của file cần chuyển đổi, sử dụng thư viện <strong>unoconv</strong> mà phần giới thiệu mình có nhắc tới để chuyển đổi sang định dạng pdf, cú pháp dòng lệnh có dạng:</li>
-</ul>
-<div class="highlight"><pre><span></span>cmd = &quot;unoconv -f pdf --output=&quot; + file_output_path + &quot; &quot; + file_path
-</pre></div>
+                        <h2>Hàm convert_file</h2>
+                        <ul>
+                            <li>Hàm này nhận biến đầu vào là đường dẫn của file cần chuyển đổi, sử dụng thư viện
+                                <strong>unoconv</strong> mà phần giới thiệu mình có nhắc tới để chuyển đổi sang định
+                                dạng pdf, cú pháp dòng lệnh có dạng:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>cmd = &quot;unoconv -f pdf --output=&quot; + file_output_path + &quot; &quot; + file_path
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Dòng lệnh trên sẽ dựa vào đường dẫn đến file người dùng tải lên nằm trong thư mục upload, dùng thư viện unoconv chuyển đổi sang định dạng pdf và lưu file đã được chuyển đổi định dạng sang thư mục convert.</p>
-</li>
-<li>
-<p>Mã nguồn của hàm này như sau:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>def convert_file(file_path):
+                        <ul>
+                            <li>
+                                <p>Dòng lệnh trên sẽ dựa vào đường dẫn đến file người dùng tải lên nằm trong thư mục
+                                    upload, dùng thư viện unoconv chuyển đổi sang định dạng pdf và lưu file đã được
+                                    chuyển đổi định dạng sang thư mục convert.</p>
+                            </li>
+                            <li>
+                                <p>Mã nguồn của hàm này như sau:</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>def convert_file(file_path):
     &quot;&quot;&quot;Docs.
 
     # Author: Toannd
@@ -310,19 +385,26 @@ ALLOWED_EXTENSIONS:
         return True, file_name
 
     return False, &quot;&quot;
-</pre></div>
+</pre>
+                        </div>
 
 
-<h2>Hàm upload_file</h2>
-<ul>
-<li>
-<p>Chức năng của hàm này là upload file bằng hai phương thức <strong>POST</strong> hoặc <strong>GET</strong>, đây là hai phương thức HTTP thông dụng.</p>
-</li>
-<li>
-<p>Với phương thức <strong>POST</strong> người dùng sẽ tải file từ máy tính của mình lên server, server nhận file và tiến hành kiểm tra định dạng file mới tải thông qua hàm <strong>allowed_file</strong>, nếu file đúng định dạng quy định thì tạo thư mục upload và chuyển file cần chuyển đổi vào đây. Nếu file không đúng định dạng thì trả về thông báo lỗi cho người dùng vui lòng tải lên file đúng định dạng.</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>if request.method == &quot;POST&quot;:
+                        <h2>Hàm upload_file</h2>
+                        <ul>
+                            <li>
+                                <p>Chức năng của hàm này là upload file bằng hai phương thức <strong>POST</strong> hoặc
+                                    <strong>GET</strong>, đây là hai phương thức HTTP thông dụng.</p>
+                            </li>
+                            <li>
+                                <p>Với phương thức <strong>POST</strong> người dùng sẽ tải file từ máy tính của mình lên
+                                    server, server nhận file và tiến hành kiểm tra định dạng file mới tải thông qua hàm
+                                    <strong>allowed_file</strong>, nếu file đúng định dạng quy định thì tạo thư mục
+                                    upload và chuyển file cần chuyển đổi vào đây. Nếu file không đúng định dạng thì trả
+                                    về thông báo lỗi cho người dùng vui lòng tải lên file đúng định dạng.</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>if request.method == &quot;POST&quot;:
     &quot;&quot;&quot; Handle file via POST
     - Get file upload via payload
     - Download file to folder upload
@@ -371,34 +453,53 @@ ALLOWED_EXTENSIONS:
             ),
             404,
         )
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>Với phương thức <strong>GET</strong> người dùng sẽ tải file qua tham số trên url, file được tải cần chuyển đổi là một đường dẫn trực tiếp đến tệp tin trên internet như <a href="http://home.actvn.edu.vn/Upload/document/don-hoan-thi.docx">đơn xin hoãn thi</a></li>
-</ul>
-<div class="highlight"><pre><span></span>http://home.actvn.edu.vn/Upload/document/don-hoan-thi.docx
-</pre></div>
+                        <ul>
+                            <li>Với phương thức <strong>GET</strong> người dùng sẽ tải file qua tham số trên url, file
+                                được tải cần chuyển đổi là một đường dẫn trực tiếp đến tệp tin trên internet như <a
+                                    href="http://home.actvn.edu.vn/Upload/document/don-hoan-thi.docx">đơn xin hoãn
+                                    thi</a></li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>http://home.actvn.edu.vn/Upload/document/don-hoan-thi.docx
+</pre>
+                        </div>
 
 
-<ul>
-<li>Server nhận file và tiến hành kiểm tra định dạng file theo phần mở rộng của file theo đường dẫn, như ví dụ trên thì server sẽ tách lấy phần tên của file sau ký tự "/" đầu tiên tính từ phải sang là <strong>don-hoan-thi.docx</strong> bằng dòng code sau với <strong>file_name_origin</strong> là tên gốc:</li>
-</ul>
-<div class="highlight"><pre><span></span>file_name_origin = file_url.rsplit(&quot;/&quot;, 1)[1]
-</pre></div>
+                        <ul>
+                            <li>Server nhận file và tiến hành kiểm tra định dạng file theo phần mở rộng của file theo
+                                đường dẫn, như ví dụ trên thì server sẽ tách lấy phần tên của file sau ký tự "/" đầu
+                                tiên tính từ phải sang là <strong>don-hoan-thi.docx</strong> bằng dòng code sau với
+                                <strong>file_name_origin</strong> là tên gốc:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>file_name_origin = file_url.rsplit(&quot;/&quot;, 1)[1]
+</pre>
+                        </div>
 
 
-<ul>
-<li>Tiếp tục lấy phần đuôi của tên gốc và so sánh với file cấu hình:</li>
-</ul>
-<div class="highlight"><pre><span></span>if file_name_origin.split(&quot;.&quot;)[-1].lower() in BaseConfig.ALLOWED_EXTENSIONS:
-</pre></div>
+                        <ul>
+                            <li>Tiếp tục lấy phần đuôi của tên gốc và so sánh với file cấu hình:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>if file_name_origin.split(&quot;.&quot;)[-1].lower() in BaseConfig.ALLOWED_EXTENSIONS:
+</pre>
+                        </div>
 
 
-<ul>
-<li>Nếu file upload đúng định dạng thì kiểm tra tên file có chứa ký tự trống hay không vì một số trường hợp đặc biệt tên file chứa ký tự trống như <strong>don hoan thi.docx</strong> thì việc chuyển đổi ở các bước sau sẽ không thực hiện được, vì vậy để chắc chắn mình sẽ dùng <strong>regex</strong> bắt các trường hợp có thể xảy ra bằng cách đưa ra điều kiện nếu tên file chứa khoảng trắng thì mình sẽ thay thế khoảng trắng bằng một dấu nối "-"</li>
-</ul>
-<div class="highlight"><pre><span></span>if re.search(r&quot;\s&quot;, file_name_origin):
+                        <ul>
+                            <li>Nếu file upload đúng định dạng thì kiểm tra tên file có chứa ký tự trống hay không vì
+                                một số trường hợp đặc biệt tên file chứa ký tự trống như <strong>don hoan
+                                    thi.docx</strong> thì việc chuyển đổi ở các bước sau sẽ không thực hiện được, vì vậy
+                                để chắc chắn mình sẽ dùng <strong>regex</strong> bắt các trường hợp có thể xảy ra bằng
+                                cách đưa ra điều kiện nếu tên file chứa khoảng trắng thì mình sẽ thay thế khoảng trắng
+                                bằng một dấu nối "-"</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>if re.search(r&quot;\s&quot;, file_name_origin):
     name_extension = file_name_origin.split(&quot;.&quot;)[-1]
     file_name_edit = (
         (file_name_origin[: file_name_origin.rindex(&quot;.&quot;)]).replace(
@@ -410,37 +511,64 @@ ALLOWED_EXTENSIONS:
     file_path = upload_path + &quot;/&quot; + file_name_edit
 else:
     file_path = upload_path + &quot;/&quot; + file_name_origin
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>Không phải lúc nào mọi chuyện cũng diễn ra êm đẹp, khi gặp phải trường hợp người dùng tải file qua tham số trên url như <a href="http://sepon.com.vn/Download.aspx?id=9">dạng đường dẫn không hiển thị đuôi mở rộng</a> này</li>
-</ul>
-<div class="highlight"><pre><span></span>http://sepon.com.vn/Download.aspx?id=9
-</pre></div>
+                        <ul>
+                            <li>Không phải lúc nào mọi chuyện cũng diễn ra êm đẹp, khi gặp phải trường hợp người dùng
+                                tải file qua tham số trên url như <a href="http://sepon.com.vn/Download.aspx?id=9">dạng
+                                    đường dẫn không hiển thị đuôi mở rộng</a> này</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>http://sepon.com.vn/Download.aspx?id=9
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Nếu không thay đổi gì về code mà vẫn để server tiến hành kiểm tra định dạng file theo phần mở rộng của file thì chắc chắn sẽ không đạt được yêu cầu từ phía người dùng. Theo trình tự server sẽ tách lấy phần tên của file sau ký tự "/" đầu tiên tính từ phải sang là <strong>Download.aspx?id=9</strong> và tiến hành kiểm tra phần đuôi mở rộng sau ký tự "." đầu tiên từ phải sang là <strong>aspx?id=9</strong> với file cấu hình, dĩ nhiên là phần mở rộng này không nằm trong file cấu hình, server sẽ bỏ qua phần việc chuyển đổi và trả cho người dùng một thông báo vui lòng tải lên file đúng định dạng.</p>
-</li>
-<li>
-<p>Vậy cần phải thêm một trường hợp để kiểm tra các dạng đường dẫn như vậy, đối với các loại file có phần mở rộng không nằm trong file cấu hình</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>if file_url.split(&quot;.&quot;)[-1] not in BaseConfig.ALLOWED_EXTENSIONS:
-</pre></div>
+                        <ul>
+                            <li>
+                                <p>Nếu không thay đổi gì về code mà vẫn để server tiến hành kiểm tra định dạng file theo
+                                    phần mở rộng của file thì chắc chắn sẽ không đạt được yêu cầu từ phía người dùng.
+                                    Theo trình tự server sẽ tách lấy phần tên của file sau ký tự "/" đầu tiên tính từ
+                                    phải sang là <strong>Download.aspx?id=9</strong> và tiến hành kiểm tra phần đuôi mở
+                                    rộng sau ký tự "." đầu tiên từ phải sang là <strong>aspx?id=9</strong> với file cấu
+                                    hình, dĩ nhiên là phần mở rộng này không nằm trong file cấu hình, server sẽ bỏ qua
+                                    phần việc chuyển đổi và trả cho người dùng một thông báo vui lòng tải lên file đúng
+                                    định dạng.</p>
+                            </li>
+                            <li>
+                                <p>Vậy cần phải thêm một trường hợp để kiểm tra các dạng đường dẫn như vậy, đối với các
+                                    loại file có phần mở rộng không nằm trong file cấu hình</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>if file_url.split(&quot;.&quot;)[-1] not in BaseConfig.ALLOWED_EXTENSIONS:
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Mình sẽ đi phân tích <strong>HTTP header</strong> để lấy ra một vài thông tin cần thiết. <strong>HTTP header</strong> là phần đầu của HTTP trong mỗi request mà client gửi tới server cũng như response của server gửi về cho client. Mỗi khi truy cập vào một url thì chúng ta sẽ thực hiện gửi và nhận nhiều HTTP request nên đồng thời cũng gửi và nhận nhiều HTTP header kèm theo. <strong>HTTP header</strong> chứa thông tin chủ yếu về client và server. Cụ thể là thông tin của trình duyệt, thông tin cấu hình server, ngày tháng, thông tin về request page, kiểu dữ liệu truyền tải,.. Thông qua <strong>Content-Disposition</strong> mình sẽ lấy được <strong>file name</strong> của file tải lên từ đó tiến hành tải file xuống thư mục upload và lặp lại các bước tiếp theo như trường hợp mình nêu ra ở bên trên.</p>
-</li>
-<li>
-<p>Sau khi trải qua hết các bước kiểm tra file đầu vào thì tiến hành chuyển đổi định dạng file sang pdf thông qua hàm <strong>convert_file</strong>, sau đó thực hiện chức năng xem trước (preview) hiển thị file đã chuyển đổi ngay trên trình duyệt:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>ok, file_name = convert_file(file_path)
+                        <ul>
+                            <li>
+                                <p>Mình sẽ đi phân tích <strong>HTTP header</strong> để lấy ra một vài thông tin cần
+                                    thiết. <strong>HTTP header</strong> là phần đầu của HTTP trong mỗi request mà client
+                                    gửi tới server cũng như response của server gửi về cho client. Mỗi khi truy cập vào
+                                    một url thì chúng ta sẽ thực hiện gửi và nhận nhiều HTTP request nên đồng thời cũng
+                                    gửi và nhận nhiều HTTP header kèm theo. <strong>HTTP header</strong> chứa thông tin
+                                    chủ yếu về client và server. Cụ thể là thông tin của trình duyệt, thông tin cấu hình
+                                    server, ngày tháng, thông tin về request page, kiểu dữ liệu truyền tải,.. Thông qua
+                                    <strong>Content-Disposition</strong> mình sẽ lấy được <strong>file name</strong> của
+                                    file tải lên từ đó tiến hành tải file xuống thư mục upload và lặp lại các bước tiếp
+                                    theo như trường hợp mình nêu ra ở bên trên.</p>
+                            </li>
+                            <li>
+                                <p>Sau khi trải qua hết các bước kiểm tra file đầu vào thì tiến hành chuyển đổi định
+                                    dạng file sang pdf thông qua hàm <strong>convert_file</strong>, sau đó thực hiện
+                                    chức năng xem trước (preview) hiển thị file đã chuyển đổi ngay trên trình duyệt:</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>ok, file_name = convert_file(file_path)
 file_path_convert = os.path.join(os.getcwd(), BaseConfig.CONVERT_FOLDER, file_name)
 with open(file_path_convert) as f:
     file_content = f.read()
@@ -448,86 +576,122 @@ response = make_response(file_content)
 response.headers[&quot;Content-Disposition&quot;] = &quot;inline; filename={}&quot;.format(file_name)
 response.headers[&quot;Content-Type&quot;] = &quot;application/pdf&quot;
 return response
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p><strong>Content-Disposition</strong> là một thông tin trên phần HTTP header của response, nó cho biết nội dung dự kiến sẽ được hiển thị trên trình duyệt. Với <strong>inline</strong> nội dung sẽ hiển thị tự động.</p>
-</li>
-<li>
-<p><strong>Content-Type</strong> giúp trình duyệt biết được nội dung này có thể mở bằng ứng dụng nào, và gợi ý người dùng mở bằng một chương trình có sẵn trên máy tính của họ khi nội dung đã download thành công.</p>
-</li>
-</ul>
-<h1>Test API bằng POSTMAN</h1>
-<p><img alt="Image" src="images/convert/postman.png"></p>
-<h2>Giới thiệu</h2>
-<ul>
-<li>
-<p>Sau khi đã xây dựng được một web API thì cần phải kiểm tra nó hoạt động có như mong đợi hay không, nếu có thì tốt nếu không thì lại đi fix bug tiếp. Việc dùng code gọi các API và test kết quả trả về khá tốn công. Vì vậy mình xin giới thiệu một công cụ mình hay dùng khi làm việc với RESTful API là <a href="https://www.getpostman.com/">POSTMAN</a>.</p>
-</li>
-<li>
-<p>POSTMAN là một công cụ cho phép chúng ta làm việc với API. Với Postman, ta có thể gọi API mà không cần viết dòng code nào.</p>
-</li>
-<li>
-<p>POSTMAN hỗ trợ tất cả các phương thức HTTP (GET, POST, PUT, PATCH, DELETE, ...).</p>
-</li>
-<li>
-<p>POSTMAN cho phép lưu lại lịch sử các lần request.</p>
-</li>
-</ul>
-<h2>Test API</h2>
-<ul>
-<li>
-<p>Việc sử dụng POSTMAN rất đơn giản. Bạn chỉ cần chọn method, điền URL, thêm các thông tin cho body, header trong những trường hợp cần thiết, rồi nhấn SEND và chờ kết quả trả về.</p>
-</li>
-<li>
-<p>Bắt đầu chạy ứng dụng:
-<img alt="Image" src="images/convert/run.png"></p>
-</li>
-<li>
-<p>Đầu tiên mình sẽ tiến hành kiểm tra upload file bằng phương thức <strong>POST</strong>
-<img alt="Image" src="images/convert/up1.png"></p>
-</li>
-<li>
-<p>Với method POST (hoặc PUT) bạn cần phải thêm nội dung vào body để gửi request, response status code phản hồi từ server là 200, thành công, kiểm tra trong thư mục convert đã tồn tại file vừa được chuyển đổi
-<img alt="Image" src="images/convert/tree.png"></p>
-</li>
-<li>
-<p>Kiểm tra với trường hợp tải lên file không đúng định dạng:
-<img alt="Image" src="images/convert/up2.png"></p>
-</li>
-<li>
-<p>Trường hợp truyền file nhưng không đúng tham số trong phần body hoặc quên không chọn file upload mà vẫn bấm SEND:
-<img alt="Image" src="images/convert/up3.png"></p>
-</li>
-<li>
-<p>Bây giờ mình tiến hành kiểm tra upload file bằng phương thức <strong>GET</strong>
-<img alt="Image" src="images/convert/get1.png"></p>
-</li>
-<li>
-<p>Kiểm tra thấy file đã tồn tại trong thư mục:
-<img alt="Image" src="images/convert/get2.png"></p>
-</li>
-<li>
-<p>Xem trước file trên trình duyệt:
-<img alt="Image" src="images/convert/get3.png"></p>
-</li>
-<li>
-<p>Với các trường hợp truyền file không đúng tham số, tải lên file không đúng định dạng quy định đều nhận được phản hồi từ phía hệ thống để phía người dùng điều chỉnh cho đúng yêu cầu.</p>
-</li>
-</ul>
-<h1>Viết unit test</h1>
-<ul>
-<li>
-<p>Unit test là một phần không thể thiếu của một ứng dụng, trong bài viết trước đây mình đã viết một bài <a href="https://dactoankmapydev.github.io/UnitTest.html">unit test cơ bản</a> trong đó trình bày về khái niệm, đặc điểm, lợi ích của unit test và ví dụ minh họa về thư viện unit test trong python. Ở bài viết này mình sẽ không đi sâu về unit test mà chỉ tập trung vào việc mình sẽ test cái gì trong ứng dụng mà mình đang đề cập tới.</p>
-</li>
-<li>
-<p>File <strong>test_resources.py</strong> chứa code test các hàm của ứng dụng lần lượt là test hàm tạo thư mục upload theo cấu trúc <strong>year/month/day</strong>, hàm kiểm tra phần mở rộng của file tải lên, hàm chuyển đổi định dạng file sang pdf tương ứng với ba lớp <strong>TestFolderMkdir</strong>, <strong>TestAllowedFile</strong>, <strong>TestConvertFile</strong></p>
-</li>
-</ul>
-<h2>Mã nguồn:</h2>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+                        <ul>
+                            <li>
+                                <p><strong>Content-Disposition</strong> là một thông tin trên phần HTTP header của
+                                    response, nó cho biết nội dung dự kiến sẽ được hiển thị trên trình duyệt. Với
+                                    <strong>inline</strong> nội dung sẽ hiển thị tự động.</p>
+                            </li>
+                            <li>
+                                <p><strong>Content-Type</strong> giúp trình duyệt biết được nội dung này có thể mở bằng
+                                    ứng dụng nào, và gợi ý người dùng mở bằng một chương trình có sẵn trên máy tính của
+                                    họ khi nội dung đã download thành công.</p>
+                            </li>
+                        </ul>
+                        <h1>Test API bằng POSTMAN</h1>
+                        <p><img alt="Image" src="images/convert/postman.png"></p>
+                        <h2>Giới thiệu</h2>
+                        <ul>
+                            <li>
+                                <p>Sau khi đã xây dựng được một web API thì cần phải kiểm tra nó hoạt động có như mong
+                                    đợi hay không, nếu có thì tốt nếu không thì lại đi fix bug tiếp. Việc dùng code gọi
+                                    các API và test kết quả trả về khá tốn công. Vì vậy mình xin giới thiệu một công cụ
+                                    mình hay dùng khi làm việc với RESTful API là <a
+                                        href="https://www.getpostman.com/">POSTMAN</a>.</p>
+                            </li>
+                            <li>
+                                <p>POSTMAN là một công cụ cho phép chúng ta làm việc với API. Với Postman, ta có thể gọi
+                                    API mà không cần viết dòng code nào.</p>
+                            </li>
+                            <li>
+                                <p>POSTMAN hỗ trợ tất cả các phương thức HTTP (GET, POST, PUT, PATCH, DELETE, ...).</p>
+                            </li>
+                            <li>
+                                <p>POSTMAN cho phép lưu lại lịch sử các lần request.</p>
+                            </li>
+                        </ul>
+                        <h2>Test API</h2>
+                        <ul>
+                            <li>
+                                <p>Việc sử dụng POSTMAN rất đơn giản. Bạn chỉ cần chọn method, điền URL, thêm các thông
+                                    tin cho body, header trong những trường hợp cần thiết, rồi nhấn SEND và chờ kết quả
+                                    trả về.</p>
+                            </li>
+                            <li>
+                                <p>Bắt đầu chạy ứng dụng:
+                                    <img alt="Image" src="images/convert/run.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Đầu tiên mình sẽ tiến hành kiểm tra upload file bằng phương thức
+                                    <strong>POST</strong>
+                                    <img alt="Image" src="images/convert/up1.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Với method POST (hoặc PUT) bạn cần phải thêm nội dung vào body để gửi request,
+                                    response status code phản hồi từ server là 200, thành công, kiểm tra trong thư mục
+                                    convert đã tồn tại file vừa được chuyển đổi
+                                    <img alt="Image" src="images/convert/tree.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Kiểm tra với trường hợp tải lên file không đúng định dạng:
+                                    <img alt="Image" src="images/convert/up2.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Trường hợp truyền file nhưng không đúng tham số trong phần body hoặc quên không chọn
+                                    file upload mà vẫn bấm SEND:
+                                    <img alt="Image" src="images/convert/up3.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Bây giờ mình tiến hành kiểm tra upload file bằng phương thức <strong>GET</strong>
+                                    <img alt="Image" src="images/convert/get1.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Kiểm tra thấy file đã tồn tại trong thư mục:
+                                    <img alt="Image" src="images/convert/get2.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Xem trước file trên trình duyệt:
+                                    <img alt="Image" src="images/convert/get3.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Với các trường hợp truyền file không đúng tham số, tải lên file không đúng định dạng
+                                    quy định đều nhận được phản hồi từ phía hệ thống để phía người dùng điều chỉnh cho
+                                    đúng yêu cầu.</p>
+                            </li>
+                        </ul>
+                        <h1>Viết unit test</h1>
+                        <ul>
+                            <li>
+                                <p>Unit test là một phần không thể thiếu của một ứng dụng, trong bài viết trước đây mình
+                                    đã viết một bài <a href="https://dactoankmapydev.github.io/UnitTest.html">unit test
+                                        cơ bản</a> trong đó trình bày về khái niệm, đặc điểm, lợi ích của unit test và
+                                    ví dụ minh họa về thư viện unit test trong python. Ở bài viết này mình sẽ không đi
+                                    sâu về unit test mà chỉ tập trung vào việc mình sẽ test cái gì trong ứng dụng mà
+                                    mình đang đề cập tới.</p>
+                            </li>
+                            <li>
+                                <p>File <strong>test_resources.py</strong> chứa code test các hàm của ứng dụng lần lượt
+                                    là test hàm tạo thư mục upload theo cấu trúc <strong>year/month/day</strong>, hàm
+                                    kiểm tra phần mở rộng của file tải lên, hàm chuyển đổi định dạng file sang pdf tương
+                                    ứng với ba lớp <strong>TestFolderMkdir</strong>, <strong>TestAllowedFile</strong>,
+                                    <strong>TestConvertFile</strong></p>
+                            </li>
+                        </ul>
+                        <h2>Mã nguồn:</h2>
+                        <div class="highlight">
+                            <pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
@@ -583,92 +747,125 @@ return response
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p><strong>unittest.TestCase</strong> được sử dụng để tạo các trường hợp thử nghiệm, testcase được tạo ra bằng cách kế thừa <strong>unittest.TestCase</strong></p>
-</li>
-<li>
-<p>Phương thức <strong>setUp()</strong> và <strong>tearDown()</strong> cho phép định nghĩa hướng dẫn sẽ được thực hiện trước và sau mỗi phương thức test. Ở đây <strong>setUp()</strong> dùng để khởi tạo thư mục cho việc test và <strong>tearDown()</strong> dọn dẹp sau khi đã test xong.</p>
-</li>
-<li>
-<p>Chạy tập lệnh cho kết quả:
-<img alt="Image" src="images/convert/te.png"></p>
-</li>
-<li>
-<p>Kết quả thử nghiệm nếu tất cả các trường hợp kiểm tra được thông qua, đầu ra cho thấy <strong>OK</strong>.</p>
-</li>
-</ul>
-<h1>Triển khai ứng dụng với docker</h1>
-<ul>
-<li>
-<p><strong>Docker</strong> giúp xây dựng được một cơ chế ảo hóa, mục đích là tạo ra một môi trường riêng biệt (hệ điều hành, phần mềm…) để dễ quản lý, bảo trì, di chuyển các phần mềm, code đã được đóng gói.</p>
-</li>
-<li>
-<p>Trong phạm vi bài viết này, mình không đi sâu về khái niệm, đặc điểm,.. của <strong>docker</strong> mà chỉ tập trung vào việc xây dựng docker cho ứng dụng mình đang nói tới.</p>
-</li>
-<li>
-<p>Trước tiên bạn phải <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">cài đặt docker</a>, hiện tại mình sử dụng ubuntu 18.04, phiên bản docker hiện tại của mình là <strong>Docker version 18.09.6, build 481bc77</strong></p>
-</li>
-</ul>
-<h2>Tạo Dockerfile</h2>
-<ul>
-<li>
-<p><strong>Docker</strong> sẽ xây dựng (build) <strong>docker image</strong> một cách tự động bằng cách đọc các chỉ thị (instruction) đã được khai báo trong một file có tên là <strong>Dockerfile</strong>. <strong>Dockerfile</strong> là một tập tin dạng text chứa một tập các câu lệnh để tạo mới một <strong>Image</strong> trong Docker.</p>
-</li>
-<li>
-<p>Tạo một tệp <strong>Dockerfile</strong> trong thư mục gốc của ứng dụng và thêm dòng <strong>FROM</strong> ngay dòng đầu tiên:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>FROM python:2
-</pre></div>
+                        <ul>
+                            <li>
+                                <p><strong>unittest.TestCase</strong> được sử dụng để tạo các trường hợp thử nghiệm,
+                                    testcase được tạo ra bằng cách kế thừa <strong>unittest.TestCase</strong></p>
+                            </li>
+                            <li>
+                                <p>Phương thức <strong>setUp()</strong> và <strong>tearDown()</strong> cho phép định
+                                    nghĩa hướng dẫn sẽ được thực hiện trước và sau mỗi phương thức test. Ở đây
+                                    <strong>setUp()</strong> dùng để khởi tạo thư mục cho việc test và
+                                    <strong>tearDown()</strong> dọn dẹp sau khi đã test xong.</p>
+                            </li>
+                            <li>
+                                <p>Chạy tập lệnh cho kết quả:
+                                    <img alt="Image" src="images/convert/te.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Kết quả thử nghiệm nếu tất cả các trường hợp kiểm tra được thông qua, đầu ra cho thấy
+                                    <strong>OK</strong>.</p>
+                            </li>
+                        </ul>
+                        <h1>Triển khai ứng dụng với docker</h1>
+                        <ul>
+                            <li>
+                                <p><strong>Docker</strong> giúp xây dựng được một cơ chế ảo hóa, mục đích là tạo ra một
+                                    môi trường riêng biệt (hệ điều hành, phần mềm…) để dễ quản lý, bảo trì, di chuyển
+                                    các phần mềm, code đã được đóng gói.</p>
+                            </li>
+                            <li>
+                                <p>Trong phạm vi bài viết này, mình không đi sâu về khái niệm, đặc điểm,.. của
+                                    <strong>docker</strong> mà chỉ tập trung vào việc xây dựng docker cho ứng dụng mình
+                                    đang nói tới.</p>
+                            </li>
+                            <li>
+                                <p>Trước tiên bạn phải <a
+                                        href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04">cài
+                                        đặt docker</a>, hiện tại mình sử dụng ubuntu 18.04, phiên bản docker hiện tại
+                                    của mình là <strong>Docker version 18.09.6, build 481bc77</strong></p>
+                            </li>
+                        </ul>
+                        <h2>Tạo Dockerfile</h2>
+                        <ul>
+                            <li>
+                                <p><strong>Docker</strong> sẽ xây dựng (build) <strong>docker image</strong> một cách tự
+                                    động bằng cách đọc các chỉ thị (instruction) đã được khai báo trong một file có tên
+                                    là <strong>Dockerfile</strong>. <strong>Dockerfile</strong> là một tập tin dạng text
+                                    chứa một tập các câu lệnh để tạo mới một <strong>Image</strong> trong Docker.</p>
+                            </li>
+                            <li>
+                                <p>Tạo một tệp <strong>Dockerfile</strong> trong thư mục gốc của ứng dụng và thêm dòng
+                                    <strong>FROM</strong> ngay dòng đầu tiên:</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>FROM python:2
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Điều này cho Docker biết rằng chúng ta muốn bắt đầu từ image python chính thức với phiên bản 2.</p>
-</li>
-<li>
-<p>Dùng <strong>RUN</strong> để update ubuntu software bên trong Dockerfile và tiến hành cài đặt các phụ thuộc cho ứng dụng:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>RUN apt-get update -y &amp;&amp; \
+                        <ul>
+                            <li>
+                                <p>Điều này cho Docker biết rằng chúng ta muốn bắt đầu từ image python chính thức với
+                                    phiên bản 2.</p>
+                            </li>
+                            <li>
+                                <p>Dùng <strong>RUN</strong> để update ubuntu software bên trong Dockerfile và tiến hành
+                                    cài đặt các phụ thuộc cho ứng dụng:</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>RUN apt-get update -y &amp;&amp; \
     apt-get install -y python-pip python-dev unoconv libreoffice-script-provider-python \
     &amp;&amp; apt-get clean \
     &amp;&amp; apt-get autoremove -y \
     &amp;&amp; rm -rf /var/lib/apt/lists/*
 
 RUN pip install -r requirements.txt
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>Chỉ thị <strong>ADD</strong> sẽ copy thư mục từ vị trí thư mục đang build trên local client hoặc remote files url và thêm chúng vào file hệ thống của image:</li>
-</ul>
-<div class="highlight"><pre><span></span>ADD . /conv
-</pre></div>
+                        <ul>
+                            <li>Chỉ thị <strong>ADD</strong> sẽ copy thư mục từ vị trí thư mục đang build trên local
+                                client hoặc remote files url và thêm chúng vào file hệ thống của image:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>ADD . /conv
+</pre>
+                        </div>
 
 
-<ul>
-<li>Tiếp theo, mình sẽ đặt thư mục /conv trong Dockerfile:</li>
-</ul>
-<div class="highlight"><pre><span></span>WORKDIR /conv
-</pre></div>
+                        <ul>
+                            <li>Tiếp theo, mình sẽ đặt thư mục /conv trong Dockerfile:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>WORKDIR /conv
+</pre>
+                        </div>
 
 
-<ul>
-<li>Định nghĩa những command mặc định, chuẩn bị các điều kiện setup cần thiết để chạy service trong container:</li>
-</ul>
-<div class="highlight"><pre><span></span>ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
-</pre></div>
+                        <ul>
+                            <li>Định nghĩa những command mặc định, chuẩn bị các điều kiện setup cần thiết để chạy
+                                service trong container:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
+</pre>
+                        </div>
 
 
-<ul>
-<li>Nội dung Dockerfile sau khi đã hoàn thành:</li>
-</ul>
-<div class="highlight"><pre><span></span>FROM python:2
+                        <ul>
+                            <li>Nội dung Dockerfile sau khi đã hoàn thành:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>FROM python:2
 
 RUN apt-get update -y &amp;&amp; \
     apt-get install -y python-pip python-dev unoconv libreoffice-script-provider-python \
@@ -683,73 +880,99 @@ WORKDIR /conv
 RUN pip install -r requirements.txt
 
 ENTRYPOINT gunicorn -w 4 -b 0.0.0.0:5000 app:server
-</pre></div>
+</pre>
+                        </div>
 
 
-<h2>Build docker image</h2>
-<ul>
-<li>Chạy command sau để build image từ Dockerfile đã được tạo ở trên:</li>
-</ul>
-<div class="highlight"><pre><span></span>docker build -t toannd/conv .
-</pre></div>
+                        <h2>Build docker image</h2>
+                        <ul>
+                            <li>Chạy command sau để build image từ Dockerfile đã được tạo ở trên:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>docker build -t toannd/conv .
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Câu lệnh trên sẽ tạo ra 1 image mới có tên là <strong>toannd/conv</strong>. Sau khi câu lệnh hoàn tất, trên màn hình sẽ hiển thị
-<img alt="Image" src="images/convert/docker1.png">
-<img alt="Image" src="images/convert/docker2.png"></p>
-</li>
-<li>
-<p>Tiến hành kiểm tra image bằng lệnh:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>docker images
-</pre></div>
+                        <ul>
+                            <li>
+                                <p>Câu lệnh trên sẽ tạo ra 1 image mới có tên là <strong>toannd/conv</strong>. Sau khi
+                                    câu lệnh hoàn tất, trên màn hình sẽ hiển thị
+                                    <img alt="Image" src="images/convert/docker1.png">
+                                    <img alt="Image" src="images/convert/docker2.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Tiến hành kiểm tra image bằng lệnh:</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>docker images
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Kết quả thu được:
-<img alt="Image" src="images/convert/3.png"></p>
-</li>
-<li>
-<p>Như vậy là mình đã build thành công 1 Docker image. Bây giờ mình chạy image đó, dùng lệnh sau:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>docker run toannd/conv
-</pre></div>
+                        <ul>
+                            <li>
+                                <p>Kết quả thu được:
+                                    <img alt="Image" src="images/convert/3.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Như vậy là mình đã build thành công 1 Docker image. Bây giờ mình chạy image đó, dùng
+                                    lệnh sau:</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>docker run toannd/conv
+</pre>
+                        </div>
 
 
-<ul>
-<li>Kết quả thu được:
-<img alt="Image" src="images/convert/docker4.png"></li>
-</ul>
-<h2>Build docker-compose</h2>
-<ul>
-<li>
-<p>Như đã biết, mình đã cấu hình và tạo image, các vùng chứa và liên kết chúng với nhau. Nếu bạn làm việc với 2 hoặc 3 container thì nó có thể thực hiện được. Tuy nhiên nếu bạn cần thiết lập môi trường của 1 project với nhiều container chứa hơn thì việc đó sẽ trở nên rất khó khăn bằng cách thiết lập thủ công. <strong>Docker-compose</strong> sẽ giải quyết vấn đề đó.</p>
-</li>
-<li>
-<p><strong>Docker-compose</strong> là 1 công cụ để định nghĩa và chạy nhiều container trên ứng dụng Docker.</p>
-</li>
-<li>
-<p><strong>Docker-compose</strong> cho phép bạn tạo một file cấu hình <strong>YML</strong>, nơi mà bạn sẽ định nghĩa các services trên ứng dụng của bạn và định nghĩa tất cả các bước, cấu hình cần thiết để xây dựng các image, up các container và liên kết chúng với nhau. Cuối cùng, một khi tất cả điều này được thực hiện thì bạn sẽ chỉ cần thiết lập tất cả với một câu lệnh duy nhất.</p>
-</li>
-<li>
-<p>Ứng dụng hiện tại của mình chỉ có duy nhất một services mình đặt tên là <strong>conv</strong>, sau đây mình sẽ bắt tay vào build docker-compose</p>
-</li>
-<li>
-<p>Trước tiên bạn cần <a href="https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04">cài đặt docker-compose</a></p>
-</li>
-<li>
-<p>Phiên bản <strong>docker-compose</strong> hiện tại của mình là <strong>docker-compose version 1.23.2, build 1110ad01</strong></p>
-</li>
-<li>
-<p>Tạo một tệp <strong>docker-compose.yml</strong> trong thư mục gốc của dự án.</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>version: &#39;3&#39;
+                        <ul>
+                            <li>Kết quả thu được:
+                                <img alt="Image" src="images/convert/docker4.png">
+                            </li>
+                        </ul>
+                        <h2>Build docker-compose</h2>
+                        <ul>
+                            <li>
+                                <p>Như đã biết, mình đã cấu hình và tạo image, các vùng chứa và liên kết chúng với nhau.
+                                    Nếu bạn làm việc với 2 hoặc 3 container thì nó có thể thực hiện được. Tuy nhiên nếu
+                                    bạn cần thiết lập môi trường của 1 project với nhiều container chứa hơn thì việc đó
+                                    sẽ trở nên rất khó khăn bằng cách thiết lập thủ công.
+                                    <strong>Docker-compose</strong> sẽ giải quyết vấn đề đó.</p>
+                            </li>
+                            <li>
+                                <p><strong>Docker-compose</strong> là 1 công cụ để định nghĩa và chạy nhiều container
+                                    trên ứng dụng Docker.</p>
+                            </li>
+                            <li>
+                                <p><strong>Docker-compose</strong> cho phép bạn tạo một file cấu hình
+                                    <strong>YML</strong>, nơi mà bạn sẽ định nghĩa các services trên ứng dụng của bạn và
+                                    định nghĩa tất cả các bước, cấu hình cần thiết để xây dựng các image, up các
+                                    container và liên kết chúng với nhau. Cuối cùng, một khi tất cả điều này được thực
+                                    hiện thì bạn sẽ chỉ cần thiết lập tất cả với một câu lệnh duy nhất.</p>
+                            </li>
+                            <li>
+                                <p>Ứng dụng hiện tại của mình chỉ có duy nhất một services mình đặt tên là
+                                    <strong>conv</strong>, sau đây mình sẽ bắt tay vào build docker-compose</p>
+                            </li>
+                            <li>
+                                <p>Trước tiên bạn cần <a
+                                        href="https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-18-04">cài
+                                        đặt docker-compose</a></p>
+                            </li>
+                            <li>
+                                <p>Phiên bản <strong>docker-compose</strong> hiện tại của mình là <strong>docker-compose
+                                        version 1.23.2, build 1110ad01</strong></p>
+                            </li>
+                            <li>
+                                <p>Tạo một tệp <strong>docker-compose.yml</strong> trong thư mục gốc của dự án.</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>version: &#39;3&#39;
 
 services:
     conv:
@@ -759,181 +982,229 @@ services:
             - ./conv/convert:/conv/convert
         ports:
             - &#39;5000:5000&#39;
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>File <strong>docker-compose.yml</strong> được tổ chức gồm 4 phần:</li>
-</ul>
-<div class="highlight"><pre><span></span>- version là phiên bản của file docker-compose
+                        <ul>
+                            <li>File <strong>docker-compose.yml</strong> được tổ chức gồm 4 phần:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>- version là phiên bản của file docker-compose
 - services chứa các container với mỗi service là tên của một container
 - volumes gắn đường dẫn trên host machine được sử dụng trên container
 - networks sử dụng để cấu hình network cho ứng dụng
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>Với <strong>services</strong> có một số thành phần sau:</li>
-</ul>
-<div class="highlight"><pre><span></span>- build chỉ ra vị trị đường dẫn đặt Dockerfile
+                        <ul>
+                            <li>Với <strong>services</strong> có một số thành phần sau:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>- build chỉ ra vị trị đường dẫn đặt Dockerfile
 - volumes gắn đường dẫn trên host machine được sử dụng trên container
 - port kết nối port của máy host đến port của container
-</pre></div>
+</pre>
+                        </div>
 
 
-<ul>
-<li>Lưu file <strong>docker-compose.yml</strong> sau đó chạy lệnh:</li>
-</ul>
-<div class="highlight"><pre><span></span>docker-compose up
-</pre></div>
+                        <ul>
+                            <li>Lưu file <strong>docker-compose.yml</strong> sau đó chạy lệnh:</li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>docker-compose up
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Kết quả thu được:
-<img alt="Image" src="images/convert/docker5.png"></p>
-</li>
-<li>
-<p>Tiến hành kiểm tra upload file bằng phương thức <strong>GET</strong>, truy cập vào địa chỉ</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>http://0.0.0.0:5000/uploads?file=http://home.actvn.edu.vn/Upload/document/don-hoan-thi.docx
-</pre></div>
+                        <ul>
+                            <li>
+                                <p>Kết quả thu được:
+                                    <img alt="Image" src="images/convert/docker5.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Tiến hành kiểm tra upload file bằng phương thức <strong>GET</strong>, truy cập vào
+                                    địa chỉ</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>http://0.0.0.0:5000/uploads?file=http://home.actvn.edu.vn/Upload/document/don-hoan-thi.docx
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Kết quả hiện ra sẽ là:
-<img alt="Image" src="images/convert/end.png"></p>
-</li>
-<li>
-<p>Như vậy việc <strong>build docker-compose</strong> đã thành công, phía server trả về bản xem trước của file đã convert trên trình duyệt.</p>
-</li>
-</ul>
-<h2>Push image lên docker hub</h2>
-<ul>
-<li>
-<p><strong>Docker hub</strong> cũng giống như <strong>github</strong>, cho phép bạn download các docker images khác đã được build từ cộng đồng (public) hoặc nhà phát hành ứng dụng. Bạn cũng có thể đăng ký tài khoản docker hub cá nhân và upload file docker image đã build của bạn lên docker hub để lưu trữ cũng như quản lý image như upload code lên github repository.</p>
-</li>
-<li>
-<p>Đăng nhập vào tài khoản <strong>docker hub</strong>
-<img alt="Image" src="images/convert/login.png"></p>
-</li>
-<li>
-<p>Để đăng nhập vào hệ thống docker hub trên command thì bạn sử dụng cú pháp sau:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>docker login
-</pre></div>
+                        <ul>
+                            <li>
+                                <p>Kết quả hiện ra sẽ là:
+                                    <img alt="Image" src="images/convert/end.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Như vậy việc <strong>build docker-compose</strong> đã thành công, phía server trả về
+                                    bản xem trước của file đã convert trên trình duyệt.</p>
+                            </li>
+                        </ul>
+                        <h2>Push image lên docker hub</h2>
+                        <ul>
+                            <li>
+                                <p><strong>Docker hub</strong> cũng giống như <strong>github</strong>, cho phép bạn
+                                    download các docker images khác đã được build từ cộng đồng (public) hoặc nhà phát
+                                    hành ứng dụng. Bạn cũng có thể đăng ký tài khoản docker hub cá nhân và upload file
+                                    docker image đã build của bạn lên docker hub để lưu trữ cũng như quản lý image như
+                                    upload code lên github repository.</p>
+                            </li>
+                            <li>
+                                <p>Đăng nhập vào tài khoản <strong>docker hub</strong>
+                                    <img alt="Image" src="images/convert/login.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Để đăng nhập vào hệ thống docker hub trên command thì bạn sử dụng cú pháp sau:</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>docker login
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Sau khi chạy lệnh thì command sẽ hiển thị:
-<img alt="Image" src="images/convert/2.png"></p>
-</li>
-<li>
-<p>Giao diện cơ bản giống github với việc docker hub cho phép tạo repository để upload image lên lưu trữ public/private.
-<img alt="Image" src="images/convert/1.png"></p>
-</li>
-<li>
-<p>Mình sẽ đẩy image lên docker hub bằng cách sử dụng lệnh:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>docker push toannd/conv
-</pre></div>
+                        <ul>
+                            <li>
+                                <p>Sau khi chạy lệnh thì command sẽ hiển thị:
+                                    <img alt="Image" src="images/convert/2.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Giao diện cơ bản giống github với việc docker hub cho phép tạo repository để upload
+                                    image lên lưu trữ public/private.
+                                    <img alt="Image" src="images/convert/1.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Mình sẽ đẩy image lên docker hub bằng cách sử dụng lệnh:</p>
+                            </li>
+                        </ul>
+                        <div class="highlight">
+                            <pre><span></span>docker push toannd/conv
+</pre>
+                        </div>
 
 
-<ul>
-<li>
-<p>Quá trình đẩy lên docker hub còn phụ thuộc vào tốc độ mạng của bạn:
-<img alt="Image" src="images/convert/5.png"></p>
-</li>
-<li>
-<p>Sau khi đẩy lên docker hub thành công, bạn có thể chia sẻ cho mọi người sử dụng một cách dễ dàng.</p>
-</li>
-<li>
-<p>Mọi người có thể tham khảo <a href="https://github.com/dactoankmapydev/web_convert_office">mã nguồn ứng dụng</a> trên github của mình. </p>
-</li>
-</ul>
-<h1>Tài liệu tham khảo</h1>
-<ul>
-<li><a href="http://containertutorials.com/docker-compose.html">MicroServices with Docker</a></li>
-<li><a href="https://vimentor.com/vi/lesson/phat-trien-phan-mem-theo-kien-truc-microservice">Vimentor</a></li>
-<li><a href="https://viblo.asia/p/postman-goi-api-chua-bao-gio-de-dang-nhu-vay-AoDGYNDQRvg">Postman</a></li>
-</ul></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">
-        Nguyen Dac Toan KMA
-    </span>
-  </span>
-<time datetime="2019-05-15T00:00:00+07:00" pubdate>T4 15 Tháng 5 2019</time>  <span class="categories">
-    <a class='category' href='/category/web.html'>Web</a>
-  </span>
-  <span class="categories">
-    <a class="category" href="/tag/convert-to-pdf.html">convert to pdf</a>  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
+                        <ul>
+                            <li>
+                                <p>Quá trình đẩy lên docker hub còn phụ thuộc vào tốc độ mạng của bạn:
+                                    <img alt="Image" src="images/convert/5.png">
+                                </p>
+                            </li>
+                            <li>
+                                <p>Sau khi đẩy lên docker hub thành công, bạn có thể chia sẻ cho mọi người sử dụng một
+                                    cách dễ dàng.</p>
+                            </li>
+                            <li>
+                                <p>Mọi người có thể tham khảo <a
+                                        href="https://github.com/dactoankmapydev/web_convert_office">mã nguồn ứng
+                                        dụng</a> trên github của mình. </p>
+                            </li>
+                        </ul>
+                        <h1>Tài liệu tham khảo</h1>
+                        <ul>
+                            <li><a href="http://containertutorials.com/docker-compose.html">MicroServices with
+                                    Docker</a></li>
+                            <li><a
+                                    href="https://vimentor.com/vi/lesson/phat-trien-phan-mem-theo-kien-truc-microservice">Vimentor</a>
+                            </li>
+                            <li><a
+                                    href="https://viblo.asia/p/postman-goi-api-chua-bao-gio-de-dang-nhu-vay-AoDGYNDQRvg">Postman</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <footer>
+                        <p class="meta">
+                            <span class="byline author vcard">
+                                Posted by <span class="fn">
+                                    Nguyen Dac Toan KMA
+                                </span>
+                            </span>
+                            <time datetime="2019-05-15T00:00:00+07:00" pubdate>T4 15 Tháng 5 2019</time> <span
+                                class="categories">
+                                <a class='category' href='/category/web.html'>Web</a>
+                            </span>
+                            <span class="categories">
+                                <a class="category" href="/tag/convert-to-pdf.html">convert to pdf</a> </span>
+                        </p>
+                        <div class="sharing">
+                        </div>
+                    </footer>
+                </article>
 
-</div>
-<aside class="sidebar">
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="/go.html">Go cơ bản</a>
-      </li>
-      <li class="post">
-          <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</a>
-      </li>
-      <li class="post">
-          <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
-      </li>
-      <li class="post">
-          <a href="/UnitTest.html">Unit Test cơ bản</a>
-      </li>
-      <li class="post">
-          <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="/category/crawl.html">Crawl</a></li>
-        <li><a href="/category/devops.html">DevOps</a></li>
-        <li><a href="/category/programing.html">Programing</a></li>
-        <li><a href="/category/web.html">Web</a></li>
-    </ul>
-  </section>
- 
+            </div>
+            <aside class="sidebar">
+                <section>
+                    <h1>Recent Posts</h1>
+                    <ul id="recent_posts">
+                        <li class="post">
+                            <a href="/go.html">Go cơ bản</a>
+                        </li>
+                        <li class="post">
+                            <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang
+                                PDF</a>
+                        </li>
+                        <li class="post">
+                            <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
+                        </li>
+                        <li class="post">
+                            <a href="/UnitTest.html">Unit Test cơ bản</a>
+                        </li>
+                        <li class="post">
+                            <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
 
-  <section>
-  <h1>Tags</h1>
-    <a href="/tag/go.html">go</a>,    <a href="/tag/convert-to-pdf.html">convert to pdf</a>,    <a href="/tag/deploy.html">deploy</a>,    <a href="/tag/heroku.html">heroku</a>,    <a href="/tag/unittest.html">unittest</a>,    <a href="/tag/crawl.html">crawl</a>,    <a href="/tag/sosanhviec.html">sosanhviec</a>,    <a href="/tag/pytudi.html">pytudi</a>  </section>
+                    <h1>Categories</h1>
+                    <ul id="recent_posts">
+                        <li><a href="/category/crawl.html">Crawl</a></li>
+                        <li><a href="/category/devops.html">DevOps</a></li>
+                        <li><a href="/category/programing.html">Programing</a></li>
+                        <li><a href="/category/web.html">Web</a></li>
+                    </ul>
+                </section>
 
 
-    <section>
-        <h1>Social</h1>
-        <ul>
-            <li><a href="https://github.com/dactoankmapydev" target="_blank">Github</a></li>
-            <li><a href="https://www.facebook.com/toan.nguyen.31392410" target="_blank">Facebook</a></li>
-            <li><a href="https://www.linkedin.com/in/dac-toan-nguyen-a94b2a146/" target="_blank">Linkedin</a></li>
-        </ul>
-    </section>
+                <section>
+                    <h1>Tags</h1>
+                    <a href="/tag/go.html">go</a>, <a href="/tag/convert-to-pdf.html">convert to pdf</a>, <a
+                        href="/tag/deploy.html">deploy</a>, <a href="/tag/heroku.html">heroku</a>, <a
+                        href="/tag/unittest.html">unittest</a>, <a href="/tag/crawl.html">crawl</a>, <a
+                        href="/tag/sosanhviec.html">sosanhviec</a>, <a href="/tag/pytudi.html">pytudi</a>
+                </section>
 
-</aside>    </div>
-  </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2019  Nguyen Dac Toan KMA &mdash;
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
-  <script src="/theme/js/modernizr-2.0.js"></script>
-  <script src="/theme/js/ender.js"></script>
-  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+
+                <section>
+                    <h1>Social</h1>
+                    <ul>
+                        <li><a href="https://github.com/dactoankmapydev" target="_blank">Github</a></li>
+                        <li><a href="https://www.facebook.com/toan.nguyen.31392410" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.linkedin.com/in/dac-toan-nguyen-a94b2a146/"
+                                target="_blank">Linkedin</a></li>
+                    </ul>
+                </section>
+
+            </aside>
+        </div>
+    </div>
+    <footer role="contentinfo">
+        <p>
+            Copyright &copy; 2019 Nguyen Dac Toan KMA &mdash;
+            <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+        </p>
+    </footer>
+    <script src="/theme/js/modernizr-2.0.js"></script>
+    <script src="/theme/js/ender.js"></script>
+    <script src="/theme/js/octopress.js" type="text/javascript"></script>
 </body>
+
 </html>

@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
 <head>
   <meta charset="utf-8">
   <title>Golang cơ bản (Giới thiệu và cài đặt) &mdash; Save and Share</title>
   <meta name="author" content="Nguyen Dac Toan KMA">
-
-
-
-
-
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,188 +16,242 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link href="/favicon.png" rel="icon">
+  <link href="/favicon.png" rel="icon">
 
-  <link href="/theme/css/main.css" media="screen, projection"
-        rel="stylesheet" type="text/css">
+  <link href="/theme/css/main.css" media="screen, projection" rel="stylesheet" type="text/css">
 
-  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
-        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet"
+    type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet"
+    type="text/css">
+
+  <!-- tracking -->
+  <script type="application/javascript" src="http://localhost:3000/record.js"></script>
+  <script type="application/javascript">
+    window.recorder.setSession()
+  </script>
 </head>
 
 <body>
-  <header role="banner"><hgroup>
-  <h1><a href="/">Save and Share</a></h1>
-</hgroup></header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-</ul>
+  <header role="banner">
+    <hgroup>
+      <h1><a href="/">Save and Share</a></h1>
+    </hgroup>
+  </header>
+  <nav role="navigation">
+    <ul class="subscription" data-subscription="rss">
+    </ul>
 
 
-<ul class="main-navigation">
-      <li >
+    <ul class="main-navigation">
+      <li>
         <a href="/category/crawl.html">Crawl</a>
       </li>
-      <li >
+      <li>
         <a href="/category/devops.html">Devops</a>
       </li>
       <li class="active">
         <a href="/category/programing.html">Programing</a>
       </li>
-      <li >
+      <li>
         <a href="/category/web.html">Web</a>
       </li>
-</ul></nav>
+    </ul>
+  </nav>
   <div id="main">
     <div id="content">
-<div>
-  <article class="hentry" role="article">
-<header>
-      <h1 class="entry-title">Golang cơ bản (Giới thiệu và cài đặt)</h1>
-    <p class="meta">
-<time datetime="2019-03-15T00:00:00+07:00" pubdate>T6 15 Tháng 3 2019</time>    </p>
-</header>
+      <div>
+        <article class="hentry" role="article">
+          <header>
+            <h1 class="entry-title">Golang cơ bản (Giới thiệu và cài đặt)</h1>
+            <p class="meta">
+              <time datetime="2019-03-15T00:00:00+07:00" pubdate>T6 15 Tháng 3 2019</time>
+            </p>
+          </header>
 
-  <div class="entry-content"><p><img alt="Image" src="images/golang/golang.png"></p>
-<h1>Tổng quan</h1>
-<ul>
-<li>
-<p>Golang, còn được gọi là Go, là một ngôn ngữ lập trình biên dịch hướng hệ thống (systems-oriented) mã nguồn mở (open source) sử dụng cú pháp cấp cao tương tự như ngôn ngữ kịch bản được thiết kế và phát triển bởi Google vào năm 2007 để giúp các nhà phát triển của Google xây dựng các hệ thống cho lượng người dùng cực lớn. Nó được kỳ vọng sẽ giúp ngành công nghiệp phần mềm khai thác nền tảng đa lõi của bộ vi xử lý và hoạt động đa nhiệm tốt hơn. </p>
-</li>
-<li>
-<p>Go có trang chủ tại địa chỉ <a href="https://golang.org/">golang</a> </p>
-</li>
-</ul>
-<h2>Ý nghĩa tên gọi</h2>
-<ul>
-<li>Go được xuất phát từ tên công ty Google. Hơn nữa, Go trong tiếng Anh có nghĩa là đi, tiến lên, mang một ý nghĩa tiến đến tầm cao mới.</li>
-</ul>
-<h1>Cài đặt</h1>
-<h2>Cài đặt Go</h2>
-<ul>
-<li>
-<p>Golang hỗ trợ cả ba nền tảng Mac, Windows, Linux. Trong bài viết này mình sẽ hướng dẫn các bạn cài đặt Golang trên nền tảng linux (Ubuntu 18.04)</p>
-</li>
-<li>
-<p>Thông thường, trước khi cài đặt một phần mềm trên Ubuntu thì bước đầu tiên cần làm đó là cập nhật các gói package đang được cài đặt trên hệ thống. Mở chương trình cửa sổ dòng lệnh terminal trên Ubuntu và chạy câu lệnh dưới đây:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>$ sudo apt-get update
+          <div class="entry-content">
+            <p><img alt="Image" src="images/golang/golang.png"></p>
+            <h1>Tổng quan</h1>
+            <ul>
+              <li>
+                <p>Golang, còn được gọi là Go, là một ngôn ngữ lập trình biên dịch hướng hệ thống (systems-oriented) mã
+                  nguồn mở (open source) sử dụng cú pháp cấp cao tương tự như ngôn ngữ kịch bản được thiết kế và phát
+                  triển bởi Google vào năm 2007 để giúp các nhà phát triển của Google xây dựng các hệ thống cho lượng
+                  người dùng cực lớn. Nó được kỳ vọng sẽ giúp ngành công nghiệp phần mềm khai thác nền tảng đa lõi của
+                  bộ vi xử lý và hoạt động đa nhiệm tốt hơn. </p>
+              </li>
+              <li>
+                <p>Go có trang chủ tại địa chỉ <a href="https://golang.org/">golang</a> </p>
+              </li>
+            </ul>
+            <h2>Ý nghĩa tên gọi</h2>
+            <ul>
+              <li>Go được xuất phát từ tên công ty Google. Hơn nữa, Go trong tiếng Anh có nghĩa là đi, tiến lên, mang
+                một ý nghĩa tiến đến tầm cao mới.</li>
+            </ul>
+            <h1>Cài đặt</h1>
+            <h2>Cài đặt Go</h2>
+            <ul>
+              <li>
+                <p>Golang hỗ trợ cả ba nền tảng Mac, Windows, Linux. Trong bài viết này mình sẽ hướng dẫn các bạn cài
+                  đặt Golang trên nền tảng linux (Ubuntu 18.04)</p>
+              </li>
+              <li>
+                <p>Thông thường, trước khi cài đặt một phần mềm trên Ubuntu thì bước đầu tiên cần làm đó là cập nhật các
+                  gói package đang được cài đặt trên hệ thống. Mở chương trình cửa sổ dòng lệnh terminal trên Ubuntu và
+                  chạy câu lệnh dưới đây:</p>
+              </li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>$ sudo apt-get update
 $ sudo apt-get -y upgrade
-</pre></div>
+</pre>
+            </div>
 
 
-<ul>
-<li>Sau khi kết thúc việc cập nhật bạn truy cập vào <a href="https://golang.org/dl/">link</a> này để chọn version tương ứng với phiên bản hệ điều hành, ví dụ OS của mình là linux, với kiến trúc AMD 64 bit, mình chọn được version và tiến hành tải về  <a href="https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz">link</a> và giải nén, bạn có thể tải về và giải nén trực tiếp hoặc thông qua dòng lệnh như sau:</li>
-</ul>
-<div class="highlight"><pre><span></span>$ wget https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz
+            <ul>
+              <li>Sau khi kết thúc việc cập nhật bạn truy cập vào <a href="https://golang.org/dl/">link</a> này để chọn
+                version tương ứng với phiên bản hệ điều hành, ví dụ OS của mình là linux, với kiến trúc AMD 64 bit, mình
+                chọn được version và tiến hành tải về <a
+                  href="https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz">link</a> và giải nén, bạn có thể tải về và
+                giải nén trực tiếp hoặc thông qua dòng lệnh như sau:</li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>$ wget https://dl.google.com/go/go1.12.1.linux-amd64.tar.gz
 $ sudo tar -xzvf go1.12.linux-amd64.tar.gz
-</pre></div>
+</pre>
+            </div>
 
 
-<ul>
-<li>Sau khi giải nén xong bạn có thể di chuyển nó về thư mục <strong>/usr/local</strong></li>
-</ul>
-<div class="highlight"><pre><span></span>$ sudo mv go /usr/local
-</pre></div>
+            <ul>
+              <li>Sau khi giải nén xong bạn có thể di chuyển nó về thư mục <strong>/usr/local</strong></li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>$ sudo mv go /usr/local
+</pre>
+            </div>
 
 
-<h2>Thiết lập đường dẫn</h2>
-<ul>
-<li>
-<p>Trong bước này, mình sẽ thiết lập một số đường dẫn mà Go cần. Các đường dẫn trong bước này đều liên quan đến vị trí cài đặt Go của mình trong <strong>/usr/local</strong>, nếu bạn để tệp ở vị trí khác, hãy sửa đổi các lệnh để khớp với vị trí mới của bạn.</p>
-</li>
-<li>
-<p>Go có các biến môi trường như sau:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>- GOROOT: Nơi mà các packages Go sẽ được cài đặt (trỏ về thư mục /usr/local/go lúc nãy mình vừa move, hoặc 1 thư mục bất kì mà bạn vừa move đến).
+            <h2>Thiết lập đường dẫn</h2>
+            <ul>
+              <li>
+                <p>Trong bước này, mình sẽ thiết lập một số đường dẫn mà Go cần. Các đường dẫn trong bước này đều liên
+                  quan đến vị trí cài đặt Go của mình trong <strong>/usr/local</strong>, nếu bạn để tệp ở vị trí khác,
+                  hãy sửa đổi các lệnh để khớp với vị trí mới của bạn.</p>
+              </li>
+              <li>
+                <p>Go có các biến môi trường như sau:</p>
+              </li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>- GOROOT: Nơi mà các packages Go sẽ được cài đặt (trỏ về thư mục /usr/local/go lúc nãy mình vừa move, hoặc 1 thư mục bất kì mà bạn vừa move đến).
 - GOPATH: Nơi mà các thư viện được kéo về, nó là workspace (không gian làm việc) của bạn.
-</pre></div>
+</pre>
+            </div>
 
 
-<ul>
-<li>Bạn có thể thiết lập các biến môi trường này bằng cách sửa lại file .profile trong thư mục root ubuntu như sau:</li>
-</ul>
-<div class="highlight"><pre><span></span>$ sudo nano .profile
-</pre></div>
+            <ul>
+              <li>Bạn có thể thiết lập các biến môi trường này bằng cách sửa lại file .profile trong thư mục root ubuntu
+                như sau:</li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>$ sudo nano .profile
+</pre>
+            </div>
 
 
-<ul>
-<li>Ở cuối tập tin, thêm dòng này:</li>
-</ul>
-<div class="highlight"><pre><span></span>export GOPATH=~/go
+            <ul>
+              <li>Ở cuối tập tin, thêm dòng này:</li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>export GOPATH=~/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-</pre></div>
+</pre>
+            </div>
 
 
-<ul>
-<li>Lưu lại và đóng tệp, chạy lệnh <strong>source .profile</strong> để các thay đổi trên file có tác dụng mà không phải restart terminal.</li>
-</ul>
-<h2>Kiểm tra cài đặt Go</h2>
-<ul>
-<li>Bây giờ Go đã được cài đặt và các đường dẫn đã được thiết lập cho máy của bạn, bạn có thể kiểm tra để đảm bảo rằng Go hoạt động như mong đợi:</li>
-</ul>
-<div class="highlight"><pre><span></span>$ go version
+            <ul>
+              <li>Lưu lại và đóng tệp, chạy lệnh <strong>source .profile</strong> để các thay đổi trên file có tác dụng
+                mà không phải restart terminal.</li>
+            </ul>
+            <h2>Kiểm tra cài đặt Go</h2>
+            <ul>
+              <li>Bây giờ Go đã được cài đặt và các đường dẫn đã được thiết lập cho máy của bạn, bạn có thể kiểm tra để
+                đảm bảo rằng Go hoạt động như mong đợi:</li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>$ go version
 go version go1.12 linux/amd64
-</pre></div>
+</pre>
+            </div>
 
 
-<ul>
-<li>
-<p>Bạn có thể gõ một số lệnh khác, <strong>go env</strong> để check các biến môi trường của Go.</p>
-</li>
-<li>
-<p>Tạo một thư mục mới cho workspace Go của bạn:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span>$ mkdir go
+            <ul>
+              <li>
+                <p>Bạn có thể gõ một số lệnh khác, <strong>go env</strong> để check các biến môi trường của Go.</p>
+              </li>
+              <li>
+                <p>Tạo một thư mục mới cho workspace Go của bạn:</p>
+              </li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>$ mkdir go
 $ <span class="nb">cd</span> go
 $ mkdir src pkg bin
-</pre></div>
+</pre>
+            </div>
 
 
-<h2>Viết chương trình đầu tiên</h2>
-<ul>
-<li>Tạo folder chứa code chương trình Go đầu tiên của bạn bằng cách:</li>
-</ul>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /go/src
+            <h2>Viết chương trình đầu tiên</h2>
+            <ul>
+              <li>Tạo folder chứa code chương trình Go đầu tiên của bạn bằng cách:</li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>$ <span class="nb">cd</span> /go/src
 $ mkdir -p learn_go 
 $ <span class="nb">cd</span> learn_go
 $ mkdir hello
 $ <span class="nb">cd</span> hello
 $ gedit hello.go
-</pre></div>
+</pre>
+            </div>
 
 
-<ul>
-<li>Viết chương trình đầu tiên của bạn gửi lời chào tới thế giới:</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">main</span>
+            <ul>
+              <li>Viết chương trình đầu tiên của bạn gửi lời chào tới thế giới:</li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span><span class="n">package</span> <span class="n">main</span>
 <span class="kn">import</span> <span class="s2">&quot;fmt&quot;</span>
 <span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s2">&quot;hello, world</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
+</pre>
+            </div>
 
 
-<h2>Chạy một chương trình Go:</h2>
-<ul>
-<li>Sử dụng lệnh <strong>go run</strong> bạn sẽ thấy output là <strong>hello, world</strong></li>
-</ul>
-<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /go/src/learn_go/hello
+            <h2>Chạy một chương trình Go:</h2>
+            <ul>
+              <li>Sử dụng lệnh <strong>go run</strong> bạn sẽ thấy output là <strong>hello, world</strong></li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>$ <span class="nb">cd</span> /go/src/learn_go/hello
 $ ls
 $ hello.go
 $ go run hello.go
 hello, world
-</pre></div>
+</pre>
+            </div>
 
 
-<ul>
-<li>Sử dụng lệnh <strong>go install</strong>, khi bạn gõ lệnh <strong>go install hello</strong>, go tool sẽ tìm đến một package tên <strong>hello</strong> trong workspace go của bạn, sau đó tạo ra một file chứa mã nhị phân tên hello (hello.exe trên windows) tại thư mục <strong>/bin</strong> trong workspace. Cấu trúc thư mục sau khi chạy lệnh <strong>go install hello</strong> sẽ như dưới đây:</li>
-</ul>
-<div class="highlight"><pre><span></span>.
+            <ul>
+              <li>Sử dụng lệnh <strong>go install</strong>, khi bạn gõ lệnh <strong>go install hello</strong>, go tool
+                sẽ tìm đến một package tên <strong>hello</strong> trong workspace go của bạn, sau đó tạo ra một file
+                chứa mã nhị phân tên hello (hello.exe trên windows) tại thư mục <strong>/bin</strong> trong workspace.
+                Cấu trúc thư mục sau khi chạy lệnh <strong>go install hello</strong> sẽ như dưới đây:</li>
+            </ul>
+            <div class="highlight">
+              <pre><span></span>.
 ├── bin
 │   └── hello
 ├── pkg
@@ -207,93 +259,109 @@ hello, world
     └── learn_go
         └── hello
             └── hello.go
-</pre></div>
+</pre>
+            </div>
 
 
-<ul>
-<li>Mở terminal và gõ <code>$ hello</code> bạn sẽ thấy output là <strong>hello, world</strong>.</li>
-</ul>
-<h1>Kết luận</h1>
-<ul>
-<li>Vậy là mình đã giới thiệu cho các bạn một ngôn ngữ mới thú vị, mong rằng bài viết này sẽ giúp ích cho những bạn mới bắt đầu làm quen với ngôn ngữ lập trình Go bớt đi những bỡ ngỡ từ đó viết được những chương trình lớn hơn cho riêng mình sau này. Cảm ơn các bạn đã quan tâm.</li>
-</ul>
-<h1>Tài liệu tham khảo</h1>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=R-cA6J3IniI">Go Setup on Linux</a></li>
-<li><a href="https://vi.wikipedia.org/wiki/Go_(ng%C3%B4n_ng%E1%BB%AF_l%E1%BA%ADp_tr%C3%ACnh)">wikipedia</a></li>
-</ul></div>
-    <footer>
-<p class="meta">
-  <span class="byline author vcard">
-    Posted by <span class="fn">
-        Nguyen Dac Toan KMA
-    </span>
-  </span>
-<time datetime="2019-03-15T00:00:00+07:00" pubdate>T6 15 Tháng 3 2019</time>  <span class="categories">
-    <a class='category' href='/category/programing.html'>Programing</a>
-  </span>
-  <span class="categories">
-    <a class="category" href="/tag/go.html">go</a>  </span>
-</p><div class="sharing">
-</div>    </footer>
-  </article>
+            <ul>
+              <li>Mở terminal và gõ <code>$ hello</code> bạn sẽ thấy output là <strong>hello, world</strong>.</li>
+            </ul>
+            <h1>Kết luận</h1>
+            <ul>
+              <li>Vậy là mình đã giới thiệu cho các bạn một ngôn ngữ mới thú vị, mong rằng bài viết này sẽ giúp ích cho
+                những bạn mới bắt đầu làm quen với ngôn ngữ lập trình Go bớt đi những bỡ ngỡ từ đó viết được những
+                chương trình lớn hơn cho riêng mình sau này. Cảm ơn các bạn đã quan tâm.</li>
+            </ul>
+            <h1>Tài liệu tham khảo</h1>
+            <ul>
+              <li><a href="https://www.youtube.com/watch?v=R-cA6J3IniI">Go Setup on Linux</a></li>
+              <li><a
+                  href="https://vi.wikipedia.org/wiki/Go_(ng%C3%B4n_ng%E1%BB%AF_l%E1%BA%ADp_tr%C3%ACnh)">wikipedia</a>
+              </li>
+            </ul>
+          </div>
+          <footer>
+            <p class="meta">
+              <span class="byline author vcard">
+                Posted by <span class="fn">
+                  Nguyen Dac Toan KMA
+                </span>
+              </span>
+              <time datetime="2019-03-15T00:00:00+07:00" pubdate>T6 15 Tháng 3 2019</time> <span class="categories">
+                <a class='category' href='/category/programing.html'>Programing</a>
+              </span>
+              <span class="categories">
+                <a class="category" href="/tag/go.html">go</a> </span>
+            </p>
+            <div class="sharing">
+            </div>
+          </footer>
+        </article>
 
-</div>
-<aside class="sidebar">
-  <section>
-    <h1>Recent Posts</h1>
-    <ul id="recent_posts">
-      <li class="post">
-          <a href="/go.html">Go cơ bản</a>
-      </li>
-      <li class="post">
-          <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</a>
-      </li>
-      <li class="post">
-          <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
-      </li>
-      <li class="post">
-          <a href="/UnitTest.html">Unit Test cơ bản</a>
-      </li>
-      <li class="post">
-          <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-      
-    <h1>Categories</h1>
-    <ul id="recent_posts">
-        <li><a href="/category/crawl.html">Crawl</a></li>
-        <li><a href="/category/devops.html">DevOps</a></li>
-        <li><a href="/category/programing.html">Programing</a></li>
-        <li><a href="/category/web.html">Web</a></li>
-    </ul>
-  </section>
- 
+      </div>
+      <aside class="sidebar">
+        <section>
+          <h1>Recent Posts</h1>
+          <ul id="recent_posts">
+            <li class="post">
+              <a href="/go.html">Go cơ bản</a>
+            </li>
+            <li class="post">
+              <a href="/convert.html">Xây dựng và triển khai web API chuyển đổi định dạng văn bản sang PDF</a>
+            </li>
+            <li class="post">
+              <a href="/heroku.html">Triển khai ứng dụng Python Flask trên Heroku</a>
+            </li>
+            <li class="post">
+              <a href="/UnitTest.html">Unit Test cơ bản</a>
+            </li>
+            <li class="post">
+              <a href="/golang.html">Golang cơ bản (Giới thiệu và cài đặt)</a>
+            </li>
+          </ul>
+        </section>
+        <section>
 
-  <section>
-  <h1>Tags</h1>
-    <a href="/tag/go.html">go</a>,    <a href="/tag/convert-to-pdf.html">convert to pdf</a>,    <a href="/tag/deploy.html">deploy</a>,    <a href="/tag/heroku.html">heroku</a>,    <a href="/tag/unittest.html">unittest</a>,    <a href="/tag/crawl.html">crawl</a>,    <a href="/tag/sosanhviec.html">sosanhviec</a>,    <a href="/tag/pytudi.html">pytudi</a>  </section>
+          <h1>Categories</h1>
+          <ul id="recent_posts">
+            <li><a href="/category/crawl.html">Crawl</a></li>
+            <li><a href="/category/devops.html">DevOps</a></li>
+            <li><a href="/category/programing.html">Programing</a></li>
+            <li><a href="/category/web.html">Web</a></li>
+          </ul>
+        </section>
 
 
-    <section>
-        <h1>Social</h1>
-        <ul>
+        <section>
+          <h1>Tags</h1>
+          <a href="/tag/go.html">go</a>, <a href="/tag/convert-to-pdf.html">convert to pdf</a>, <a
+            href="/tag/deploy.html">deploy</a>, <a href="/tag/heroku.html">heroku</a>, <a
+            href="/tag/unittest.html">unittest</a>, <a href="/tag/crawl.html">crawl</a>, <a
+            href="/tag/sosanhviec.html">sosanhviec</a>, <a href="/tag/pytudi.html">pytudi</a>
+        </section>
+
+
+        <section>
+          <h1>Social</h1>
+          <ul>
             <li><a href="https://github.com/dactoankmapydev" target="_blank">Github</a></li>
             <li><a href="https://www.facebook.com/toan.nguyen.31392410" target="_blank">Facebook</a></li>
             <li><a href="https://www.linkedin.com/in/dac-toan-nguyen-a94b2a146/" target="_blank">Linkedin</a></li>
-        </ul>
-    </section>
+          </ul>
+        </section>
 
-</aside>    </div>
+      </aside>
+    </div>
   </div>
-  <footer role="contentinfo"><p>
-    Copyright &copy;  2019  Nguyen Dac Toan KMA &mdash;
-  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
-</p></footer>
+  <footer role="contentinfo">
+    <p>
+      Copyright &copy; 2019 Nguyen Dac Toan KMA &mdash;
+      <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a></span>
+    </p>
+  </footer>
   <script src="/theme/js/modernizr-2.0.js"></script>
   <script src="/theme/js/ender.js"></script>
   <script src="/theme/js/octopress.js" type="text/javascript"></script>
 </body>
+
 </html>
